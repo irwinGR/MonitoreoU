@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WBMinitoreoUniversal", "WBMinitoreoUniversal\WBMinitoreoUniversal.csproj", "{8062EA49-B9D0-44DA-9ED8-827292892792}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WBMonitoreoUniversal", "MonitoreoUniversal\WBMonitoreoUniversal.csproj", "{C8BB500B-8B13-4A88-B807-7EE993FFDEAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonitoreoUniversal.Entidades", "MonitoreUniversal.Entidades\MonitoreoUniversal.Entidades.csproj", "{D0135B04-6652-43D0-A49D-EE9C0004AEE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonitoreoUniversal.Negocio", "MonitoreoUniversal.Negocio\MonitoreoUniversal.Negocio.csproj", "{16CD68D6-C29B-47BF-B9E8-ECAB6E97DF48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonitoreoUniversal.Datos", "MonitoreoUniversal.Datos\MonitoreoUniversal.Datos.csproj", "{586E6EA3-8960-420D-995F-0BB47EA07848}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonitoreoUniversal.Framework", "MonitoreoUniversal.Framework\MonitoreoUniversal.Framework.csproj", "{52C0A99C-8DAF-4334-97D3-BDE766573C9F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +19,26 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8062EA49-B9D0-44DA-9ED8-827292892792}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8062EA49-B9D0-44DA-9ED8-827292892792}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8062EA49-B9D0-44DA-9ED8-827292892792}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8062EA49-B9D0-44DA-9ED8-827292892792}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8BB500B-8B13-4A88-B807-7EE993FFDEAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8BB500B-8B13-4A88-B807-7EE993FFDEAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8BB500B-8B13-4A88-B807-7EE993FFDEAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8BB500B-8B13-4A88-B807-7EE993FFDEAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0135B04-6652-43D0-A49D-EE9C0004AEE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0135B04-6652-43D0-A49D-EE9C0004AEE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0135B04-6652-43D0-A49D-EE9C0004AEE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0135B04-6652-43D0-A49D-EE9C0004AEE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16CD68D6-C29B-47BF-B9E8-ECAB6E97DF48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16CD68D6-C29B-47BF-B9E8-ECAB6E97DF48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16CD68D6-C29B-47BF-B9E8-ECAB6E97DF48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16CD68D6-C29B-47BF-B9E8-ECAB6E97DF48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{586E6EA3-8960-420D-995F-0BB47EA07848}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{586E6EA3-8960-420D-995F-0BB47EA07848}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{586E6EA3-8960-420D-995F-0BB47EA07848}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{586E6EA3-8960-420D-995F-0BB47EA07848}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52C0A99C-8DAF-4334-97D3-BDE766573C9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52C0A99C-8DAF-4334-97D3-BDE766573C9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52C0A99C-8DAF-4334-97D3-BDE766573C9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52C0A99C-8DAF-4334-97D3-BDE766573C9F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,1004 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <PropertyGroup>
+    <SSDTUnitTestPath Condition="'$(SSDTUnitTestPath)' == ''">$(VsInstallRoot)\Common7\IDE\Extensions\Microsoft\SQLDB</SSDTUnitTestPath>
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SSDTPath Condition="'$(SSDTPath)' == ''">$(VsInstallRoot)\Common7\IDE\Extensions\Microsoft\SQLDB\DAC\130</SSDTPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C8BB500B-8B13-4A88-B807-7EE993FFDEAA}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MonitoreoUniversal</RootNamespace>
+    <AssemblyName>MonitoreoUniversal</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.4.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.12.0.21496, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.12.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.12.0.21496, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.12.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.12.0.21496, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.12.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.12.0.21496, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.12.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.12.0.21496, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.12.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.12.0.21496, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.12.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.7\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.0\lib\netstandard1.1\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.7.0\lib\net45\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard1.1\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.7.0\lib\netstandard1.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="JavaScript\adminUsuarios.js" />
+    <Content Include="Service.svc" />
+    <Content Include="vistas\index.aspx" />
+    <Content Include="resources\advanced-cards.html" />
+    <Content Include="resources\app-assets\css\app-assets\img\gallery\dark-bg.html" />
+    <Content Include="resources\app-assets\css\app-assets\img\svg\cd-arrow.html" />
+    <Content Include="resources\app-assets\css\app.css" />
+    <Content Include="resources\app-assets\fonts\feather\fonts\feather2467.svg" />
+    <Content Include="resources\app-assets\fonts\feather\style.min.css" />
+    <Content Include="resources\app-assets\fonts\font-awesome\css\font-awesome.min.css" />
+    <Content Include="resources\app-assets\fonts\simple-line-icons\fonts\Simple-Line-Icons.svg" />
+    <Content Include="resources\app-assets\fonts\simple-line-icons\style.css" />
+    <Content Include="resources\app-assets\fonts\weathericons\weathericons-regular-webfont.svg" />
+    <Content Include="resources\app-assets\img\crop-pic.jpg" />
+    <Content Include="resources\app-assets\img\elements\01.png" />
+    <Content Include="resources\app-assets\img\elements\04.png" />
+    <Content Include="resources\app-assets\img\elements\06.png" />
+    <Content Include="resources\app-assets\img\elements\07.png" />
+    <Content Include="resources\app-assets\img\elements\11.png" />
+    <Content Include="resources\app-assets\img\elements\14.png" />
+    <Content Include="resources\app-assets\img\flags\br.png" />
+    <Content Include="resources\app-assets\img\flags\de.png" />
+    <Content Include="resources\app-assets\img\flags\es.png" />
+    <Content Include="resources\app-assets\img\flags\us.png" />
+    <Content Include="resources\app-assets\img\gallery\1.jpg" />
+    <Content Include="resources\app-assets\img\gallery\10.jpg" />
+    <Content Include="resources\app-assets\img\gallery\11.jpg" />
+    <Content Include="resources\app-assets\img\gallery\12.jpg" />
+    <Content Include="resources\app-assets\img\gallery\13.jpg" />
+    <Content Include="resources\app-assets\img\gallery\14.jpg" />
+    <Content Include="resources\app-assets\img\gallery\15.jpg" />
+    <Content Include="resources\app-assets\img\gallery\16.jpg" />
+    <Content Include="resources\app-assets\img\gallery\17.jpg" />
+    <Content Include="resources\app-assets\img\gallery\18.jpg" />
+    <Content Include="resources\app-assets\img\gallery\19.jpg" />
+    <Content Include="resources\app-assets\img\gallery\2.jpg" />
+    <Content Include="resources\app-assets\img\gallery\20.jpg" />
+    <Content Include="resources\app-assets\img\gallery\21.jpg" />
+    <Content Include="resources\app-assets\img\gallery\25.jpg" />
+    <Content Include="resources\app-assets\img\gallery\26.jpg" />
+    <Content Include="resources\app-assets\img\gallery\27.jpg" />
+    <Content Include="resources\app-assets\img\gallery\28.jpg" />
+    <Content Include="resources\app-assets\img\gallery\29.jpg" />
+    <Content Include="resources\app-assets\img\gallery\3.jpg" />
+    <Content Include="resources\app-assets\img\gallery\32.jpg" />
+    <Content Include="resources\app-assets\img\gallery\33.jpg" />
+    <Content Include="resources\app-assets\img\gallery\4.jpg" />
+    <Content Include="resources\app-assets\img\gallery\5.jpg" />
+    <Content Include="resources\app-assets\img\gallery\6.jpg" />
+    <Content Include="resources\app-assets\img\gallery\7.jpg" />
+    <Content Include="resources\app-assets\img\gallery\8.jpg" />
+    <Content Include="resources\app-assets\img\gallery\9.jpg" />
+    <Content Include="resources\app-assets\img\gallery\bg-glass-1.jpg" />
+    <Content Include="resources\app-assets\img\gallery\bg-glass-2.jpg" />
+    <Content Include="resources\app-assets\img\gallery\bg-glass-3.jpg" />
+    <Content Include="resources\app-assets\img\gallery\bg-glass-4.jpg" />
+    <Content Include="resources\app-assets\img\gallery\coming-soon.png" />
+    <Content Include="resources\app-assets\img\gallery\error.png" />
+    <Content Include="resources\app-assets\img\gallery\forgot.png" />
+    <Content Include="resources\app-assets\img\gallery\light-bg.jpg" />
+    <Content Include="resources\app-assets\img\gallery\lock.png" />
+    <Content Include="resources\app-assets\img\gallery\login.png" />
+    <Content Include="resources\app-assets\img\gallery\maintenance.png" />
+    <Content Include="resources\app-assets\img\gallery\register.png" />
+    <Content Include="resources\app-assets\img\ico\advanced-cards.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\css\app.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\advanced-cards.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\css\app.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\fonts\feather\style.min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\fonts\font-awesome\css\font-awesome.min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\fonts\simple-line-icons\style.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\img\elements\01.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\img\elements\07.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\img\elements\11.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\img\elements\14.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\img\flags\br.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\img\flags\de.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\img\flags\es.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\img\flags\us.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\img\gallery\bg-glass-1.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\img\gallery\bg-glass-2.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\img\gallery\bg-glass-3.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\img\gallery\bg-glass-4.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\img\ico\apple-icon-120.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\img\ico\apple-icon-152.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\img\ico\apple-icon-60.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\img\ico\apple-icon-76.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\img\ico\favicon-32.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\img\ico\favicon.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\img\logo.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\img\portrait\small\avatar-s-1.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\img\portrait\small\avatar-s-11.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\img\portrait\small\avatar-s-12.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\img\portrait\small\avatar-s-13.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\img\portrait\small\avatar-s-14.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\img\portrait\small\avatar-s-15.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\img\portrait\small\avatar-s-18.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\img\portrait\small\avatar-s-19.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\img\portrait\small\avatar-s-2.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\img\portrait\small\avatar-s-20.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\img\portrait\small\avatar-s-22.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\img\portrait\small\avatar-s-3.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\img\portrait\small\avatar-s-6.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\img\portrait\small\avatar-s-9.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\img\sidebar-bg\01.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\img\sidebar-bg\02.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\img\sidebar-bg\03.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\img\sidebar-bg\04.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\img\sidebar-bg\05.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\img\sidebar-bg\06.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\js\app-sidebar.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\js\customizer.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\js\dashboard1.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\js\notification-sidebar.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\vendors\css\chartist.min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\vendors\css\perfect-scrollbar.min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\vendors\css\prism.min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\vendors\js\chartist.min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\vendors\js\core\bootstrap.min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\vendors\js\core\jquery-3.2.1.min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\vendors\js\core\popper.min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\vendors\js\jquery.matchHeight-min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\vendors\js\pace\pace.min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\vendors\js\perfect-scrollbar.jquery.min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\vendors\js\prism.min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\app-assets\vendors\js\screenfull.min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\basic-cards.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\basic-forms.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\bordered-forms.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\calendar.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\chartist.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\chartjs.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\chat.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\color-palette.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\coming-soon-page.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\components-accordion.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\components-alerts.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\components-badges.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\components-buttons.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\components-carousel.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\components-collapse.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\components-datepicker.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\components-dropdowns.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\components-lists.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\components-media-objects.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\components-modals.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\components-pagination.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\components-popover.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\components-progress.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\components-radio-checkboxes.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\components-spinner.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\components-tabs.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\components-toast.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\components-tooltip.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\dashboard1.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\dashboard2.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\dragndrop.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\dt-advanced-initialization.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\dt-api.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\dt-basic-initialization.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\dt-data-sources.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\dt-styling.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\editor.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\error-page.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\extended-table.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\feather.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\font-awesome.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\forgot-password-page.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\form-actions.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\gallery-page.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\google-map.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\grids.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\helper-classes.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\hidden-labels.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\horizontal-forms.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\horizontal-timeline-page.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\image-cropper.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\inbox.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\index.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\input-grid.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\input-groups.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\inputs.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\invoice-page.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\lock-screen-page.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\login-page.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\maintenance-page.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\nouislider.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\register-page.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\regular-table.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\simple-line.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\striped-rows.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\style.min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\sweet-alerts.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\switch.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\syntax-highlighter.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\tags-input.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\taskboard.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\text-utilities.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\toastr.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\tour.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\typography.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\upload.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\user-profile-page.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\validation-forms.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\vertical-timeline-page.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\feather\wizard-forms.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\font-awesome\css\font-awesome.min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\simple-line-icons\app-assets\css\app.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\simple-line-icons\app-assets\fonts\feather\style.min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\simple-line-icons\app-assets\fonts\font-awesome\css\font-awesome.min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\simple-line-icons\app-assets\fonts\simple-line-icons\style.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\simple-line-icons\app-assets\img\ico\apple-icon-120.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\simple-line-icons\app-assets\img\ico\apple-icon-152.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\simple-line-icons\app-assets\img\ico\apple-icon-60.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\simple-line-icons\app-assets\img\ico\apple-icon-76.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\simple-line-icons\app-assets\img\ico\favicon-32.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\simple-line-icons\app-assets\img\ico\favicon.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\simple-line-icons\app-assets\vendors\css\chartist.min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\simple-line-icons\app-assets\vendors\css\perfect-scrollbar.min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\simple-line-icons\app-assets\vendors\css\prism.min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\simple-line-icons\index.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\fonts\simple-line-icons\style.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\elements\01.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\elements\07.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\elements\11.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\elements\14.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\flags\br.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\flags\de.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\flags\es.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\flags\us.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\gallery\bg-glass-1.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\gallery\bg-glass-2.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\gallery\bg-glass-3.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\gallery\bg-glass-4.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\advanced-cards.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\css\app.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\fonts\feather\style.min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\fonts\font-awesome\css\font-awesome.min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\fonts\simple-line-icons\style.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\img\elements\01.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\img\elements\07.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\img\elements\11.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\img\elements\14.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\img\flags\br.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\img\flags\de.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\img\flags\es.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\img\flags\us.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\img\gallery\bg-glass-1.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\img\gallery\bg-glass-2.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\img\gallery\bg-glass-3.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\img\gallery\bg-glass-4.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\img\ico\apple-icon-120.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\img\ico\apple-icon-152.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\img\ico\apple-icon-60.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\img\ico\apple-icon-76.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\img\ico\favicon-32.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\img\ico\favicon.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\img\logo.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\img\portrait\small\avatar-s-1.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\img\portrait\small\avatar-s-11.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\img\portrait\small\avatar-s-12.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\img\portrait\small\avatar-s-13.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\img\portrait\small\avatar-s-14.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\img\portrait\small\avatar-s-15.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\img\portrait\small\avatar-s-18.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\img\portrait\small\avatar-s-19.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\img\portrait\small\avatar-s-2.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\img\portrait\small\avatar-s-20.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\img\portrait\small\avatar-s-22.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\img\portrait\small\avatar-s-3.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\img\portrait\small\avatar-s-6.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\img\portrait\small\avatar-s-9.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\img\sidebar-bg\01.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\img\sidebar-bg\02.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\img\sidebar-bg\03.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\img\sidebar-bg\04.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\img\sidebar-bg\05.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\img\sidebar-bg\06.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\js\app-sidebar.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\js\customizer.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\js\dashboard1.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\js\notification-sidebar.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\vendors\css\chartist.min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\vendors\css\perfect-scrollbar.min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\vendors\css\prism.min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\vendors\js\chartist.min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\vendors\js\core\bootstrap.min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\vendors\js\core\jquery-3.2.1.min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\vendors\js\core\popper.min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\vendors\js\jquery.matchHeight-min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\vendors\js\pace\pace.min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\vendors\js\perfect-scrollbar.jquery.min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\vendors\js\prism.min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\app-assets\vendors\js\screenfull.min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\apple-icon-120.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\apple-icon-152.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\apple-icon-60.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\apple-icon-76.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\basic-cards.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\basic-forms.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\bordered-forms.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\calendar.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\chartist.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\chartjs.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\chat.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\color-palette.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\coming-soon-page.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\components-accordion.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\components-alerts.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\components-badges.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\components-buttons.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\components-carousel.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\components-collapse.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\components-datepicker.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\components-dropdowns.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\components-lists.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\components-media-objects.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\components-modals.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\components-pagination.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\components-popover.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\components-progress.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\components-radio-checkboxes.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\components-spinner.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\components-tabs.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\components-toast.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\components-tooltip.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\dashboard1.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\dashboard2.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\dragndrop.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\dt-advanced-initialization.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\dt-api.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\dt-basic-initialization.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\dt-data-sources.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\dt-styling.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\editor.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\error-page.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\extended-table.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\favicon-32.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\favicon.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\feather.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\font-awesome.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\forgot-password-page.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\form-actions.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\gallery-page.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\google-map.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\grids.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\helper-classes.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\hidden-labels.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\horizontal-forms.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\horizontal-timeline-page.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\image-cropper.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\inbox.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\index.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\input-grid.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\input-groups.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\inputs.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\invoice-page.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\lock-screen-page.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\login-page.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\maintenance-page.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\nouislider.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\register-page.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\regular-table.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\simple-line.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\striped-rows.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\sweet-alerts.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\switch.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\syntax-highlighter.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\tags-input.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\taskboard.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\text-utilities.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\toastr.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\tour.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\typography.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\upload.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\user-profile-page.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\validation-forms.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\vertical-timeline-page.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\ico\wizard-forms.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\logo.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\portrait\small\avatar-s-1.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\portrait\small\avatar-s-11.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\portrait\small\avatar-s-12.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\portrait\small\avatar-s-13.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\portrait\small\avatar-s-14.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\portrait\small\avatar-s-15.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\portrait\small\avatar-s-18.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\portrait\small\avatar-s-19.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\portrait\small\avatar-s-2.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\portrait\small\avatar-s-20.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\portrait\small\avatar-s-22.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\portrait\small\avatar-s-3.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\portrait\small\avatar-s-6.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\portrait\small\avatar-s-9.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\sidebar-bg\01.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\sidebar-bg\02.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\sidebar-bg\03.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\sidebar-bg\04.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\sidebar-bg\05.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\img\sidebar-bg\06.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\js\app-sidebar.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\js\customizer.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\js\dashboard1.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\js\notification-sidebar.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\vendors\css\chartist.min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\vendors\css\perfect-scrollbar.min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\vendors\css\prism.min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\vendors\js\chartist.min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\vendors\js\core\bootstrap.min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\vendors\js\core\jquery-3.2.1.min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\vendors\js\core\popper.min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\vendors\js\jquery.matchHeight-min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\vendors\js\pace\pace.min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\vendors\js\perfect-scrollbar.jquery.min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\vendors\js\prism.min.html" />
+    <Content Include="resources\app-assets\img\ico\app-assets\vendors\js\screenfull.min.html" />
+    <Content Include="resources\app-assets\img\ico\apple-icon-120.html" />
+    <Content Include="resources\app-assets\img\ico\apple-icon-152.html" />
+    <Content Include="resources\app-assets\img\ico\apple-icon-60.html" />
+    <Content Include="resources\app-assets\img\ico\apple-icon-76.html" />
+    <Content Include="resources\app-assets\img\ico\basic-cards.html" />
+    <Content Include="resources\app-assets\img\ico\basic-forms.html" />
+    <Content Include="resources\app-assets\img\ico\bordered-forms.html" />
+    <Content Include="resources\app-assets\img\ico\calendar.html" />
+    <Content Include="resources\app-assets\img\ico\chartist.html" />
+    <Content Include="resources\app-assets\img\ico\chartjs.html" />
+    <Content Include="resources\app-assets\img\ico\chat.html" />
+    <Content Include="resources\app-assets\img\ico\color-palette.html" />
+    <Content Include="resources\app-assets\img\ico\coming-soon-page.html" />
+    <Content Include="resources\app-assets\img\ico\components-accordion.html" />
+    <Content Include="resources\app-assets\img\ico\components-alerts.html" />
+    <Content Include="resources\app-assets\img\ico\components-badges.html" />
+    <Content Include="resources\app-assets\img\ico\components-buttons.html" />
+    <Content Include="resources\app-assets\img\ico\components-carousel.html" />
+    <Content Include="resources\app-assets\img\ico\components-collapse.html" />
+    <Content Include="resources\app-assets\img\ico\components-datepicker.html" />
+    <Content Include="resources\app-assets\img\ico\components-dropdowns.html" />
+    <Content Include="resources\app-assets\img\ico\components-lists.html" />
+    <Content Include="resources\app-assets\img\ico\components-media-objects.html" />
+    <Content Include="resources\app-assets\img\ico\components-modals.html" />
+    <Content Include="resources\app-assets\img\ico\components-pagination.html" />
+    <Content Include="resources\app-assets\img\ico\components-popover.html" />
+    <Content Include="resources\app-assets\img\ico\components-progress.html" />
+    <Content Include="resources\app-assets\img\ico\components-radio-checkboxes.html" />
+    <Content Include="resources\app-assets\img\ico\components-spinner.html" />
+    <Content Include="resources\app-assets\img\ico\components-tabs.html" />
+    <Content Include="resources\app-assets\img\ico\components-toast.html" />
+    <Content Include="resources\app-assets\img\ico\components-tooltip.html" />
+    <Content Include="resources\app-assets\img\ico\dashboard1.html" />
+    <Content Include="resources\app-assets\img\ico\dashboard2.html" />
+    <Content Include="resources\app-assets\img\ico\dragndrop.html" />
+    <Content Include="resources\app-assets\img\ico\dt-advanced-initialization.html" />
+    <Content Include="resources\app-assets\img\ico\dt-api.html" />
+    <Content Include="resources\app-assets\img\ico\dt-basic-initialization.html" />
+    <Content Include="resources\app-assets\img\ico\dt-data-sources.html" />
+    <Content Include="resources\app-assets\img\ico\dt-styling.html" />
+    <Content Include="resources\app-assets\img\ico\editor.html" />
+    <Content Include="resources\app-assets\img\ico\error-page.html" />
+    <Content Include="resources\app-assets\img\ico\extended-table.html" />
+    <Content Include="resources\app-assets\img\ico\favicon-32.png" />
+    <Content Include="resources\app-assets\img\ico\favicon.ico" />
+    <Content Include="resources\app-assets\img\ico\feather.html" />
+    <Content Include="resources\app-assets\img\ico\font-awesome.html" />
+    <Content Include="resources\app-assets\img\ico\forgot-password-page.html" />
+    <Content Include="resources\app-assets\img\ico\form-actions.html" />
+    <Content Include="resources\app-assets\img\ico\gallery-page.html" />
+    <Content Include="resources\app-assets\img\ico\google-map.html" />
+    <Content Include="resources\app-assets\img\ico\grids.html" />
+    <Content Include="resources\app-assets\img\ico\helper-classes.html" />
+    <Content Include="resources\app-assets\img\ico\hidden-labels.html" />
+    <Content Include="resources\app-assets\img\ico\horizontal-forms.html" />
+    <Content Include="resources\app-assets\img\ico\horizontal-timeline-page.html" />
+    <Content Include="resources\app-assets\img\ico\html\html\ltr\chat.html" />
+    <Content Include="resources\app-assets\img\ico\html\html\ltr\inbox.html" />
+    <Content Include="resources\app-assets\img\ico\html\html\ltr\login-page.html" />
+    <Content Include="resources\app-assets\img\ico\html\html\ltr\user-profile-page.html" />
+    <Content Include="resources\app-assets\img\ico\image-cropper.html" />
+    <Content Include="resources\app-assets\img\ico\inbox.html" />
+    <Content Include="resources\app-assets\img\ico\index.html" />
+    <Content Include="resources\app-assets\img\ico\input-grid.html" />
+    <Content Include="resources\app-assets\img\ico\input-groups.html" />
+    <Content Include="resources\app-assets\img\ico\inputs.html" />
+    <Content Include="resources\app-assets\img\ico\invoice-page.html" />
+    <Content Include="resources\app-assets\img\ico\lock-screen-page.html" />
+    <Content Include="resources\app-assets\img\ico\login-page.html" />
+    <Content Include="resources\app-assets\img\ico\maintenance-page.html" />
+    <Content Include="resources\app-assets\img\ico\nouislider.html" />
+    <Content Include="resources\app-assets\img\ico\register-page.html" />
+    <Content Include="resources\app-assets\img\ico\regular-table.html" />
+    <Content Include="resources\app-assets\img\ico\simple-line.html" />
+    <Content Include="resources\app-assets\img\ico\striped-rows.html" />
+    <Content Include="resources\app-assets\img\ico\sweet-alerts.html" />
+    <Content Include="resources\app-assets\img\ico\switch.html" />
+    <Content Include="resources\app-assets\img\ico\syntax-highlighter.html" />
+    <Content Include="resources\app-assets\img\ico\tags-input.html" />
+    <Content Include="resources\app-assets\img\ico\taskboard.html" />
+    <Content Include="resources\app-assets\img\ico\text-utilities.html" />
+    <Content Include="resources\app-assets\img\ico\toastr.html" />
+    <Content Include="resources\app-assets\img\ico\tour.html" />
+    <Content Include="resources\app-assets\img\ico\typography.html" />
+    <Content Include="resources\app-assets\img\ico\upload.html" />
+    <Content Include="resources\app-assets\img\ico\user-profile-page.html" />
+    <Content Include="resources\app-assets\img\ico\validation-forms.html" />
+    <Content Include="resources\app-assets\img\ico\vertical-timeline-page.html" />
+    <Content Include="resources\app-assets\img\ico\wizard-forms.html" />
+    <Content Include="resources\app-assets\img\logo.png" />
+    <Content Include="resources\app-assets\img\logos\logo-big-black.png" />
+    <Content Include="resources\app-assets\img\pages\signature-scan.png" />
+    <Content Include="resources\app-assets\img\photos\01.jpg" />
+    <Content Include="resources\app-assets\img\photos\02.jpg" />
+    <Content Include="resources\app-assets\img\photos\03.jpg" />
+    <Content Include="resources\app-assets\img\photos\04.jpg" />
+    <Content Include="resources\app-assets\img\photos\05.jpg" />
+    <Content Include="resources\app-assets\img\photos\06.jpg" />
+    <Content Include="resources\app-assets\img\photos\07.jpg" />
+    <Content Include="resources\app-assets\img\photos\08.jpg" />
+    <Content Include="resources\app-assets\img\photos\09.jpg" />
+    <Content Include="resources\app-assets\img\photos\10.jpg" />
+    <Content Include="resources\app-assets\img\photos\11.jpg" />
+    <Content Include="resources\app-assets\img\photos\12.jpg" />
+    <Content Include="resources\app-assets\img\photos\13.jpg" />
+    <Content Include="resources\app-assets\img\photos\14.jpg" />
+    <Content Include="resources\app-assets\img\photos\15.jpg" />
+    <Content Include="resources\app-assets\img\photos\17.jpg" />
+    <Content Include="resources\app-assets\img\photos\weather-1.jpg" />
+    <Content Include="resources\app-assets\img\photos\weather-2.png" />
+    <Content Include="resources\app-assets\img\portrait\avatars\avatar-08.png" />
+    <Content Include="resources\app-assets\img\portrait\small\avatar-s-1.png" />
+    <Content Include="resources\app-assets\img\portrait\small\avatar-s-10.png" />
+    <Content Include="resources\app-assets\img\portrait\small\avatar-s-11.png" />
+    <Content Include="resources\app-assets\img\portrait\small\avatar-s-12.png" />
+    <Content Include="resources\app-assets\img\portrait\small\avatar-s-13.png" />
+    <Content Include="resources\app-assets\img\portrait\small\avatar-s-14.png" />
+    <Content Include="resources\app-assets\img\portrait\small\avatar-s-15.png" />
+    <Content Include="resources\app-assets\img\portrait\small\avatar-s-16.png" />
+    <Content Include="resources\app-assets\img\portrait\small\avatar-s-18.png" />
+    <Content Include="resources\app-assets\img\portrait\small\avatar-s-19.png" />
+    <Content Include="resources\app-assets\img\portrait\small\avatar-s-2.png" />
+    <Content Include="resources\app-assets\img\portrait\small\avatar-s-20.png" />
+    <Content Include="resources\app-assets\img\portrait\small\avatar-s-22.png" />
+    <Content Include="resources\app-assets\img\portrait\small\avatar-s-24.png" />
+    <Content Include="resources\app-assets\img\portrait\small\avatar-s-3.png" />
+    <Content Include="resources\app-assets\img\portrait\small\avatar-s-4.png" />
+    <Content Include="resources\app-assets\img\portrait\small\avatar-s-5.png" />
+    <Content Include="resources\app-assets\img\portrait\small\avatar-s-6.png" />
+    <Content Include="resources\app-assets\img\portrait\small\avatar-s-7.png" />
+    <Content Include="resources\app-assets\img\portrait\small\avatar-s-8.png" />
+    <Content Include="resources\app-assets\img\portrait\small\avatar-s-9.png" />
+    <Content Include="resources\app-assets\img\sidebar-bg\01.jpg" />
+    <Content Include="resources\app-assets\img\sidebar-bg\02.jpg" />
+    <Content Include="resources\app-assets\img\sidebar-bg\03.jpg" />
+    <Content Include="resources\app-assets\img\sidebar-bg\04.jpg" />
+    <Content Include="resources\app-assets\img\sidebar-bg\05.jpg" />
+    <Content Include="resources\app-assets\img\sidebar-bg\06.jpg" />
+    <Content Include="resources\app-assets\js\app-sidebar.js" />
+    <Content Include="resources\app-assets\js\basic-inputs.js" />
+    <Content Include="resources\app-assets\js\bootstrap-toast.js" />
+    <Content Include="resources\app-assets\js\chartist.js" />
+    <Content Include="resources\app-assets\js\chartjs.js" />
+    <Content Include="resources\app-assets\js\chat.js" />
+    <Content Include="resources\app-assets\js\coming-soon.js" />
+    <Content Include="resources\app-assets\js\components-modal.min.js" />
+    <Content Include="resources\app-assets\js\customizer.js" />
+    <Content Include="resources\app-assets\js\dashboard1.js" />
+    <Content Include="resources\app-assets\js\dashboard2.js" />
+    <Content Include="resources\app-assets\js\data-tables\datatable-advanced.js" />
+    <Content Include="resources\app-assets\js\data-tables\datatable-api.js" />
+    <Content Include="resources\app-assets\js\data-tables\datatable-basic.js" />
+    <Content Include="resources\app-assets\js\data-tables\datatable-styling.js" />
+    <Content Include="resources\app-assets\js\data-tables\datatables-sources.js" />
+    <Content Include="resources\app-assets\js\draggable.js" />
+    <Content Include="resources\app-assets\js\dropzone.js" />
+    <Content Include="resources\app-assets\js\form-validation.js" />
+    <Content Include="resources\app-assets\js\fullcalendar.js" />
+    <Content Include="resources\app-assets\js\horizontal-timeline.min.js" />
+    <Content Include="resources\app-assets\js\image-cropper.js" />
+    <Content Include="resources\app-assets\js\inbox.js" />
+    <Content Include="resources\app-assets\js\maps.js" />
+    <Content Include="resources\app-assets\js\notification-sidebar.js" />
+    <Content Include="resources\app-assets\js\noui-slider.js" />
+    <Content Include="resources\app-assets\js\pick-a-datetime.js" />
+    <Content Include="resources\app-assets\js\popover.js" />
+    <Content Include="resources\app-assets\js\quill.min.js" />
+    <Content Include="resources\app-assets\js\sweet-alerts.js" />
+    <Content Include="resources\app-assets\js\switch.min.js" />
+    <Content Include="resources\app-assets\js\tagging.js" />
+    <Content Include="resources\app-assets\js\taskboard.js" />
+    <Content Include="resources\app-assets\js\toastr.min.js" />
+    <Content Include="resources\app-assets\js\tooltip.js" />
+    <Content Include="resources\app-assets\js\tour.min.js" />
+    <Content Include="resources\app-assets\js\wizard-steps.js" />
+    <Content Include="resources\app-assets\vendors\css\chartist.min.css" />
+    <Content Include="resources\app-assets\vendors\css\dragula.min.css" />
+    <Content Include="resources\app-assets\vendors\css\dropzone.min.css" />
+    <Content Include="resources\app-assets\vendors\css\fullcalendar.min.css" />
+    <Content Include="resources\app-assets\vendors\css\hopscotch.css" />
+    <Content Include="resources\app-assets\vendors\css\katex.min.css" />
+    <Content Include="resources\app-assets\vendors\css\monokai-sublime.min.css" />
+    <Content Include="resources\app-assets\vendors\css\nouislider.min.css" />
+    <Content Include="resources\app-assets\vendors\css\perfect-scrollbar.min.css" />
+    <Content Include="resources\app-assets\vendors\css\pickadate\pickadate.css" />
+    <Content Include="resources\app-assets\vendors\css\prism.min.css" />
+    <Content Include="resources\app-assets\vendors\css\quill.bubble.css" />
+    <Content Include="resources\app-assets\vendors\css\quill.snow.css" />
+    <Content Include="resources\app-assets\vendors\css\sweetalert2.min.css" />
+    <Content Include="resources\app-assets\vendors\css\switchery.min.css" />
+    <Content Include="resources\app-assets\vendors\css\tables\datatable\datatables.min.css" />
+    <Content Include="resources\app-assets\vendors\css\tables\datatable\responsive.dataTables.min.css" />
+    <Content Include="resources\app-assets\vendors\css\tagging.css" />
+    <Content Include="resources\app-assets\vendors\css\toastr.css" />
+    <Content Include="resources\app-assets\vendors\css\wizard.css" />
+    <Content Include="resources\app-assets\vendors\js\chart.min.js" />
+    <Content Include="resources\app-assets\vendors\js\chartist.min.js" />
+    <Content Include="resources\app-assets\vendors\js\core\bootstrap.min.js" />
+    <Content Include="resources\app-assets\vendors\js\core\jquery-3.2.1.min.js" />
+    <Content Include="resources\app-assets\vendors\js\core\popper.min.js" />
+    <Content Include="resources\app-assets\vendors\js\cropper.min.js" />
+    <Content Include="resources\app-assets\vendors\js\datatable\buttons.flash.min.js" />
+    <Content Include="resources\app-assets\vendors\js\datatable\buttons.html5.min.js" />
+    <Content Include="resources\app-assets\vendors\js\datatable\buttons.print.min.js" />
+    <Content Include="resources\app-assets\vendors\js\datatable\dataTables.buttons.min.js" />
+    <Content Include="resources\app-assets\vendors\js\datatable\datatables.min.js" />
+    <Content Include="resources\app-assets\vendors\js\datatable\dataTables.responsive.min.js" />
+    <Content Include="resources\app-assets\vendors\js\datatable\jszip.min.js" />
+    <Content Include="resources\app-assets\vendors\js\datatable\pdfmake.min.js" />
+    <Content Include="resources\app-assets\vendors\js\datatable\vfs_fonts.js" />
+    <Content Include="resources\app-assets\vendors\js\dragula.min.js" />
+    <Content Include="resources\app-assets\vendors\js\dropzone.min.js" />
+    <Content Include="resources\app-assets\vendors\js\fullcalendar.min.js" />
+    <Content Include="resources\app-assets\vendors\js\gmaps.min.js" />
+    <Content Include="resources\app-assets\vendors\js\highlight.min.js" />
+    <Content Include="resources\app-assets\vendors\js\hopscotch.min.js" />
+    <Content Include="resources\app-assets\vendors\js\jqBootstrapValidation.js" />
+    <Content Include="resources\app-assets\vendors\js\jquery-ui.min.js" />
+    <Content Include="resources\app-assets\vendors\js\jquery.countdown.min.js" />
+    <Content Include="resources\app-assets\vendors\js\jquery.matchHeight-min.js" />
+    <Content Include="resources\app-assets\vendors\js\jquery.steps.min.js" />
+    <Content Include="resources\app-assets\vendors\js\jquery.validate.min.js" />
+    <Content Include="resources\app-assets\vendors\js\katex.min.js" />
+    <Content Include="resources\app-assets\vendors\js\moment.min.js" />
+    <Content Include="resources\app-assets\vendors\js\nouislider.min.js" />
+    <Content Include="resources\app-assets\vendors\js\pace\pace.min.js" />
+    <Content Include="resources\app-assets\vendors\js\perfect-scrollbar.jquery.min.js" />
+    <Content Include="resources\app-assets\vendors\js\pickadate\legacy.js" />
+    <Content Include="resources\app-assets\vendors\js\pickadate\picker.date.js" />
+    <Content Include="resources\app-assets\vendors\js\pickadate\picker.js" />
+    <Content Include="resources\app-assets\vendors\js\pickadate\picker.time.js" />
+    <Content Include="resources\app-assets\vendors\js\prism.min.js" />
+    <Content Include="resources\app-assets\vendors\js\quill.min.js" />
+    <Content Include="resources\app-assets\vendors\js\screenfull.min.js" />
+    <Content Include="resources\app-assets\vendors\js\sweetalert2.min.js" />
+    <Content Include="resources\app-assets\vendors\js\switchery.min.js" />
+    <Content Include="resources\app-assets\vendors\js\tagging.min.js" />
+    <Content Include="resources\app-assets\vendors\js\toastr.min.js" />
+    <Content Include="resources\app-assets\vendors\js\wNumb.js" />
+    <Content Include="resources\basic-cards.html" />
+    <Content Include="resources\basic-forms.html" />
+    <Content Include="resources\bordered-forms.html" />
+    <Content Include="resources\calendar.html" />
+    <Content Include="resources\chartist.html" />
+    <Content Include="resources\chartjs.html" />
+    <Content Include="resources\chat.html" />
+    <Content Include="resources\color-palette.html" />
+    <Content Include="resources\color-palettes.html" />
+    <Content Include="resources\coming-soon-page.html" />
+    <Content Include="resources\components-accordion.html" />
+    <Content Include="resources\components-alerts.html" />
+    <Content Include="resources\components-badges.html" />
+    <Content Include="resources\components-buttons.html" />
+    <Content Include="resources\components-carousel.html" />
+    <Content Include="resources\components-collapse.html" />
+    <Content Include="resources\components-datepicker.html" />
+    <Content Include="resources\components-dropdowns.html" />
+    <Content Include="resources\components-lists.html" />
+    <Content Include="resources\components-media-objects.html" />
+    <Content Include="resources\components-modals.html" />
+    <Content Include="resources\components-pagination.html" />
+    <Content Include="resources\components-popover.html" />
+    <Content Include="resources\components-progress.html" />
+    <Content Include="resources\components-radio-checkboxes.html" />
+    <Content Include="resources\components-spinner.html" />
+    <Content Include="resources\components-tabs.html" />
+    <Content Include="resources\components-toast.html" />
+    <Content Include="resources\components-tooltip.html" />
+    <Content Include="resources\dashboard1.html" />
+    <Content Include="resources\dashboard2.html" />
+    <Content Include="resources\dragndrop.html" />
+    <Content Include="resources\dt-advanced-initialization.html" />
+    <Content Include="resources\dt-api.html" />
+    <Content Include="resources\dt-basic-initialization.html" />
+    <Content Include="resources\dt-data-sources.html" />
+    <Content Include="resources\dt-styling.html" />
+    <Content Include="resources\editor.html" />
+    <Content Include="resources\error-page.html" />
+    <Content Include="resources\extended-table.html" />
+    <Content Include="resources\feather.html" />
+    <Content Include="resources\font-awesome.html" />
+    <Content Include="resources\forgot-password-page.html" />
+    <Content Include="resources\form-actions.html" />
+    <Content Include="resources\gallery-page.html" />
+    <Content Include="resources\google-map.html" />
+    <Content Include="resources\grids.html" />
+    <Content Include="resources\helper-classes.html" />
+    <Content Include="resources\hidden-labels.html" />
+    <Content Include="resources\horizontal-forms.html" />
+    <Content Include="resources\horizontal-timeline-page.html" />
+    <Content Include="resources\html\html\ltr\chat.html" />
+    <Content Include="resources\html\html\ltr\inbox.html" />
+    <Content Include="resources\html\html\ltr\login-page.html" />
+    <Content Include="resources\html\html\ltr\user-profile-page.html" />
+    <Content Include="resources\image-cropper.html" />
+    <Content Include="resources\inbox.html" />
+    <Content Include="resources\index.html" />
+    <Content Include="resources\input-grid.html" />
+    <Content Include="resources\input-groups.html" />
+    <Content Include="resources\inputs.html" />
+    <Content Include="resources\invoice-page.html" />
+    <Content Include="resources\lock-screen-page.html" />
+    <Content Include="resources\login-page.html" />
+    <Content Include="resources\maintenance-page.html" />
+    <Content Include="resources\nouislider.html" />
+    <Content Include="resources\register-page.html" />
+    <Content Include="resources\regular-table.html" />
+    <Content Include="resources\simple-line.html" />
+    <Content Include="resources\striped-rows.html" />
+    <Content Include="resources\sweet-alerts.html" />
+    <Content Include="resources\switch.html" />
+    <Content Include="resources\syntax-highlighter.html" />
+    <Content Include="resources\tags-input.html" />
+    <Content Include="resources\taskboard.html" />
+    <Content Include="resources\text-utilities.html" />
+    <Content Include="resources\toastr.html" />
+    <Content Include="resources\tour.html" />
+    <Content Include="resources\typography.html" />
+    <Content Include="resources\upload.html" />
+    <Content Include="resources\user-profile-page.html" />
+    <Content Include="resources\validation-forms.html" />
+    <Content Include="resources\vertical-timeline-page.html" />
+    <Content Include="resources\wizard-forms.html" />
+    <Content Include="vistas\addUsuarios.aspx" />
+    <Content Include="vistas\AdminUsuarios.aspx" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Service.svc.cs">
+      <DependentUpon>Service.svc</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="vistas\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vistas\index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vistas\Master.Master.cs">
+      <DependentUpon>Master.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vistas\Master.Master.designer.cs">
+      <DependentUpon>Master.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="vistas\addUsuarios.aspx.cs">
+      <DependentUpon>addUsuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vistas\addUsuarios.aspx.designer.cs">
+      <DependentUpon>addUsuarios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vistas\AdminUsuarios.aspx.cs">
+      <DependentUpon>AdminUsuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vistas\AdminUsuarios.aspx.designer.cs">
+      <DependentUpon>AdminUsuarios.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="vistas\Master.Master" />
+    <Content Include="app.config" />
+    <Content Include="resources\app-assets\fonts\feather\fonts\feather2467.eot" />
+    <Content Include="resources\app-assets\fonts\feather\fonts\feather2467.ttf" />
+    <Content Include="resources\app-assets\fonts\feather\fonts\feather2467.woff" />
+    <Content Include="resources\app-assets\fonts\font-awesome\fonts\fontawesome-webfont3e6e.eot" />
+    <Content Include="resources\app-assets\fonts\font-awesome\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="resources\app-assets\fonts\simple-line-icons\fonts\Simple-Line-Icons.eot" />
+    <Content Include="resources\app-assets\fonts\simple-line-icons\fonts\Simple-Line-Icons.ttf" />
+    <Content Include="resources\app-assets\fonts\simple-line-icons\fonts\Simple-Line-Iconsd41d.eot" />
+    <Content Include="resources\app-assets\fonts\weathericons\weathericons-regular-webfont.eot" />
+    <Content Include="resources\app-assets\fonts\weathericons\weathericons-regular-webfont.ttf" />
+    <Content Include="resources\app-assets\fonts\weathericons\weathericons-regular-webfont.woff" />
+    <Content Include="resources\app-assets\fonts\weathericons\weathericons-regular-webfont.woff2" />
+    <Content Include="resources\app-assets\fonts\weathericons\weathericons-regular-webfontd41d.eot" />
+    <Content Include="resources\app-assets\vendors\css\fonts\KaTeX_Main-Regular.woff2" />
+    <Content Include="resources\app-assets\vendors\css\fonts\KaTeX_Math-Italic.woff2" />
+    <Content Include="ApplicationInsights.config" />
+    <None Include="packages.config" />
+    <Content Include="resources\app-assets\vendors\js\datatable\json-spanish.json" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MonitoreoUniversal.Negocio\MonitoreoUniversal.Negocio.csproj">
+      <Project>{16CD68D6-C29B-47BF-B9E8-ECAB6E97DF48}</Project>
+      <Name>MonitoreoUniversal.Negocio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MonitoreUniversal.Entidades\MonitoreoUniversal.Entidades.csproj">
+      <Project>{D0135B04-6652-43D0-A49D-EE9C0004AEE1}</Project>
+      <Name>MonitoreoUniversal.Entidades</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup Condition="$(VisualStudioVersion) == '15.0'">
+    <Reference Include="Microsoft.Data.Tools.Schema.Sql, Version=13.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>$(SSDTPath)\Microsoft.Data.Tools.Schema.Sql.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.Tools.Schema.Sql.UnitTesting, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>$(SSDTUnitTestPath)\Microsoft.Data.Tools.Schema.Sql.UnitTesting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.Tools.Schema.Sql.UnitTestingAdapter, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>$(SSDTUnitTestPath)\Microsoft.Data.Tools.Schema.Sql.UnitTestingAdapter.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50491</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:50491/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <SsdtUnitTestVersion>3.1</SsdtUnitTestVersion>
+  </PropertyGroup>
+  <Import Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.Sql.UnitTesting.targets" Condition="$(VisualStudioVersion) != '15.0' And '$(SQLDBExtensionsRefPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.Sql.UnitTesting.targets" Condition="$(VisualStudioVersion) != '15.0' And '$(SQLDBExtensionsRefPath)' == ''" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.12.0\build\Microsoft.ApplicationInsights.DependencyCollector.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.12.0\build\Microsoft.ApplicationInsights.DependencyCollector.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.12.0\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.12.0\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.12.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.12.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.2.12.0\build\Microsoft.ApplicationInsights.WindowsServer.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.WindowsServer.2.12.0\build\Microsoft.ApplicationInsights.WindowsServer.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.Web.2.12.0\build\Microsoft.ApplicationInsights.Web.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.Web.2.12.0\build\Microsoft.ApplicationInsights.Web.targets'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.12.0\build\Microsoft.ApplicationInsights.DependencyCollector.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.12.0\build\Microsoft.ApplicationInsights.DependencyCollector.targets')" />
+  <Import Project="..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.12.0\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.12.0\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets')" />
+  <Import Project="..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.12.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.12.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets')" />
+  <Import Project="..\packages\Microsoft.ApplicationInsights.WindowsServer.2.12.0\build\Microsoft.ApplicationInsights.WindowsServer.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.2.12.0\build\Microsoft.ApplicationInsights.WindowsServer.targets')" />
+  <Import Project="..\packages\Microsoft.ApplicationInsights.Web.2.12.0\build\Microsoft.ApplicationInsights.Web.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.Web.2.12.0\build\Microsoft.ApplicationInsights.Web.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
