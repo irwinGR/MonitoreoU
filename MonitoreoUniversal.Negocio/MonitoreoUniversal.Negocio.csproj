@@ -41,8 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EstadosNegocio.cs" />
+    <Compile Include="PerfilesNegocio.cs" />
     <Compile Include="PersonalNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PuestosNegocio.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MonitoreoUniversal.Datos\MonitoreoUniversal.Datos.csproj">

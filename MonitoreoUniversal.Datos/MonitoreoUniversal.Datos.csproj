@@ -41,8 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EstadosDatos.cs" />
+    <Compile Include="PerfilDatos.cs" />
     <Compile Include="PersonalDatos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PuestoDatos.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MonitoreoUniversal.Framework\MonitoreoUniversal.Framework.csproj">

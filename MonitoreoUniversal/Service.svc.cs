@@ -18,7 +18,9 @@ namespace MonitoreoUniversal
     {
 
         PersonalNegocio personalNegocio = new PersonalNegocio();
-
+        PerfilesNegocio perfilesNegocio = new PerfilesNegocio();
+        PuestosNegocio puestosNegocio = new PuestosNegocio();
+        EstadosNegocio estadosNegocio = new EstadosNegocio();
 
         [OperationContract]
         [WebGet(UriTemplate = "/GetPersonal", ResponseFormat = WebMessageFormat.Json)]
@@ -31,6 +33,53 @@ namespace MonitoreoUniversal
             }
             catch (Exception e)
             {
+            }
+            return list;
+        }
+
+        [OperationContract]
+        [WebGet(UriTemplate = "/GetPerfil", ResponseFormat = WebMessageFormat.Json)]
+        public List<Perfiles> getAllPerfiles()
+        {
+            List<Perfiles> list = new List<Perfiles>();
+            try
+            {
+                list = perfilesNegocio.getAllPerfiles();
+            }
+            catch (Exception e)
+            {
+            }
+            return list;
+        }
+
+        [OperationContract]
+        [WebGet(UriTemplate = "/GetPuestos", ResponseFormat = WebMessageFormat.Json)]
+        public List<Puestos> getAllPuestos()
+        {
+            List<Puestos> list = new List<Puestos>();
+            try
+            {
+                list = puestosNegocio.getAllPuestos();
+            }
+            catch (Exception e)
+            {
+                Console.Write(e);
+            }
+            return list;
+        }
+
+        [OperationContract]
+        [WebGet(UriTemplate = "/GetEstados", ResponseFormat = WebMessageFormat.Json)]
+        public List<Estados> getAllEstados()
+        {
+            List<Estados> list = new List<Estados>();
+            try
+            {
+                list = estadosNegocio.getAllEstados();
+            }
+            catch (Exception e)
+            {
+                Console.Write(e);
             }
             return list;
         }

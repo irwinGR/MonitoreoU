@@ -14,7 +14,7 @@ function initDataTable() {
                 fixedHeader: true,
                 lengthMenu: [[5, 10, 15, 30, 50, 100], [5, 10, 15, 30, 50, 100]],
                 "scrollCollapse": true,
-                "oLanguage": {
+                "oLanguage": {  
                     "sUrl": "../resources/app-assets/vendors/js/datatable/json-spanish.json"
                 },
                 "autoWidth": true,
