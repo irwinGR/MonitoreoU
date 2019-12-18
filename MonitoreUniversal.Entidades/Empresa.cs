@@ -12,8 +12,8 @@ namespace MonitoreUniversal.Entidades
         public string nombre { set; get; }
         public Paises paises { set; get; }
         public Estados estados { set; get; }
-        public MunicipioDelegacion municipiodelegacion { set; get; }
-        public Sector sector { set; get; }
+        public int municipiodelegacion { set; get; }
+        public int sector { set; get; }
         public string comprobanteServicio { set; get; }
         public string contraseña { set; get; }
         public string correo { set; get; }
@@ -26,7 +26,7 @@ namespace MonitoreUniversal.Entidades
         public string calee { set; get; }
         public int numeroExterior { set; get; }
         public int numeroInterior { set; get; }
-        public int Servicio servicio {set; get;}
+        public int servicio {set; get;}
 
     }
 }

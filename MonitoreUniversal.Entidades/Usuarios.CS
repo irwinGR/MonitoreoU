@@ -21,7 +21,6 @@ namespace MonitoreUniversal.Entidades
         public string email { set; get; }
         public string fechaAlta { set; get; }
         public string fechaMod { set; get; }
-        public Usuarios estatusPersonal { set; get; }
         public string activo { set; get; }
 
     }
