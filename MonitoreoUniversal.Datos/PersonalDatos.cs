@@ -59,7 +59,7 @@ namespace MonitoreoUniversal.Datos
                     perso.fechaAlta = row["fecha_alta"].ToString();
                     perso.fechaMod = row["fecha_mod"].ToString();
 
-                    EstatusPersonal estatusPersonal = new EstatusPersonal();
+                    Usuarios estatusPersonal = new Usuarios();
                     perso.estatusPersonal = estatusPersonal;
                     perso.estatusPersonal.idEstatus = Convert.ToInt32(row["idEstatus"].ToString());
 
