@@ -53,6 +53,60 @@ namespace MonitoreoUniversal
         }
 
         [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/InsertPerfil", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean insertPerfiles(Perfiles perfiles)
+        {
+            bool result = false;
+            try
+            {
+                result = perfilesNegocio.registraPerfiles(perfiles);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/EditarPerfil", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean editarPerfiles(Perfiles perfiles)
+        {
+            bool result = false;
+            try
+            {
+                result = perfilesNegocio.editarPerfiles(perfiles);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/EliminarPerfil", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean eliminarPerfiles(Perfiles perfiles)
+        {
+            bool result = false;
+            try
+            {
+                result = perfilesNegocio.eliminarPerfiles(perfiles);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
         [WebGet(UriTemplate = "/GetPuestos", ResponseFormat = WebMessageFormat.Json)]
         public List<Puestos> getAllPuestos()
         {

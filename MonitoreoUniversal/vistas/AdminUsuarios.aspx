@@ -1,7 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="Master.Master" AutoEventWireup="true" CodeBehind="AdminUsuarios.aspx.cs" Inherits="MonitoreoUniversal.vistas.AdminUsuarios" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentHolder" runat="server">
-   
     <style>
         .content-wrapper {
             padding: 0px 15px;

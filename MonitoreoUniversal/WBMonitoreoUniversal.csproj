@@ -114,8 +114,11 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="JavaScript\adminPerfiles.js" />
     <Content Include="JavaScript\adminUsuarios.js" />
     <Content Include="Service.svc" />
+    <Content Include="vistas\addPerfiles.aspx" />
+    <Content Include="vistas\AdminPerfiles.aspx" />
     <Content Include="vistas\index.aspx" />
     <Content Include="resources\advanced-cards.html" />
     <Content Include="resources\app-assets\css\app-assets\img\gallery\dark-bg.html" />
@@ -861,6 +864,20 @@
     <Compile Include="Service.svc.cs">
       <DependentUpon>Service.svc</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="vistas\addPerfiles.aspx.cs">
+      <DependentUpon>addPerfiles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vistas\addPerfiles.aspx.designer.cs">
+      <DependentUpon>addPerfiles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vistas\AdminPerfiles.aspx.cs">
+      <DependentUpon>AdminPerfiles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vistas\AdminPerfiles.aspx.designer.cs">
+      <DependentUpon>AdminPerfiles.aspx</DependentUpon>
     </Compile>
     <Compile Include="vistas\index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>

@@ -14,7 +14,20 @@ namespace MonitoreoUniversal.Negocio
 
         public List<Perfiles> getAllPerfiles()
         {
-            return perfilesDatos.getAllPerfiles();
+            return perfilesDatos.consultaPerfiles();
+        }
+        public Boolean registraPerfiles(Perfiles perfiles) {
+            return perfilesDatos.registraPerfiles(perfiles);
+        }
+
+        public Boolean editarPerfiles(Perfiles perfiles)
+        {
+            return perfilesDatos.editarPerfiles(perfiles);
+        }
+
+        public Boolean eliminarPerfiles(Perfiles perfiles)
+        {
+            return perfilesDatos.eliminarPerfiles(perfiles);
         }
     }
 }
