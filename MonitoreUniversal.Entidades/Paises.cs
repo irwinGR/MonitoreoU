@@ -10,7 +10,7 @@ namespace MonitoreUniversal.Entidades
     {
         public int idPais { set; get; }
         public string descripcion { set; get; }
-        public int activo { set; get; }
-
+        public bool estatus { set; get; }
+        public Estados estados { set; get; }
     }
 }

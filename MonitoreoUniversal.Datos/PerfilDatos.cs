@@ -33,8 +33,13 @@ namespace MonitoreoUniversal.Datos
                     Perfiles perfi = new Perfiles();
 
                     perfi.idPerfil = Convert.ToInt32(row["idPerfil"].ToString());
-
                     perfi.descripcion = row["descripcion"].ToString();
+                    perfi.estatus = Convert.ToBoolean(row["estatus"].ToString());
+
+                    Empresa empresa = new Empresa();
+                    perfi.empresa = empresa;
+                    perfi.empresa.idCliente = Convert.ToInt32(row["idPuesto"].ToString());
+                    perfi.empresa.nombre = row["nombrePuesto"].ToString();
 
                     perfiles.Add(perfi);
 

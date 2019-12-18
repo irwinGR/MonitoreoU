@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace MonitoreUniversal.Entidades
 {
-    public class Dispositivo
+    public class CentroMonitoreo
     {
-        public int idDispositivo { set; get; }
-        public string numeroSerie { set; get; }
-        public string descripcion { set; get; }
+        public int idCentroMonitoreo { set; get; }
+        public string nombre { set; get; }
         public Placas placas { set; get; }
+        public bool estatus { set; get; }
+
     }
 }

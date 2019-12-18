@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace MonitoreUniversal.Entidades
 {
-    public class Perfiles
+    public class Magnitud
     {
-        public int idPerfil { set; get; }
+        public int idMagnitud { set; get; }
         public string descripcion { set; get; }
-        public bool estatus { set; get; }
-        public Empresa empresa { set; get; }
+        public string estatus { set; get; }
 
     }
 }

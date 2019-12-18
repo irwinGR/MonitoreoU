@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace MonitoreUniversal.Entidades
 {
-    public class Perfiles
+    public class TemplateCorreo
     {
-        public int idPerfil { set; get; }
-        public string descripcion { set; get; }
+        public int idTemplateCorreo { set; get; }
+        public string logo { set; get; }
+        public string cuerpoCorreo { set; get; }
+        public string asunto { set; get; }
+        public string prioridad { set; get; }
         public bool estatus { set; get; }
         public Empresa empresa { set; get; }
 

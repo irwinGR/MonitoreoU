@@ -34,8 +34,13 @@ namespace MonitoreoUniversal.Datos
                     Estados estad = new Estados();
 
                     estad.idEstado = Convert.ToInt32(row["idEstado"].ToString());
-
                     estad.descripcion = row["descripcion"].ToString();
+                    estad.estatus = Convert.ToBoolean(row["estatus"].ToString());
+
+                    MunicipioDelegacion municipioDelegacion = new MunicipioDelegacion();
+                    estad.municipioDelegacion = municipioDelegacion;
+                    estad.municipioDelegacion.idMunicipioDelegacion = Convert.ToInt32(row["idMunicipioDelegacion"].ToString());
+                    estad.municipioDelegacion.descripcion = row["descripcion"].ToString();
 
                     estados.Add(estad);
 

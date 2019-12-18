@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace MonitoreUniversal.Entidades
 {
-    public class Perfiles
+    public class Dispositivos
     {
-        public int idPerfil { set; get; }
+        public int idDispositivo { set; get; }
+        public string numeroSerie { set; get; }
         public string descripcion { set; get; }
-        public bool estatus { set; get; }
-        public Empresa empresa { set; get; }
-
+        public Placas placas { set; get; }
     }
 }

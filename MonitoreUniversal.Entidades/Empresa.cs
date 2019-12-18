@@ -23,7 +23,7 @@ namespace MonitoreUniversal.Entidades
         public string razonSocial { set; get; }
         public string tipoPersona { set; get; }
         public string codigoPostal { set; get; }
-        public string calee { set; get; }
+        public string calle { set; get; }
         public int numeroExterior { set; get; }
         public int numeroInterior { set; get; }
         public Servicio servicio {set; get;}

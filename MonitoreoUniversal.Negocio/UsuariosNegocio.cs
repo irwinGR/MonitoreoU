@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace MonitoreoUniversal.Negocio
 {
-    public class PersonalNegocio
+    public class UsuariosNegocio
     {
-        PersonalDatos personalDatos = new PersonalDatos();
+        UsuariosDatos usuariosDatos = new UsuariosDatos();
 
-        public List<Personal> getAllPersonal() {
-            return personalDatos.getAllPersonal();
+        public List<Usuarios> getAllUsuarios() {
+            return usuariosDatos.getAllUsuarios();
         }
     }
 }

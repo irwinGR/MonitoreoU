@@ -17,19 +17,19 @@ namespace MonitoreoUniversal
     public class Service : System.Web.Services.WebService
     {
 
-        PersonalNegocio personalNegocio = new PersonalNegocio();
+        UsuariosNegocio usuariosNegocio = new UsuariosNegocio();
         PerfilesNegocio perfilesNegocio = new PerfilesNegocio();
         PuestosNegocio puestosNegocio = new PuestosNegocio();
         EstadosNegocio estadosNegocio = new EstadosNegocio();
 
         [OperationContract]
-        [WebGet(UriTemplate = "/GetPersonal", ResponseFormat = WebMessageFormat.Json)]
-        public List<Personal> getAllPersonal()
+        [WebGet(UriTemplate = "/GetUsuarios", ResponseFormat = WebMessageFormat.Json)]
+        public List<Usuarios> getAllUsuarios()
         {
-            List<Personal> list = new List<Personal>();
+            List<Usuarios> list = new List<Usuarios>();
             try
             {
-                list = personalNegocio.getAllPersonal();
+                list = usuariosNegocio.getAllUsuarios();
             }
             catch (Exception e)
             {
