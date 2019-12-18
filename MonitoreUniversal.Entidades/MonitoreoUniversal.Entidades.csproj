@@ -46,7 +46,7 @@
     <Compile Include="Alertas.cs" />
     <Compile Include="AlertaUsuario.cs" />
     <Compile Include="Catalogos.cs" />
-    <Compile Include="CatalogosxPerfiles.cs" />
+    <Compile Include="CatalogoxPerfiles.cs" />
     <Compile Include="CentroMonitoreo.cs" />
     <Compile Include="CredencialesAcceso.cs" />
     <Compile Include="Dispositivos.cs" />
