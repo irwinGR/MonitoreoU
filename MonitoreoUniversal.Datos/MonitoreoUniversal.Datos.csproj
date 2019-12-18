@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EstadosDatos.cs" />
+    <Compile Include="IdiomasDatos.cs" />
     <Compile Include="PaisesDatos.cs" />
     <Compile Include="PerfilDatos.cs" />
     <Compile Include="UsuariosDatos.cs" />
