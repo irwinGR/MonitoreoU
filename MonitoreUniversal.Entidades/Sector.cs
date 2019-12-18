@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace MonitoreUniversal.Entidades
 {
-    public class MunicipioDelegacion
+    public class Sector
     {
-        public int idMunicipioDelegacion { set; get; }
+        public int idSector { set; get; }
         public string descripcion { set; get; }
         public bool estatus { set; get; }
 

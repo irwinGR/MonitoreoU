@@ -12,7 +12,6 @@ namespace MonitoreUniversal.Entidades
         public string nombre { set; get; }
         public string apMaterno {set; get;}
         public string apPaterno { set; get; }
-
         public string rfc { set; get; }
         public Perfiles perfiles { set; get; }
         public Puestos puestos { set; get; }

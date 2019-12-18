@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace MonitoreUniversal.Entidades
 {
-    public class MunicipioDelegacion
+    public class MediosComunicacion
     {
-        public int idMunicipioDelegacion { set; get; }
+        public int idMedioComunicacion { set; get; }
         public string descripcion { set; get; }
         public bool estatus { set; get; }
-
     }
 }
