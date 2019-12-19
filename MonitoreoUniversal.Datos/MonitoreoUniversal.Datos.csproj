@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="EstadosDatos.cs" />
     <Compile Include="IdiomasDatos.cs" />
+    <Compile Include="MunicipioDelegacionDatos.cs" />
     <Compile Include="PaisesDatos.cs" />
     <Compile Include="PerfilDatos.cs" />
     <Compile Include="UsuariosDatos.cs" />

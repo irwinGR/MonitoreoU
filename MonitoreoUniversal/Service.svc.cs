@@ -21,6 +21,76 @@ namespace MonitoreoUniversal
         PerfilesNegocio perfilesNegocio = new PerfilesNegocio();
         PuestosNegocio puestosNegocio = new PuestosNegocio();
         EstadosNegocio estadosNegocio = new EstadosNegocio();
+        IdiomasNegocio idiomasNegocio = new IdiomasNegocio();
+
+        [OperationContract]
+        [WebGet(UriTemplate = "/GetIdiomas", ResponseFormat = WebMessageFormat.Json)]
+        public List<Idiomas> getAllIdiomas()
+        {
+            List<Idiomas> list = new List<Idiomas>();
+            try
+            {
+                list = idiomasNegocio.getAllIdiomas();
+            }
+            catch (Exception e)
+            {
+            }
+            return list;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/InsertIdioma", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean insertIdiomas(Idiomas idiomas)
+        {
+            bool result = false;
+            try
+            {
+                result = idiomasNegocio.registraIdiomas(idiomas);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/EditarIdioma", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean editarIdiomas(Idiomas idiomas)
+        {
+            bool result = false;
+            try
+            {
+                result = idiomasNegocio.editarIdiomas(idiomas);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/EliminarIdioma", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean eliminarIdiomas(Idiomas idiomas)
+        {
+            bool result = false;
+            try
+            {
+                result = idiomasNegocio.eliminarIdiomas(idiomas);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
 
         [OperationContract]
         [WebGet(UriTemplate = "/GetUsuarios", ResponseFormat = WebMessageFormat.Json)]
