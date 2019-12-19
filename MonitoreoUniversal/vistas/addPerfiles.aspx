@@ -5,23 +5,26 @@
 				
 				<div class="card-content">
 					<div class="px-3">
-						<form class="form">
+						<form class="form" id="formPerfiles" 
+                                                            data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
+                                                            data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
+                                                            data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
 							<div class="form-body">
                                 <h4 class="form-section" id="nombrePerfil"></h4>
                                 <br />
 								<div class="row">
-									<div class="col-xl-4 col-lg-6 col-md-12 mb-1">
+									<div class="col-md-4">
 										<fieldset class="form-group">
 											<label for="basicInput">* Nombre del perfil</label>
-											<input type="text" class="form-control" id="nombre">
+											<input type="text" class="form-control" id="nombre" name="nombre" required>
 										</fieldset>
 									</div>
 								</div>
 							</div>
                             <div class="form-actions">
 								<div class="text-right">
-									<button type="button" class="btn btn-raised btn-primary">Guardar <i class="fa fa-floppy-o" aria-hidden="true"></i></button>
-									<button type="button" class="btn btn-raised btn-warning">Cancelar <i class="fa fa-undo" aria-hidden="true"></i></button>
+									<button type="button" class="btn btn-raised btn-primary" id="btnGuardar">Guardar <i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+									<button type="button" class="btn btn-raised btn-warning" id="btnCancelar">Cancelar <i class="fa fa-undo" aria-hidden="true"></i></button>
 								</div>
 							</div>
 						</form>
