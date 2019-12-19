@@ -22,6 +22,7 @@ namespace MonitoreoUniversal
         PuestosNegocio puestosNegocio = new PuestosNegocio();
         EstadosNegocio estadosNegocio = new EstadosNegocio();
         IdiomasNegocio idiomasNegocio = new IdiomasNegocio();
+        MunicipioDelegacion municipioDelegacion = new MunicipioDelegacion();
 
         [OperationContract]
         [WebGet(UriTemplate = "/GetIdiomas", ResponseFormat = WebMessageFormat.Json)]

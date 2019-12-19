@@ -12,7 +12,7 @@ namespace MonitoreoUniversal.Datos
 {
     public class MunicipioDelegacionDatos
     {
-        public List<MunicipioDelegacion> getAllMunicipioDelegacion()
+        public List<MunicipioDelegacion> getAllMunicipioDelegacion(Estados estados)
         {
             List<MunicipioDelegacion> municipioDelegacion = new List<MunicipioDelegacion>();
             SqlConnection connection = null;
@@ -64,7 +64,9 @@ namespace MonitoreoUniversal.Datos
 
                     var parametros = new[]
                     {
-                        ParametroAcceso.CrearParametro("@descripcion",SqlDbType.VarChar,municipioDelegacion.descripcion,ParameterDirection.Input)
+                        ParametroAcceso.CrearParametro("@descripcion",SqlDbType.VarChar,municipioDelegacion.descripcion,ParameterDirection.Input),
+                        ParametroAcceso.CrearParametro("@idEstado",SqlDbType.Int,municipioDelegacion.Estados.idEstado,ParameterDirection.Input)
+
                     };
 
                     consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Administracion.AgregarMunicipioDelegacionSP", parametros);
@@ -96,7 +98,8 @@ namespace MonitoreoUniversal.Datos
 
                     var parametros = new[]
                     {
-                        ParametroAcceso.CrearParametro("@descripcion",SqlDbType.VarChar, municipioDelegacion.descripcion, ParameterDirection.Input)
+                        ParametroAcceso.CrearParametro("@descripcion",SqlDbType.VarChar, municipioDelegacion.descripcion, ParameterDirection.Input),
+                        ParametroAcceso.CrearParametro("@idMunicipioDelegacion",SqlDbType.Int,municipioDelegacion.idMunicipioDelegacion,ParameterDirection.Input)
                     };
 
                     consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Administracion.ActualizarMunicipioDelegacionSP", parametros);
@@ -131,7 +134,7 @@ namespace MonitoreoUniversal.Datos
                         ParametroAcceso.CrearParametro("@idMunicipioDelegacion",SqlDbType.Int,municipioDelegacion.idMunicipioDelegacion,ParameterDirection.Input)
                     };
 
-                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Administracion.EliminarMunicipioDelegacionSP", parametros);
+                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Administracion.EliminarMenucipioDelegacionSP", parametros);
                     dt.Load(consulta);
                     connection.Close();
                     respuesta = true;

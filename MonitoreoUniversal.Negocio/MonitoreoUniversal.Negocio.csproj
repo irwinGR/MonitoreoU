@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="EstadosNegocio.cs" />
     <Compile Include="IdiomasNegocio.cs" />
+    <Compile Include="MunicipioDelegacionNegocio.cs" />
     <Compile Include="PerfilesNegocio.cs" />
     <Compile Include="UsuariosNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
