@@ -13,7 +13,7 @@ namespace MonitoreUniversal.Entidades
         public int descripcion { set; get; }
         public float tiempoEnvio { set; get; }
         public bool envioCorreo { set; get; }
-        public bool envioMensaje { set; get; }
+        public bool envioMensajeTexto { set; get; }
         public bool envioAplicacion { set; get; }
         public int cantidadAlertas { set; get; }
         public TemplateCorreo templateCorreo { set; get; }

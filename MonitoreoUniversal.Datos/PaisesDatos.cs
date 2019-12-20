@@ -37,11 +37,6 @@ namespace MonitoreoUniversal.Datos
                     pais.descripcion = row["descripcion"].ToString();
                     pais.estatus = Convert.ToBoolean(row["estatus"].ToString());
 
-                    Estados estados = new Estados();
-                    pais.estados = estados;
-                    pais.estados.idEstado = Convert.ToInt32(row["idEstado"].ToString());
-                    pais.estados.descripcion = row["descripcion"].ToString();
-
                     paises.Add(pais);
 
                 }

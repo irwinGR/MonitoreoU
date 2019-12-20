@@ -12,6 +12,6 @@ namespace MonitoreUniversal.Entidades
         public string nombre { set; get; }
         public string tipo { set; get; }
         public double formato { set; get; }
-        public string activo { set; get; }
+        public bool estatus { set; get; }
     }
 }

@@ -17,5 +17,7 @@ namespace MonitoreUniversal.Entidades
         public string asignacionMaster { set; get; }
         public TipoComunicacion tipoComunicacion { set; get; }
         public MediosComunicacion medioComunicacion { set; get; }
+        public Dispositivos dispositivo { set; get; }
+
     }
 }

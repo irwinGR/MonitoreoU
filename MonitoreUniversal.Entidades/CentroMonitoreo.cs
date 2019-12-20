@@ -10,7 +10,7 @@ namespace MonitoreUniversal.Entidades
     {
         public int idCentroMonitoreo { set; get; }
         public string nombre { set; get; }
-        public Placas placas { set; get; }
+        public Empresa empresa { set; get; }
         public bool estatus { set; get; }
 
     }

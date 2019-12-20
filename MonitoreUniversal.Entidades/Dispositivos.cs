@@ -11,6 +11,6 @@ namespace MonitoreUniversal.Entidades
         public int idDispositivo { set; get; }
         public string numeroSerie { set; get; }
         public string descripcion { set; get; }
-        public Placas placas { set; get; }
+        public CentroMonitoreo centroMonitoreo { set; get; }
     }
 }

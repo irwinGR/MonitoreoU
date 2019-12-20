@@ -37,10 +37,10 @@ namespace MonitoreoUniversal.Datos
                     estad.descripcion = row["descripcion"].ToString();
                     estad.estatus = Convert.ToBoolean(row["estatus"].ToString());
 
-                    MunicipioDelegacion municipioDelegacion = new MunicipioDelegacion();
-                    estad.municipioDelegacion = municipioDelegacion;
-                    estad.municipioDelegacion.idMunicipioDelegacion = Convert.ToInt32(row["idMunicipioDelegacion"].ToString());
-                    estad.municipioDelegacion.descripcion = row["descripcion"].ToString();
+                    Paises paises = new Paises();
+                    estad.paises = paises;
+                    estad.paises.idPais = Convert.ToInt32(row["idPais"].ToString());
+                    estad.paises.descripcion = row["descripcion"].ToString();
 
                     estados.Add(estad);
 

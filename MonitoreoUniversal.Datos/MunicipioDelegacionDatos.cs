@@ -12,7 +12,7 @@ namespace MonitoreoUniversal.Datos
 {
     public class MunicipioDelegacionDatos
     {
-        public List<MunicipioDelegacion> getAllMunicipioDelegacion(Estados estados)
+        public List<MunicipioDelegacion> getAllMunicipioDelegacion ()
         {
             List<MunicipioDelegacion> municipioDelegacion = new List<MunicipioDelegacion>();
             SqlConnection connection = null;

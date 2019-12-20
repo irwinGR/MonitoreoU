@@ -11,7 +11,7 @@ namespace MonitoreUniversal.Entidades
         public int idEstado { set; get; }
         public string descripcion { set; get; }
         public bool estatus { set; get; }
-        public MunicipioDelegacion municipioDelegacion { set; get; }
+        public Paises paises { set; get; }
 
 
     }

@@ -11,11 +11,11 @@ namespace MonitoreUniversal.Entidades
         public int idUnidadMedida { set; get; }
         public string nombre { set; get; }
         public decimal  formato { set; get; }
-        public double valorMinimo { set; get; }
-        public double valorMaximo { set; get; }
+        public decimal valorMinimo { set; get; }
+        public decimal valorMaximo { set; get; }
         public TipoDato tipoDato { set; get; }
         public string escala { set; get; }
-        public string activo { set; get; }
+        public bool estatus { set; get; }
 
     }
 }
