@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace MonitoreoUniversal.Datos
 {
-    public class PaisesDatos
+    public class MagnitudDatos
     {
-        public List<Paises> getAllPaises()
+        public List<Magnitud> getAllMagnitud()
         {
-            List<Paises> paises = new List<Paises>();
+            List<Magnitud> magnitudes = new List<Magnitud>();
             SqlConnection connection = null;
             DataTable dt = new DataTable();
             try
@@ -23,34 +23,28 @@ namespace MonitoreoUniversal.Datos
                 {
                     SqlDataReader consulta;
                     connection.Open();
-                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Administracion.ConsultarPaisSP");
+                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Aplicacion.ConsultaMagnitudSP");
 
                     dt.Load(consulta);
                     connection.Close();
                 }
-
                 foreach (DataRow row in dt.Rows)
                 {
-                    Paises pais = new Paises();
+                    Magnitud magni = new Magnitud();
+                    magni.idMagnitud = Convert.ToInt32(row["idMagnitud"].ToString());
+                    magni.descripcion = row["descripcion"].ToString();
+                    magni.estatus = Convert.ToBoolean(row["estatus"].ToString());
 
-                    pais.idPais = Convert.ToInt32(row["idPais"].ToString());
-                    pais.descripcion = row["descripcion"].ToString();
-                    pais.estatus = Convert.ToBoolean(row["estatus"].ToString());
-
-                    paises.Add(pais);
-
+                    magnitudes.Add(magni);
                 }
-             
             }
-            
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine(e);
             }
-            return paises;
+            return magnitudes;
         }
-
-        public Boolean registraPais(Paises paises)
+        public Boolean registrarMagnitud(Magnitud magnitudes)
         {
             Boolean respuesta = false;
             SqlConnection connection = null;
@@ -65,25 +59,22 @@ namespace MonitoreoUniversal.Datos
 
                     var parametros = new[]
                     {
-                        ParametroAcceso.CrearParametro("@descripcion",SqlDbType.VarChar,paises.descripcion,ParameterDirection.Input)
+                        ParametroAcceso.CrearParametro("@descripcion",SqlDbType.VarChar,magnitudes.descripcion,ParameterDirection.Input)
                     };
-
-                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Administracion.AgregarPaisSP", parametros);
+                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Aplicacion.AgregarMagnitudSP", parametros);
                     dt.Load(consulta);
                     connection.Close();
                     respuesta = true;
                 }
             }
-            catch (Exception ex)
+            catch(Exception e)
             {
                 respuesta = false;
-                Console.WriteLine(ex);
+                Console.WriteLine(e);
             }
-
             return respuesta;
         }
-
-        public Boolean editarPais(Paises paises)
+        public Boolean editarMagnitud(Magnitud magnitudes)
         {
             Boolean respuesta = false;
             SqlConnection connection = null;
@@ -98,26 +89,23 @@ namespace MonitoreoUniversal.Datos
 
                     var parametros = new[]
                     {
-                        ParametroAcceso.CrearParametro("@descripcion", SqlDbType.VarChar, paises.descripcion, ParameterDirection.Input),
-                        ParametroAcceso.CrearParametro("@idPais", SqlDbType.VarChar, paises.idPais,ParameterDirection.Input),
+                        ParametroAcceso.CrearParametro("@idMagnitud",SqlDbType.VarChar,magnitudes.idMagnitud,ParameterDirection.Input),
+                        ParametroAcceso.CrearParametro("@descripcion",SqlDbType.VarChar,magnitudes.descripcion,ParameterDirection.Input)
                     };
-
-                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Adminitracion.ActualizarPaisSP", parametros);
+                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Aplicacion.ActualizarMagnitudSP", parametros);
                     dt.Load(consulta);
                     connection.Close();
-                    respuesta = true;
+                    respuesta = true; 
                 }
             }
-            catch (Exception ex)
+            catch(Exception e)
             {
                 respuesta = false;
-                Console.WriteLine(ex);
+                Console.WriteLine(e);
             }
-
             return respuesta;
         }
-
-        public Boolean eliminarPais(Paises paises)
+        public Boolean eliminarMagnitud(Magnitud magnitudes)
         {
             Boolean respuesta = false;
             SqlConnection connection = null;
@@ -132,19 +120,18 @@ namespace MonitoreoUniversal.Datos
 
                     var parametros = new[]
                     {
-                        ParametroAcceso.CrearParametro("@idIdioma",SqlDbType.Int, paises.idPais, ParameterDirection.Input)
+                        ParametroAcceso.CrearParametro("@idMagnitud",SqlDbType.VarChar,magnitudes.idMagnitud,ParameterDirection.Input)
                     };
-
-                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Administracion.EliminarPaisSP", parametros);
+                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Aplicacion.EliminarMagnitudSP", parametros);
                     dt.Load(consulta);
                     connection.Close();
-                    respuesta = true;
+                    respuesta = false;
                 }
             }
-            catch (Exception ex)
+            catch(Exception e)
             {
                 respuesta = false;
-                Console.WriteLine(ex);
+                Console.WriteLine(e);
             }
             return respuesta;
         }

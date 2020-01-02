@@ -41,11 +41,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccionesDatos.cs" />
+    <Compile Include="CatalogosDatos.cs" />
     <Compile Include="EstadosDatos.cs" />
     <Compile Include="IdiomasDatos.cs" />
+    <Compile Include="MagnitudDatos.cs" />
+    <Compile Include="MediosComunicacionDatos.cs" />
     <Compile Include="MunicipioDelegacionDatos.cs" />
     <Compile Include="PaisesDatos.cs" />
     <Compile Include="PerfilDatos.cs" />
+    <Compile Include="PersonalMantenimientoDatos.cs" />
+    <Compile Include="ResponsablesDatos.cs" />
+    <Compile Include="SectorDatos.cs" />
+    <Compile Include="SistemaMedicionDatos.cs" />
+    <Compile Include="TipoComunicacionDatos.cs" />
+    <Compile Include="TipoDatoDatos.cs" />
+    <Compile Include="UnidadLecturaDatos.cs" />
     <Compile Include="UsuariosDatos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PuestoDatos.cs" />

@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace MonitoreoUniversal.Datos
 {
-    public class PaisesDatos
+    public class MediosComunicacionDatos
     {
-        public List<Paises> getAllPaises()
+        public List<MediosComunicacion> getAllMedioComunicacion()
         {
-            List<Paises> paises = new List<Paises>();
+            List<MediosComunicacion> mediosComunicacion = new List<MediosComunicacion>();
             SqlConnection connection = null;
             DataTable dt = new DataTable();
             try
@@ -23,39 +23,32 @@ namespace MonitoreoUniversal.Datos
                 {
                     SqlDataReader consulta;
                     connection.Open();
-                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Administracion.ConsultarPaisSP");
+                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Aplicacion.ConsultaMedioComunicacionSP");
 
                     dt.Load(consulta);
                     connection.Close();
                 }
-
                 foreach (DataRow row in dt.Rows)
                 {
-                    Paises pais = new Paises();
+                    MediosComunicacion mediCom = new MediosComunicacion();
+                    mediCom.idMedioComunicacion = Convert.ToInt32(row["idMedioComunicacion"].ToString());
+                    mediCom.descripcion = row["descripcion"].ToString();
+                    mediCom.estatus = Convert.ToBoolean(row["estatus"].ToString());
 
-                    pais.idPais = Convert.ToInt32(row["idPais"].ToString());
-                    pais.descripcion = row["descripcion"].ToString();
-                    pais.estatus = Convert.ToBoolean(row["estatus"].ToString());
-
-                    paises.Add(pais);
-
+                    mediosComunicacion.Add(mediCom);
                 }
-             
             }
-            
             catch(Exception e)
             {
                 Console.WriteLine(e);
             }
-            return paises;
+            return mediosComunicacion;
         }
-
-        public Boolean registraPais(Paises paises)
+        public Boolean registrarMedioComunicacion(MediosComunicacion mediosComunicacion)
         {
             Boolean respuesta = false;
             SqlConnection connection = null;
             DataTable dt = new DataTable();
-
             try
             {
                 using (connection = Conexion.ObtieneConexion("ConexionBD"))
@@ -65,30 +58,27 @@ namespace MonitoreoUniversal.Datos
 
                     var parametros = new[]
                     {
-                        ParametroAcceso.CrearParametro("@descripcion",SqlDbType.VarChar,paises.descripcion,ParameterDirection.Input)
+                        ParametroAcceso.CrearParametro("@descripcion",SqlDbType.VarChar,mediosComunicacion.descripcion,ParameterDirection.Input)
                     };
 
-                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Administracion.AgregarPaisSP", parametros);
+                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Aplicacion.AgregarMedioComunicacionSP", parametros);
                     dt.Load(consulta);
                     connection.Close();
                     respuesta = true;
                 }
             }
-            catch (Exception ex)
+            catch(Exception e)
             {
                 respuesta = false;
-                Console.WriteLine(ex);
+                Console.WriteLine(e);
             }
-
             return respuesta;
         }
-
-        public Boolean editarPais(Paises paises)
+        public Boolean editarMedioComunicacion(MediosComunicacion mediosComunicacion)
         {
             Boolean respuesta = false;
             SqlConnection connection = null;
             DataTable dt = new DataTable();
-
             try
             {
                 using (connection = Conexion.ObtieneConexion("ConexionBD"))
@@ -98,31 +88,27 @@ namespace MonitoreoUniversal.Datos
 
                     var parametros = new[]
                     {
-                        ParametroAcceso.CrearParametro("@descripcion", SqlDbType.VarChar, paises.descripcion, ParameterDirection.Input),
-                        ParametroAcceso.CrearParametro("@idPais", SqlDbType.VarChar, paises.idPais,ParameterDirection.Input),
+                        ParametroAcceso.CrearParametro("@idMedioComunicacion",SqlDbType.VarChar,mediosComunicacion.idMedioComunicacion,ParameterDirection.Input),
+                        ParametroAcceso.CrearParametro("@descripcion",SqlDbType.VarChar,mediosComunicacion.descripcion,ParameterDirection.Input)
                     };
-
-                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Adminitracion.ActualizarPaisSP", parametros);
+                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Aplicacion.ActualizarMedioComunicacionSP", parametros);
                     dt.Load(consulta);
                     connection.Close();
                     respuesta = true;
                 }
             }
-            catch (Exception ex)
+            catch(Exception e)
             {
                 respuesta = false;
-                Console.WriteLine(ex);
+                Console.WriteLine(e);
             }
-
             return respuesta;
         }
-
-        public Boolean eliminarPais(Paises paises)
+        public Boolean eliminarMedioComunicacion(MediosComunicacion mediosComunicacion)
         {
             Boolean respuesta = false;
             SqlConnection connection = null;
             DataTable dt = new DataTable();
-
             try
             {
                 using (connection = Conexion.ObtieneConexion("ConexionBD"))
@@ -132,19 +118,18 @@ namespace MonitoreoUniversal.Datos
 
                     var parametros = new[]
                     {
-                        ParametroAcceso.CrearParametro("@idIdioma",SqlDbType.Int, paises.idPais, ParameterDirection.Input)
+                        ParametroAcceso.CrearParametro("@idMedioComunicacion",SqlDbType.VarChar,mediosComunicacion.idMedioComunicacion,ParameterDirection.Input)
                     };
-
-                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Administracion.EliminarPaisSP", parametros);
+                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Aplicacion.EliminarMedioComunicacionSP", parametros);
                     dt.Load(consulta);
                     connection.Close();
                     respuesta = true;
                 }
             }
-            catch (Exception ex)
+            catch(Exception e)
             {
                 respuesta = false;
-                Console.WriteLine(ex);
+                Console.WriteLine(e);
             }
             return respuesta;
         }

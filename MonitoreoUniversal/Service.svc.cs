@@ -16,13 +16,194 @@ namespace MonitoreoUniversal
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
     public class Service : System.Web.Services.WebService
     {
-
-        UsuariosNegocio usuariosNegocio = new UsuariosNegocio();
-        PerfilesNegocio perfilesNegocio = new PerfilesNegocio();
+        SectorNegocio sectorNegocio = new SectorNegocio();
+        PaisesNegocio paisesNegocio = new PaisesNegocio();
         PuestosNegocio puestosNegocio = new PuestosNegocio();
         EstadosNegocio estadosNegocio = new EstadosNegocio();
         IdiomasNegocio idiomasNegocio = new IdiomasNegocio();
-        MunicipioDelegacion municipioDelegacion = new MunicipioDelegacion();
+        UsuariosNegocio usuariosNegocio = new UsuariosNegocio();
+        PerfilesNegocio perfilesNegocio = new PerfilesNegocio();
+        TipoDatoNegocio tipoDatoNegocio = new TipoDatoNegocio();
+        MagnitudNegocio magnitudNegocio = new MagnitudNegocio();
+        AccionesNegocio accionesNegocio = new AccionesNegocio();
+        CatalogosNegocio catalogosNegocio = new CatalogosNegocio();
+        ResponsablesNegocio responsablesNegocio = new ResponsablesNegocio();
+        UnidadLecturaNegocio unidadLecturaNegocio = new UnidadLecturaNegocio();
+        SistemaMedicionNegocio sistemaMedicionNegocio = new SistemaMedicionNegocio();
+        TipoComunicacionNegocio tipoComunicacionNegocio = new TipoComunicacionNegocio();
+        MediosComunicacionNegocio mediosComunicacionNegocio = new MediosComunicacionNegocio();
+        MunicipioDelegacionNegocio municipioDelegacionNegocio = new MunicipioDelegacionNegocio();
+        PersonalMantenimientoNegocio personalMantenimientoNegocio = new PersonalMantenimientoNegocio();
+
+        [OperationContract]
+        [WebGet(UriTemplate = "/GetSector", ResponseFormat = WebMessageFormat.Json)]
+        public List<Sector> getAllSector()
+        {
+            List<Sector> list = new List<Sector>();
+            try
+            {
+                list = sectorNegocio.getAllSector();
+            }
+            catch (Exception e)
+            {
+            }
+            return list;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/InsertSector", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean insertSector(Sector sector)
+        {
+            bool result = false;
+            try
+            {
+                result = sectorNegocio.registrarSector(sector);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/EditarSector", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean editarSector(Sector sector)
+        {
+            bool result = false;
+            try
+            {
+                result = sectorNegocio.editarSector(sector);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/EliminarSector", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean eliminarSector(Sector sector)
+        {
+            bool result = false;
+            try
+            {
+                result = sectorNegocio.eliminarSector(sector);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [WebGet(UriTemplate = "/GetPaises", ResponseFormat = WebMessageFormat.Json)]
+        public List<Paises> getAllPaises()
+        {
+            List<Paises> list = new List<Paises>();
+            try
+            {
+                list = paisesNegocio.getAllPaises();
+            }
+            catch (Exception e)
+            {
+            }
+            return list;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/InsertPaises", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean insertPaises(Paises paises)
+        {
+            bool result = false;
+            try
+            {
+                result = paisesNegocio.registraPais(paises);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/EditarPais", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean editarPais(Paises paises)
+        {
+            bool result = false;
+            try
+            {
+                result = paisesNegocio.editarPais(paises);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/EliminarPais", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean eliminarPais(Paises paises)
+        {
+            bool result = false;
+            try
+            {
+                result = paisesNegocio.eliminarPais(paises);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [WebGet(UriTemplate = "/GetPuestos", ResponseFormat = WebMessageFormat.Json)]
+        public List<Puestos> getAllPuestos()
+        {
+            List<Puestos> list = new List<Puestos>();
+            try
+            {
+                list = puestosNegocio.getAllPuestos();
+            }
+            catch (Exception e)
+            {
+                Console.Write(e);
+            }
+            return list;
+        }
+
+        [OperationContract]
+        [WebGet(UriTemplate = "/GetEstados", ResponseFormat = WebMessageFormat.Json)]
+        public List<Estados> getAllEstados()
+        {
+            List<Estados> list = new List<Estados>();
+            try
+            {
+                list = estadosNegocio.getAllEstados();
+            }
+            catch (Exception e)
+            {
+                Console.Write(e);
+            }
+            return list;
+        }
 
         [OperationContract]
         [WebGet(UriTemplate = "/GetIdiomas", ResponseFormat = WebMessageFormat.Json)]
@@ -178,35 +359,762 @@ namespace MonitoreoUniversal
         }
 
         [OperationContract]
-        [WebGet(UriTemplate = "/GetPuestos", ResponseFormat = WebMessageFormat.Json)]
-        public List<Puestos> getAllPuestos()
+        [WebGet(UriTemplate = "/GetTipoDato", ResponseFormat = WebMessageFormat.Json)]
+        public List<TipoDato> getAllTipoDato()
         {
-            List<Puestos> list = new List<Puestos>();
+            List<TipoDato> list = new List<TipoDato>();
             try
             {
-                list = puestosNegocio.getAllPuestos();
+                list = tipoDatoNegocio.getAllTipoDato();
             }
             catch (Exception e)
             {
-                Console.Write(e);
             }
             return list;
         }
 
         [OperationContract]
-        [WebGet(UriTemplate = "/GetEstados", ResponseFormat = WebMessageFormat.Json)]
-        public List<Estados> getAllEstados()
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/InsertTipoDato", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean insertTipoDato(TipoDato tipoDato)
         {
-            List<Estados> list = new List<Estados>();
+            bool result = false;
             try
             {
-                list = estadosNegocio.getAllEstados();
+                result = tipoDatoNegocio.registrarTipoDato(tipoDato);
             }
             catch (Exception e)
             {
-                Console.Write(e);
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/EditarTipoDato", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean editarTipoDato(TipoDato tipoDato)
+        {
+            bool result = false;
+            try
+            {
+                result = tipoDatoNegocio.editarTipoDato(tipoDato);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/EliminarTipoDato", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean eliminarTipoDato(TipoDato tipoDato)
+        {
+            bool result = false;
+            try
+            {
+                result = tipoDatoNegocio.eliminarTipoDato(tipoDato);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [WebGet(UriTemplate = "/GetMagnitud", ResponseFormat = WebMessageFormat.Json)]
+        public List<Magnitud> getAllMagnitud()
+        {
+            List<Magnitud> list = new List<Magnitud>();
+            try
+            {
+                list = magnitudNegocio.getAllMagnitud();
+            }
+            catch (Exception e)
+            {
             }
             return list;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/InsertMagnitud", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean insertMagnitud(Magnitud magnitud)
+        {
+            bool result = false;
+            try
+            {
+                result = magnitudNegocio.registrarMagnitud(magnitud);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/EditarMagnitud", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean editarMagnitud(Magnitud magnitud)
+        {
+            bool result = false;
+            try
+            {
+                result = magnitudNegocio.editarMagnitud(magnitud);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/EliminarMagnitud", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean eliminarMagnitud(Magnitud magnitud)
+        {
+            bool result = false;
+            try
+            {
+                result = magnitudNegocio.eliminarMagnitud(magnitud);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [WebGet(UriTemplate = "/GetAcciones", ResponseFormat = WebMessageFormat.Json)]
+        public List<Acciones> getAllAcciones()
+        {
+            List<Acciones> list = new List<Acciones>();
+            try
+            {
+                list = accionesNegocio.getAllAcciones();
+            }
+            catch (Exception e)
+            {
+            }
+            return list;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/InsertAcciones", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean insertAcciones(Acciones acciones)
+        {
+            bool result = false;
+            try
+            {
+                result = accionesNegocio.registrarAcciones(acciones);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/EditarAcciones", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean editarAcciones(Acciones acciones)
+        {
+            bool result = false;
+            try
+            {
+                result = accionesNegocio.editarAcciones(acciones);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/EliminarAcciones", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean eliminarAcciones(Acciones acciones)
+        {
+            bool result = false;
+            try
+            {
+                result = accionesNegocio.eliminarAcciones(acciones);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [WebGet(UriTemplate = "/GetCatalogos", ResponseFormat = WebMessageFormat.Json)]
+        public List<Catalogos> getAllCatalogos()
+        {
+            List<Catalogos> list = new List<Catalogos>();
+            try
+            {
+                list = catalogosNegocio.getAllCatalogos();
+            }
+            catch (Exception e)
+            {
+            }
+            return list;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/InsertCatalogos", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean insertCatalogos(Catalogos catalogos)
+        {
+            bool result = false;
+            try
+            {
+                result = catalogosNegocio.registrarCatalogos(catalogos);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/EditarCatalogos", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean editarCatalogos(Catalogos catalogos)
+        {
+            bool result = false;
+            try
+            {
+                result = catalogosNegocio.editarCatalogos(catalogos);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/EliminarCatalogos", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean eliminarCatalogos(Catalogos catalogos)
+        {
+            bool result = false;
+            try
+            {
+                result = catalogosNegocio.eliminarCatalogos(catalogos);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [WebGet(UriTemplate = "/GetResponsables", ResponseFormat = WebMessageFormat.Json)]
+        public List<Responsables> getAllResponsables()
+        {
+            List<Responsables> list = new List<Responsables>();
+            try
+            {
+                list = responsablesNegocio.getAllResponsables();
+            }
+            catch (Exception e)
+            {
+            }
+            return list;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/InsertResponsables", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean insertResponsables(Responsables responsables)
+        {
+            bool result = false;
+            try
+            {
+                result = responsablesNegocio.registraResponsables(responsables);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/EditarResponsables", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean editarResponsables(Responsables responsables)
+        {
+            bool result = false;
+            try
+            {
+                result = responsablesNegocio.editarResponsables(responsables);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/EliminarResponsables", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean eliminarResponsables(Responsables responsables)
+        {
+            bool result = false;
+            try
+            {
+                result = responsablesNegocio.eliminarResponsables(responsables);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [WebGet(UriTemplate = "/GetUnidadLectura", ResponseFormat = WebMessageFormat.Json)]
+        public List<UnidadLectura> getAllUnidadLectura()
+        {
+            List<UnidadLectura> list = new List<UnidadLectura>();
+            try
+            {
+                list = unidadLecturaNegocio.getAllUnidadLectura();
+            }
+            catch (Exception e)
+            {
+            }
+            return list;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/InsertUnidadLectura", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean insertUnidadLectura(UnidadLectura unidadLectura)
+        {
+            bool result = false;
+            try
+            {
+                result = unidadLecturaNegocio.registrarUnidadLectura(unidadLectura);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "EditarUnidadLectura", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean editarUnidadLectura(UnidadLectura unidadLectura)
+        {
+            bool result = false;
+            try
+            {
+                result = unidadLecturaNegocio.editarUnidadLectura(unidadLectura);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/EliminarUnidadLectura", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean eliminarUnidadLectura(UnidadLectura unidadLectura)
+        {
+            bool result = false;
+            try
+            {
+                result = unidadLecturaNegocio.eliminarUnidadLectura(unidadLectura);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [WebGet(UriTemplate = "/GetSistemaMedicion", ResponseFormat = WebMessageFormat.Json)]
+        public List<SistemaMedicion> getAllSistemaMedicion()
+        {
+            List<SistemaMedicion> list = new List<SistemaMedicion>();
+            try
+            {
+                list = sistemaMedicionNegocio.getAllSistemaMedicion();
+            }
+            catch
+            {
+            }
+            return list;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/InsertSistemaMedicion", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean insertSistemaMedicion(SistemaMedicion sistemaMedicion)
+        {
+            bool result = false;
+            try
+            {
+                result = sistemaMedicionNegocio.registrarSistemaMedicion(sistemaMedicion);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "EditarSistemaMedicion", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean editarSistemaMedicion(SistemaMedicion sistemaMedicion)
+        {
+            bool result = false;
+            try
+            {
+                result = sistemaMedicionNegocio.editarSistemaMedicion(sistemaMedicion);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/EliminarSistemaMedicion", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean eliminarSistemaMedicion(SistemaMedicion sistemaMedicion)
+        {
+            bool result = false;
+            try
+            {
+                result = sistemaMedicionNegocio.eliminarSistemaMedicion(sistemaMedicion);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [WebGet(UriTemplate = "/GetTipoComunicacion", ResponseFormat = WebMessageFormat.Json)]
+        public List<TipoComunicacion> getAllTipoComunicacion()
+        {
+            List<TipoComunicacion> list = new List<TipoComunicacion>();
+            try
+            {
+                list = tipoComunicacionNegocio.getAllTipoComunicacion();
+            }
+            catch
+            {
+            }
+            return list;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/InsertTipoComunicacion", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean insertTipoComunicacion(TipoComunicacion tipoComunicacion)
+        {
+            bool result = false;
+            try
+            {
+                result = tipoComunicacionNegocio.registrarTipoComunicacion(tipoComunicacion);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "EditarTipoComunicacion", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean editarTipoComunicacion(TipoComunicacion tipoComunicacion)
+        {
+            bool result = false;
+            try
+            {
+                result = tipoComunicacionNegocio.editarTipoComunicacion(tipoComunicacion);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/EliminarTipoComunicacion", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean eliminarTipoComunicacion(TipoComunicacion tipoComunicacion)
+        {
+            bool result = false;
+            try
+            {
+                result = tipoComunicacionNegocio.eliminarTipoComunicacion(tipoComunicacion);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [WebGet(UriTemplate = "/GetMunicipioDelegacion", ResponseFormat = WebMessageFormat.Json)]
+        public List<MunicipioDelegacion> getAllMunicipioDelegacion()
+        {
+            List<MunicipioDelegacion> list = new List<MunicipioDelegacion>();
+            try
+            {
+                list = municipioDelegacionNegocio.getAllMunicipioDelegacion();
+            }
+            catch
+            {
+            }
+            return list;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/InsertMunicipioDelegacion", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean insertMunicipioDelegacion(MunicipioDelegacion municipioDelegacion)
+        {
+            bool result = false;
+            try
+            {
+                result = municipioDelegacionNegocio.registraMunicipioDelegacion(municipioDelegacion);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "EditarMunicipioDelegacion", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean editarMunicipioDelegacion(MunicipioDelegacion municipioDelegacion)
+        {
+            bool result = false;
+            try
+            {
+                result = municipioDelegacionNegocio.editarMunicipioDelegacion(municipioDelegacion);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/EliminarMunicipioDelegacion", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean eliminarMunicipioDelegacion(MunicipioDelegacion municipioDelegacion)
+        {
+            bool result = false;
+            try
+            {
+                result = municipioDelegacionNegocio.eliminarMunicipioDelegacion(municipioDelegacion);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [WebGet(UriTemplate = "/GetMediosComunicacion", ResponseFormat = WebMessageFormat.Json)]
+        public List<MediosComunicacion> getAllMedioComunicacion()
+        {
+            List<MediosComunicacion> list = new List<MediosComunicacion>();
+            try
+            {
+                list = mediosComunicacionNegocio.getAllMedioComunicacion();
+            }
+            catch
+            {
+            }
+            return list;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/InsertMediosComunicacion", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean insertMediosComunicacion(MediosComunicacion mediosComunicacion)
+        {
+            bool result = false;
+            try
+            {
+                result = mediosComunicacionNegocio.registrarMedioComunicacion(mediosComunicacion);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "EditarMediosComunicacion", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean editarMediosComunicacion(MediosComunicacion mediosComunicacion)
+        {
+            bool result = false;
+            try
+            {
+                result = mediosComunicacionNegocio.editarMedioComunicacion(mediosComunicacion);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/EliminarMediosComunicacion", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean eliminarMediosComunicacion(MediosComunicacion mediosComunicacion)
+        {
+            bool result = false;
+            try
+            {
+                result = mediosComunicacionNegocio.eliminarMedioComunicacion(mediosComunicacion);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [WebGet(UriTemplate = "/GetPersonalMantenimiento", ResponseFormat = WebMessageFormat.Json)]
+        public List<PersonalMantenimiento> getAllPersonalMantenimiento()
+        {
+            List<PersonalMantenimiento> list = new List<PersonalMantenimiento>();
+            try
+            {
+                list = personalMantenimientoNegocio.getAllPersonalMantenimiento();
+            }
+            catch
+            {
+            }
+            return list;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/InsertPersonalMantenimiento", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean insertPersonalMantenimiento(PersonalMantenimiento personalMantenimiento)
+        {
+            bool result = false;
+            try
+            {
+                result = personalMantenimientoNegocio.registraPersonalMantenimiento(personalMantenimiento);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "EditarPersonalMantenimiento", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean editarPersonalMantenimiento(PersonalMantenimiento personalMantenimiento)
+        {
+            bool result = false;
+            try
+            {
+                result = personalMantenimientoNegocio.editarPersonalMantenimiento(personalMantenimiento);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/EliminarPersonalMantenimiento", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean eliminarPersonalMantenimiento(PersonalMantenimiento personalMantenimiento)
+        {
+            bool result = false;
+            try
+            {
+                result = personalMantenimientoNegocio.eliminarPersonalMantenimiento(personalMantenimiento);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
         }
     }
 }

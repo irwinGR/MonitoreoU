@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace MonitoreoUniversal.Datos
 {
-    public class PaisesDatos
+    public class CatalogosDatos
     {
-        public List<Paises> getAllPaises()
+        public List<Catalogos> getAllCatalogos()
         {
-            List<Paises> paises = new List<Paises>();
+            List<Catalogos> catalogos = new List<Catalogos>();
             SqlConnection connection = null;
             DataTable dt = new DataTable();
             try
@@ -23,34 +23,29 @@ namespace MonitoreoUniversal.Datos
                 {
                     SqlDataReader consulta;
                     connection.Open();
-                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Administracion.ConsultarPaisSP");
+                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Aplicacion.ConsultaCatalogosSP");
 
                     dt.Load(consulta);
                     connection.Close();
                 }
-
-                foreach (DataRow row in dt.Rows)
+                foreach(DataRow row in dt.Rows)
                 {
-                    Paises pais = new Paises();
+                    Catalogos cata = new Catalogos();
+                    cata.idCatalogo = Convert.ToInt32(row["idCatalogo"].ToString());
+                    cata.nombre = row["nombre"].ToString();
+                    cata.nombreAspx = row["nombreAspx"].ToString();
+                    cata.estatus = Convert.ToBoolean(row["estatus"].ToString());
 
-                    pais.idPais = Convert.ToInt32(row["idPais"].ToString());
-                    pais.descripcion = row["descripcion"].ToString();
-                    pais.estatus = Convert.ToBoolean(row["estatus"].ToString());
-
-                    paises.Add(pais);
-
+                    catalogos.Add(cata);
                 }
-             
             }
-            
             catch(Exception e)
             {
                 Console.WriteLine(e);
             }
-            return paises;
+            return catalogos;
         }
-
-        public Boolean registraPais(Paises paises)
+        public Boolean registrarCatalogos(Catalogos catalogos)
         {
             Boolean respuesta = false;
             SqlConnection connection = null;
@@ -65,30 +60,27 @@ namespace MonitoreoUniversal.Datos
 
                     var parametros = new[]
                     {
-                        ParametroAcceso.CrearParametro("@descripcion",SqlDbType.VarChar,paises.descripcion,ParameterDirection.Input)
+                        ParametroAcceso.CrearParametro("@nombre",SqlDbType.VarChar,catalogos.nombre,ParameterDirection.Input),
+                        ParametroAcceso.CrearParametro("@nombreAspx",SqlDbType.VarChar,catalogos.nombreAspx,ParameterDirection.Input)
                     };
-
-                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Administracion.AgregarPaisSP", parametros);
+                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Aplicacion.AgregarCatalogosSP", parametros);
                     dt.Load(consulta);
                     connection.Close();
                     respuesta = true;
                 }
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
                 respuesta = false;
-                Console.WriteLine(ex);
+                Console.WriteLine(e);
             }
-
             return respuesta;
         }
-
-        public Boolean editarPais(Paises paises)
+        public Boolean editarCatalogos(Catalogos catalogos)
         {
             Boolean respuesta = false;
             SqlConnection connection = null;
             DataTable dt = new DataTable();
-
             try
             {
                 using (connection = Conexion.ObtieneConexion("ConexionBD"))
@@ -98,53 +90,49 @@ namespace MonitoreoUniversal.Datos
 
                     var parametros = new[]
                     {
-                        ParametroAcceso.CrearParametro("@descripcion", SqlDbType.VarChar, paises.descripcion, ParameterDirection.Input),
-                        ParametroAcceso.CrearParametro("@idPais", SqlDbType.VarChar, paises.idPais,ParameterDirection.Input),
+                        ParametroAcceso.CrearParametro("@idCatalogo",SqlDbType.VarChar,catalogos.idCatalogo,ParameterDirection.Input),
+                        ParametroAcceso.CrearParametro("@nombre",SqlDbType.VarChar,catalogos.nombre,ParameterDirection.Input),
+                        ParametroAcceso.CrearParametro("@nombreAspx",SqlDbType.VarChar,catalogos.nombreAspx,ParameterDirection.Input)
                     };
-
-                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Adminitracion.ActualizarPaisSP", parametros);
+                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Aplicacion.ActualizarCatalogosSP", parametros);
                     dt.Load(consulta);
                     connection.Close();
                     respuesta = true;
                 }
             }
-            catch (Exception ex)
+            catch(Exception e)
             {
                 respuesta = false;
-                Console.WriteLine(ex);
+                Console.WriteLine(e);
             }
-
             return respuesta;
         }
-
-        public Boolean eliminarPais(Paises paises)
+        public Boolean eliminarCatalogos(Catalogos catalogos)
         {
-            Boolean respuesta = false;
+            Boolean respuesta=false;
             SqlConnection connection = null;
             DataTable dt = new DataTable();
-
+            
             try
-            {
-                using (connection = Conexion.ObtieneConexion("ConexionBD"))
+            {  using(connection = Conexion.ObtieneConexion("ConexionBD"))
                 {
                     SqlDataReader consulta;
                     connection.Open();
 
                     var parametros = new[]
                     {
-                        ParametroAcceso.CrearParametro("@idIdioma",SqlDbType.Int, paises.idPais, ParameterDirection.Input)
+                        ParametroAcceso.CrearParametro("@idCatalogo",SqlDbType.VarChar,catalogos.idCatalogo,ParameterDirection.Input)
                     };
-
-                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Administracion.EliminarPaisSP", parametros);
+                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Aplicacion.EliminarCatalogosSP", parametros);
                     dt.Load(consulta);
                     connection.Close();
                     respuesta = true;
                 }
             }
-            catch (Exception ex)
+            catch(Exception e)
             {
                 respuesta = false;
-                Console.WriteLine(ex);
+                Console.WriteLine(e);
             }
             return respuesta;
         }

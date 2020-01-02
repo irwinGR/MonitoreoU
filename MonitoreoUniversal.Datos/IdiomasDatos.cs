@@ -98,7 +98,8 @@ namespace MonitoreoUniversal.Datos
 
                     var parametros = new[]
                     {
-                        ParametroAcceso.CrearParametro("@descripcion", SqlDbType.VarChar, idiomas.descripcion, ParameterDirection.Input)
+                        ParametroAcceso.CrearParametro("@descripcion", SqlDbType.VarChar, idiomas.descripcion, ParameterDirection.Input),
+                        ParametroAcceso.CrearParametro("@idIdioma",SqlDbType.VarChar,idiomas.idIdioma,ParameterDirection.Input),
                     };
 
                     consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Adminitracion.ActualizarIdiomaSP", parametros);

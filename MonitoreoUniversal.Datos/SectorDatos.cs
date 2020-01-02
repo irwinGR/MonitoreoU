@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace MonitoreoUniversal.Datos
 {
-    public class PaisesDatos
+    public class SectorDatos
     {
-        public List<Paises> getAllPaises()
+        public List<Sector> getAllSector()
         {
-            List<Paises> paises = new List<Paises>();
+            List<Sector> sector = new List<Sector>();
             SqlConnection connection = null;
             DataTable dt = new DataTable();
             try
@@ -23,39 +23,32 @@ namespace MonitoreoUniversal.Datos
                 {
                     SqlDataReader consulta;
                     connection.Open();
-                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Administracion.ConsultarPaisSP");
+                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Administracion.ConsultaSectorSP");
 
                     dt.Load(consulta);
                     connection.Close();
                 }
-
                 foreach (DataRow row in dt.Rows)
                 {
-                    Paises pais = new Paises();
+                    Sector sect = new Sector();
+                    sect.idSector = Convert.ToInt32(row["idSector"].ToString());
+                    sect.descripcion = row["descripcion"].ToString();
+                    sect.estatus = Convert.ToBoolean(row["estatus"].ToString());
 
-                    pais.idPais = Convert.ToInt32(row["idPais"].ToString());
-                    pais.descripcion = row["descripcion"].ToString();
-                    pais.estatus = Convert.ToBoolean(row["estatus"].ToString());
-
-                    paises.Add(pais);
-
+                    sector.Add(sect);
                 }
-             
             }
-            
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine(e);
             }
-            return paises;
+            return sector;
         }
-
-        public Boolean registraPais(Paises paises)
+        public Boolean registrarSector(Sector sector)
         {
             Boolean respuesta = false;
             SqlConnection connection = null;
             DataTable dt = new DataTable();
-
             try
             {
                 using (connection = Conexion.ObtieneConexion("ConexionBD"))
@@ -65,30 +58,26 @@ namespace MonitoreoUniversal.Datos
 
                     var parametros = new[]
                     {
-                        ParametroAcceso.CrearParametro("@descripcion",SqlDbType.VarChar,paises.descripcion,ParameterDirection.Input)
+                        ParametroAcceso.CrearParametro("@descripcion",SqlDbType.VarChar,sector.descripcion,ParameterDirection.Input)
                     };
-
-                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Administracion.AgregarPaisSP", parametros);
+                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Administracion.AgregarSectorSP", parametros);
                     dt.Load(consulta);
                     connection.Close();
                     respuesta = true;
                 }
             }
-            catch (Exception ex)
+            catch(Exception e)
             {
                 respuesta = false;
-                Console.WriteLine(ex);
+                Console.WriteLine(e);
             }
-
             return respuesta;
         }
-
-        public Boolean editarPais(Paises paises)
+        public Boolean editarSector(Sector sector)
         {
             Boolean respuesta = false;
             SqlConnection connection = null;
             DataTable dt = new DataTable();
-
             try
             {
                 using (connection = Conexion.ObtieneConexion("ConexionBD"))
@@ -98,31 +87,27 @@ namespace MonitoreoUniversal.Datos
 
                     var parametros = new[]
                     {
-                        ParametroAcceso.CrearParametro("@descripcion", SqlDbType.VarChar, paises.descripcion, ParameterDirection.Input),
-                        ParametroAcceso.CrearParametro("@idPais", SqlDbType.VarChar, paises.idPais,ParameterDirection.Input),
+                        ParametroAcceso.CrearParametro("@idSector",SqlDbType.VarChar, sector.idSector,ParameterDirection.Input),
+                        ParametroAcceso.CrearParametro("@descripcion",SqlDbType.VarChar,sector.descripcion,ParameterDirection.Input)
                     };
-
-                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Adminitracion.ActualizarPaisSP", parametros);
+                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Administracion.ActualizarSectorSP", parametros);
                     dt.Load(consulta);
                     connection.Close();
                     respuesta = true;
                 }
             }
-            catch (Exception ex)
+            catch(Exception e)
             {
                 respuesta = false;
-                Console.WriteLine(ex);
+                Console.WriteLine(e);
             }
-
             return respuesta;
         }
-
-        public Boolean eliminarPais(Paises paises)
+        public Boolean eliminarSector(Sector sector)
         {
             Boolean respuesta = false;
             SqlConnection connection = null;
             DataTable dt = new DataTable();
-
             try
             {
                 using (connection = Conexion.ObtieneConexion("ConexionBD"))
@@ -132,21 +117,21 @@ namespace MonitoreoUniversal.Datos
 
                     var parametros = new[]
                     {
-                        ParametroAcceso.CrearParametro("@idIdioma",SqlDbType.Int, paises.idPais, ParameterDirection.Input)
+                        ParametroAcceso.CrearParametro("@idSector",SqlDbType.VarChar,sector.idSector,ParameterDirection.Input)
                     };
 
-                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Administracion.EliminarPaisSP", parametros);
+                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Administracion.EliminarSectorSP", parametros);
                     dt.Load(consulta);
                     connection.Close();
                     respuesta = true;
                 }
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
                 respuesta = false;
-                Console.WriteLine(ex);
+                Console.WriteLine(e);
             }
             return respuesta;
         }
-    }
+    }    
 }

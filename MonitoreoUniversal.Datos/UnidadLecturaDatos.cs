@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace MonitoreoUniversal.Datos
 {
-    public class PaisesDatos
+    public class UnidadLecturaDatos
     {
-        public List<Paises> getAllPaises()
+        public List<UnidadLectura> getAllUnidadLectura()
         {
-            List<Paises> paises = new List<Paises>();
+            List<UnidadLectura> unidadLectura = new List<UnidadLectura>();
             SqlConnection connection = null;
             DataTable dt = new DataTable();
             try
@@ -23,39 +23,32 @@ namespace MonitoreoUniversal.Datos
                 {
                     SqlDataReader consulta;
                     connection.Open();
-                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Administracion.ConsultarPaisSP");
+                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Aplicacion.ConsultaUnidadLecturaSP");
 
                     dt.Load(consulta);
                     connection.Close();
                 }
-
-                foreach (DataRow row in dt.Rows)
+                foreach(DataRow row in dt.Rows)
                 {
-                    Paises pais = new Paises();
+                    UnidadLectura uniLec = new UnidadLectura();
+                    uniLec.idUnidadLectura = Convert.ToInt32(row["idUnidadLectura"].ToString());
+                    uniLec.descripcion = row["descripcion"].ToString();
+                    uniLec.estatus = Convert.ToBoolean(row["estatus"].ToString());
 
-                    pais.idPais = Convert.ToInt32(row["idPais"].ToString());
-                    pais.descripcion = row["descripcion"].ToString();
-                    pais.estatus = Convert.ToBoolean(row["estatus"].ToString());
-
-                    paises.Add(pais);
-
+                    unidadLectura.Add(uniLec);
                 }
-             
             }
-            
             catch(Exception e)
             {
                 Console.WriteLine(e);
             }
-            return paises;
+            return unidadLectura;
         }
-
-        public Boolean registraPais(Paises paises)
+        public Boolean registrarUnidadLectura(UnidadLectura unidadLectura)
         {
             Boolean respuesta = false;
             SqlConnection connection = null;
             DataTable dt = new DataTable();
-
             try
             {
                 using (connection = Conexion.ObtieneConexion("ConexionBD"))
@@ -65,30 +58,26 @@ namespace MonitoreoUniversal.Datos
 
                     var parametros = new[]
                     {
-                        ParametroAcceso.CrearParametro("@descripcion",SqlDbType.VarChar,paises.descripcion,ParameterDirection.Input)
+                        ParametroAcceso.CrearParametro("@descripcion",SqlDbType.VarChar,unidadLectura.descripcion,ParameterDirection.Input)
                     };
-
-                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Administracion.AgregarPaisSP", parametros);
+                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Aplicacion.AgregarUnidadLecturaSP", parametros);
                     dt.Load(consulta);
                     connection.Close();
                     respuesta = true;
                 }
             }
-            catch (Exception ex)
+            catch(Exception e)
             {
                 respuesta = false;
-                Console.WriteLine(ex);
+                Console.WriteLine(e);
             }
-
             return respuesta;
         }
-
-        public Boolean editarPais(Paises paises)
+        public Boolean editarUnidadLectura(UnidadLectura unidadLectura)
         {
             Boolean respuesta = false;
             SqlConnection connection = null;
             DataTable dt = new DataTable();
-
             try
             {
                 using (connection = Conexion.ObtieneConexion("ConexionBD"))
@@ -98,31 +87,27 @@ namespace MonitoreoUniversal.Datos
 
                     var parametros = new[]
                     {
-                        ParametroAcceso.CrearParametro("@descripcion", SqlDbType.VarChar, paises.descripcion, ParameterDirection.Input),
-                        ParametroAcceso.CrearParametro("@idPais", SqlDbType.VarChar, paises.idPais,ParameterDirection.Input),
+                        ParametroAcceso.CrearParametro("@idUnidadLectura",SqlDbType.VarChar,unidadLectura.idUnidadLectura,ParameterDirection.Input),
+                        ParametroAcceso.CrearParametro("@descripcion",SqlDbType.VarChar,unidadLectura.descripcion,ParameterDirection.Input)
                     };
-
-                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Adminitracion.ActualizarPaisSP", parametros);
+                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Aplicacion.ActualizarUnidadLecturaSP", parametros);
                     dt.Load(consulta);
                     connection.Close();
                     respuesta = true;
                 }
             }
-            catch (Exception ex)
+            catch(Exception e)
             {
                 respuesta = false;
-                Console.WriteLine(ex);
+                Console.WriteLine(e);
             }
-
             return respuesta;
         }
-
-        public Boolean eliminarPais(Paises paises)
+        public Boolean eliminarUnidadLectura (UnidadLectura unidadLectura)
         {
             Boolean respuesta = false;
             SqlConnection connection = null;
             DataTable dt = new DataTable();
-
             try
             {
                 using (connection = Conexion.ObtieneConexion("ConexionBD"))
@@ -132,19 +117,18 @@ namespace MonitoreoUniversal.Datos
 
                     var parametros = new[]
                     {
-                        ParametroAcceso.CrearParametro("@idIdioma",SqlDbType.Int, paises.idPais, ParameterDirection.Input)
+                        ParametroAcceso.CrearParametro("@idUnidadLectura",SqlDbType.VarChar,unidadLectura.idUnidadLectura,ParameterDirection.Input)
                     };
-
-                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Administracion.EliminarPaisSP", parametros);
+                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Aplicacion.EliminarUnidadLecturaSP", parametros);
                     dt.Load(consulta);
                     connection.Close();
                     respuesta = true;
                 }
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
                 respuesta = false;
-                Console.WriteLine(ex);
+                Console.WriteLine(e);
             }
             return respuesta;
         }

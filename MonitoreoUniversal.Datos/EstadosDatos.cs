@@ -40,7 +40,6 @@ namespace MonitoreoUniversal.Datos
                     Paises paises = new Paises();
                     estad.paises = paises;
                     estad.paises.idPais = Convert.ToInt32(row["idPais"].ToString());
-                    estad.paises.descripcion = row["descripcion"].ToString();
 
                     estados.Add(estad);
 

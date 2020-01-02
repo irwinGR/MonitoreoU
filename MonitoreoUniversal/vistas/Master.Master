@@ -108,7 +108,7 @@
         <div class="sidebar-content">
           <div class="nav-container">
             <ul id="main-menu-navigation" data-menu="menu-navigation" data-scroll-to-active="true" class="navigation navigation-main">
-              <li class="has-sub nav-item"><a href="#"><i class="fa fa-file-text-o"></i><span data-i18n="" class="menu-title">Administracion</span></a>
+              <li class="has-sub nav-item"><a href="#"><i class="fa fa-file-text-o"></i><span data-i18n="" class="menu-title">Administración</span></a>
                 <ul class="menu-content">
                   <li>
                       <a href="AdminUsuarios.aspx" class="menu-item">Usuarios</a>
@@ -116,9 +116,24 @@
                   <li>
                       <a href="AdminPerfiles.aspx" class="menu-item">Perfiles</a>
                   </li>
+                  <li>
+                      <a href="AdminResponsables.aspx" class="menu-item">Responsables</a>
+                  </li>
+                  <li>
+                      <a href="AdminPersonalMantenimiento.aspx" class="menu-item">Personal Mantenimiento</a>
+                  </li>    
                 </ul>
               </li>
-              
+              <li class="has-sub nav-item"><a href="#"><i class =" fa fa-file-text-o"></i><span data-i18n="" class="menu-title">Aplicación</span></a>
+                <ul class="menu-content">
+                    <li>
+                        <a href="ApplFallas.aspx" class="menu-item">Historial de Fallas</a>
+                    </li>
+                    <li>
+                        <a href="ApplMonitoreo.aspx" class="menu-item">Monitoreo</a>
+                    </li>
+                </ul>  
+              </li>
           </div>
         </div>
         <!-- main menu content-->

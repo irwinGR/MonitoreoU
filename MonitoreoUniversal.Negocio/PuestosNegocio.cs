@@ -16,5 +16,17 @@ namespace MonitoreoUniversal.Negocio
         {
             return puestosDatos.getAllPuestos();
         }
+        public Boolean registraPuesto(Puestos puestos)
+        {
+            return puestosDatos.registraPuesto(puestos);
+        }
+        public Boolean editarPuesto(Puestos puestos)
+        {
+            return puestosDatos.editarPuesto(puestos);
+        }
+        public Boolean eliminarPuesto(Puestos puestos)
+        {
+            return puestosDatos.eliminarPuesto(puestos);
+        }
     }
 }
