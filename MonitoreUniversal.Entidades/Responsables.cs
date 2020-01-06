@@ -8,7 +8,7 @@ namespace MonitoreUniversal.Entidades
 {
     public class Responsables
     {
-        public int idResponsable { set; get; }
+        public int idReponsable { set; get; }
         public string nombre { set; get; }
         public string apellidoP { set; get; }
         public string apellidoM { set; get; }
