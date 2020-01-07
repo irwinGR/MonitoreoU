@@ -117,6 +117,7 @@
   <ItemGroup>
     <Content Include="JavaScript\adminPerfiles.js" />
     <Content Include="JavaScript\adminPersonalMantenimiento.js" />
+    <Content Include="JavaScript\adminResponsables.js" />
     <Content Include="JavaScript\adminUsuarios.js" />
     <Content Include="resources\app-assets\js\bootstrapvalidator\bootstrapValidator.min.js" />
     <Content Include="resources\app-assets\js\bootstrapvalidator\language\ar_MA.min.js" />

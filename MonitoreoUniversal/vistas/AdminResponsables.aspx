@@ -113,7 +113,7 @@
 
     </section>
 
-    <script src="../JavaScript/adminUsuarios.js"></script>
+    <script src="../JavaScript/adminResponsables.js"></script>
 
 </asp:Content>
 

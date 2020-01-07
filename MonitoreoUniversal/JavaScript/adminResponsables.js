@@ -8,11 +8,11 @@ $(function () {
 function initDataTable() {
     $.ajax({
         type: 'GET',
-        url: '../Service.svc/GetPersonalMantenimiento',
+        url: '../Service.svc/GetResponsables',
         dataType: 'json',
         contentType: 'application/json; charset=utf-8',
         success: function (data) {
-            otable = $('#dtPersonalMantenimiento').DataTable({
+            otable = $('#dtResponsables').DataTable({
                 orderCellsTop: false,
                 fixedHeader: true,
                 lengthMenu: [[5, 10, 15, 30, 50, 100], [5, 10, 15, 30, 50, 100]],
@@ -27,26 +27,26 @@ function initDataTable() {
 
                 data: data,
                 columns: [
-                    { data: "idPersonalMantenimiento" },
+                    { data: "idReponsable" },
                     { data: "nombre" },
                     { data: "apellidoP" },
                     { data: "apellidoM" },
                     { data: "correo" },
-                    { data: "telefono"}
+                    { data: "telefono" }
                 ]
             });
 
             // función que da formato a la fecha
 
             // Método creado para agregar el evento de selección de una fila
-            $('#dtPersonalMantenimiento tbody').on(
+            $('#dtResponsables tbody').on(
                 'click',
                 'tr',
                 function () {
                     if ($(this).hasClass('selected')) {
                         $(this).removeClass('selected');
                     } else {
-                        $('#dtPersonalMantenimiento').DataTable().$('tr.selected').removeClass(
+                        $('#dtResponsables').DataTable().$('tr.selected').removeClass(
                             'selected');
                         $(this).addClass('selected');
                     }
@@ -54,15 +54,15 @@ function initDataTable() {
 
             // Evento creado para abrir la ventana de editar al dar doble click sobre un
             // registro
-            $('#dtPersonalMantenimiento tbody').on('dblclick', 'tr', function () {
+            $('#dtResponsables tbody').on('dblclick', 'tr', function () {
                 $(this).addClass('selected');
-                editarPersonalMantenimiento();
-                $('#formPersonalMantenimiento').bootstrapValidator('destroy');
+                editarResponsables();
+                $('#formResponsables').bootstrapValidator('destroy');
                 bootsVal();
             });
 
             // Evento creado para realizar la búsqueda cuando se presione la tecla ENTER
-            $("#dtPersonalMantenimiento thead th input[type=text]").on('keyup', function (e) {
+            $("#dtResponsables thead th input[type=text]").on('keyup', function (e) {
                 otable.column($(this).parent().index() + ':visible').search(this.value).draw();
             });
         }
@@ -72,12 +72,11 @@ function initEvent() {
 
 
     $("#btnPlus").click(function () {
-        $('#divPersonalMantenimiento').hide('fast', function () {
+        $('#divResponsables').hide('fast', function () {
             $('#divCrear').show('fast', function () {
-                $('#nombrePersonalMantenimiento').html('<b>Registro de personal mantenimiento </b>');
-
+                $('#nombreResponsables').html('<b>Registro de responsable </b>');
                 $("#btnGuardar").click(function () {
-                    guardarPersonalMantenimiento();
+                    guardarResponsable();
                 });
             });
         });
@@ -85,23 +84,23 @@ function initEvent() {
 
     $("#btnCancelar").click(function () {
         $('#divCrear').hide('fast', function () {
-            $('#divPersonalMantenimiento').show('fast', function () {
-                $('#formPersonalMantenimiento')[0].reset();
+            $('#divResponsables').show('fast', function () {
+                $('#formResponsables')[0].reset();
             });
         });
     });
 
     $("#btnEdit").click(function () {
-        editarPersonalMantenimiento();
-        $('#formPersonalMantenimiento').bootstrapValidator('destroy');
+        editarResponsables();
+        $('#formResponsables').bootstrapValidator('destroy');
         bootsVal();
     });
 
     $("#btnDelete").click(function () {
-        var row = $('#dtPersonalMantenimiento').DataTable().row('.selected').data();
+        var row = $('#dtResponsables').DataTable().row('.selected').data();
 
         swal({
-            title: 'Estas seguro que deseas eliminar el personal ' + row.descripcion + '?',
+            title: 'Estas seguro que deseas eliminar el responsable ' + row.nombre + '?',
             text: "No podras revertir la acción realizada",
             type: 'warning',
             showCancelButton: true,
@@ -115,39 +114,39 @@ function initEvent() {
         }).then(function () {
 
             var json = {
-                personalmantenimiento: {
-                    idPersonalMantenimiento: row.idPersonalMantenimiento
+                responsables: {
+                    idReponsable: row.idReponsable,
                 }
             };
 
             $.ajax({
                 type: 'POST',
-                url: '../Service.svc/EliminarPersonalMantenimiento',
+                url: '../Service.svc/EliminarResponsables',
                 dataType: 'json',
                 contentType: 'application/json; charset=utf-8',
                 data: JSON.stringify(json),
                 success: function (data) {
                     if (data.result) {
-                        swal('¡Éxito!', 'Se ha eliminado el personal seleccionado.', 'success');
+                        swal('¡Éxito!', 'Se ha eliminado el responsable seleccionado.', 'success');
 
                         $('#divCrear').hide('fast', function () {
-                            $('#divPersonalMantenimiento').show('fast', function () {
-                                $('#formPersonalMantenimiento')[0].reset();
+                            $('#divResponsables').show('fast', function () {
+                                $('#formResponsables')[0].reset();
                                 $('#btnGuardar').prop("disabled", false);
-                                $('#formPersonalMantenimiento').bootstrapValidator('destroy');
+                                $('#formResponsables').bootstrapValidator('destroy');
 
                                 otable.clear().draw();
                                 otable.destroy();
                                 initDataTable();
 
-                                $('#dtPersonalMantenimiento tbody').on(
+                                $('#dtResponsables tbody').on(
                                     'click',
                                     'tr',
                                     function () {
                                         if ($(this).hasClass('selected')) {
                                             $(this).removeClass('selected');
                                         } else {
-                                            $('#dtPersonalMantenimiento').DataTable().$('tr.selected').removeClass(
+                                            $('#dtResponsables').DataTable().$('tr.selected').removeClass(
                                                 'selected');
                                             $(this).addClass('selected');
                                         }
@@ -157,7 +156,7 @@ function initEvent() {
                         });
 
                     } else {
-                        swal("Error!", "Surgio un error al eliminar el personal", "error");
+                        swal("Error!", "Surgio un error al eliminar el responsable", "error");
                     }
                 }
             });
@@ -168,7 +167,7 @@ function initEvent() {
 
 }
 function bootsVal() {
-    $('#formPersonalMantenimiento').bootstrapValidator({
+    $('#formResponsables').bootstrapValidator({
         live: 'enabled',
         submitButtons: 'button[id="btnGuardar"]',
         message: 'Valor invalido',
@@ -178,42 +177,87 @@ function bootsVal() {
                 selector: '#nombre',
                 validators: {
                     notEmpty: {
-                        message: 'El nombre de proyecto  es obligatorio.'
+                        message: 'El nombre  es obligatorio.'
+                    }
+                }
+            },
+            apellidoP: {
+                group: '.col-md-4',
+                selector: '#apellidoP',
+                validators: {
+                    notEmpty: {
+                        message: 'El apellido paterno es obligatorio.'
+                    }
+                }
+            },
+            apellidoM: {
+                group: '.col-md-4',
+                selector: '#apellidoM',
+                validators: {
+                    notEmpty: {
+                        message: 'El apellido materno es obligatorio.'
+                    }
+                }
+            },
+            correo: {
+                group: '.col-md-4',
+                selector: '#correo',
+                validators: {
+                    notEmpty: {
+                        message: 'El correo es obligatorio.'
+                    }
+                }
+            },
+            telefono: {
+                group: '.col-md-4',
+                selector: '#telefono',
+                validators: {
+                    notEmpty: {
+                        message: 'El telefono es obligatorio.'
                     }
                 }
             }
-        }
+    }
+        
     });
 }
 
-function editarPersonalMantenimiento() {
+function editarResponsables() {
 
-    var row = $('#dtPersonalMantenimiento').DataTable().row('.selected').data();
+    var row = $('#dtResponsables').DataTable().row('.selected').data();
 
     if (row) {
 
-        $("#nombre").val(row.descripcion);
-        
-        $('#divPersonalMantenimiento').hide('fast', function () {
+        $("#nombre").val(row.nombre),
+        $("#apellidoP").val(row.apellidoP),
+        $("#apellidoM").val(row.apellidoM),
+        $("#correo").val(row.correo),
+        $("#telefono").val(row.telefono);
+
+        $('#divResponsables').hide('fast', function () {
             $('#divCrear').show('fast', function () {
-                $('#nombrePersonalMantenimiento').html('<b>Edicion de personal:' + row.descripcion + ' </b>');
+                $('#nombreResponsables').html('<b>Edicion de responsable:' + row.nombre + ' </b>');
 
                 $("#btnGuardar").click(function () {
                     bootsVal();
-                    $('#formPersonalMantenimiento').data('bootstrapValidator').validate();
-                    var n = $('#formPersonalMantenimiento').data('bootstrapValidator').isValid();
+                    $('#formResponsables').data('bootstrapValidator').validate();
+                    var n = $('#formResponsables').data('bootstrapValidator').isValid();
 
                     if (n) {
                         var json = {
-                            perfiles: {
+                            responsables: {
                                 nombre: $('#nombre').val(),
-                                idPersonalMantenimiento: row.idPersonalMantenimiento
+                                apellidoP: $("#apellidoP").val(),
+                                apellidoM: $("#apellidoM").val(),
+                                correo: $("#correo").val(),
+                                telefono: $("#telefono").val(),
+                                idReponsable: row.idReponsable
                             }
                         };
 
                         $.ajax({
                             type: 'POST',
-                            url: '../Service.svc/EditarPersonalMantenimiento',
+                            url: '../Service.svc/EditarResponsables',
                             dataType: 'json',
                             contentType: 'application/json; charset=utf-8',
                             data: JSON.stringify(json),
@@ -221,7 +265,7 @@ function editarPersonalMantenimiento() {
                                 if (data.result) {
                                     swal({
                                         title: 'Exito',
-                                        text: "Se actualizo correctamente el personal",
+                                        text: "Se actualizo correctamente el responsable",
                                         type: 'success',
                                         confirmButtonColor: '#0CC27E',
                                         cancelButtonColor: '#FF586B',
@@ -229,23 +273,23 @@ function editarPersonalMantenimiento() {
                                     }).then(function (isConfirm) {
                                         if (isConfirm) {
                                             $('#divCrear').hide('fast', function () {
-                                                $('#divPersonalMantenimiento').show('fast', function () {
-                                                    $('#formPersonalMantenimiento')[0].reset();
+                                                $('#divResponsables').show('fast', function () {
+                                                    $('#formResponsables')[0].reset();
                                                     $('#btnGuardar').prop("disabled", false);
-                                                    $('#formPersonalMantenimiento').bootstrapValidator('destroy');
+                                                    $('#formResponsables').bootstrapValidator('destroy');
 
                                                     otable.clear().draw();
                                                     otable.destroy();
                                                     initDataTable();
 
-                                                    $('#dtPersonalMantenimiento tbody').on(
+                                                    $('#dtResponsables tbody').on(
                                                         'click',
                                                         'tr',
                                                         function () {
                                                             if ($(this).hasClass('selected')) {
                                                                 $(this).removeClass('selected');
                                                             } else {
-                                                                $('#dtPersonalMantenimiento').DataTable().$('tr.selected').removeClass(
+                                                                $('#dtResponsables').DataTable().$('tr.selected').removeClass(
                                                                     'selected');
                                                                 $(this).addClass('selected');
                                                             }
@@ -256,7 +300,7 @@ function editarPersonalMantenimiento() {
                                         }
                                     }).catch(swal.noop);
                                 } else {
-                                    swal("Error!", "Surgio un error al actualizar el personal", "error");
+                                    swal("Error!", "Surgio un error al actualizar el responsable", "error");
                                 }
                             }
                         });
@@ -266,21 +310,25 @@ function editarPersonalMantenimiento() {
         });
     }
 }
-function guardarPersonalMantenimiento() {
+function guardarResponsable() {
     bootsVal();
-    $('#formPersonalMantenimiento').data('bootstrapValidator').validate();
-    var n = $('#formPersonalMantenimiento').data('bootstrapValidator').isValid();
+    $('#formResponsables').data('bootstrapValidator').validate();
+    var n = $('#formResponsables').data('bootstrapValidator').isValid();
 
     if (n) {
         var json = {
-            personalMantenimiento: {
+            responsables: {
                 nombre: $('#nombre').val(),
+                apellidoP: $('#apellidoP').val(),
+                apellidoM: $('#apellidoM').val(),
+                correo: $('#correo').val(),
+                telefono: $('#telefono').val()
             }
         };
 
         $.ajax({
             type: 'POST',
-            url: '../Service.svc/InsertPersonalMantenimiento',
+            url: '../Service.svc/InsertResponsables',
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(json),
@@ -288,7 +336,7 @@ function guardarPersonalMantenimiento() {
                 if (data.result) {
                     swal({
                         title: 'Exito',
-                        text: "Se registro correctamente el personal",
+                        text: "Se registro correctamente el responsable",
                         type: 'success',
                         confirmButtonColor: '#0CC27E',
                         cancelButtonColor: '#FF586B',
@@ -296,34 +344,34 @@ function guardarPersonalMantenimiento() {
                     }).then(function (isConfirm) {
                         if (isConfirm) {
                             $('#divCrear').hide('fast', function () {
-                                $('#divPersonalMantenimiento').show('fast', function () {
-                                    $('#formPersonalMantenimiento')[0].reset();
+                                $('#divResponsables').show('fast', function () {
+                                    $('#formResponsables')[0].reset();
                                     $('#btnGuardar').prop("disabled", false);
-                                    $('#formPersonalMantenimiento').bootstrapValidator('destroy');
+                                    $('#formResponsables').bootstrapValidator('destroy');
 
                                     otable.clear().draw();
                                     otable.destroy();
-                                    initDataTable();    
+                                    initDataTable();
 
-                                    $('#dtPersonalMantenimiento tbody').on(
+                                    $('#dtResponsables tbody').on(
                                         'click',
                                         'tr',
                                         function () {
                                             if ($(this).hasClass('selected')) {
                                                 $(this).removeClass('selected');
                                             } else {
-                                                $('#dtPersonalMantenimiento').DataTable().$('tr.selected').removeClass(
+                                                $('#dtResponsables').DataTable().$('tr.selected').removeClass(
                                                     'selected');
                                                 $(this).addClass('selected');
                                             }
                                         });
-                                     
+
                                 });
                             });
                         }
                     }).catch(swal.noop);
                 } else {
-                    swal("Error!", "Surgio un error al guardar el personal", "error");
+                    swal("Error!", "Surgio un error al guardar el responsable", "error");
                 }
             }
         });

@@ -32,7 +32,7 @@ namespace MonitoreoUniversal.Datos
                 foreach(DataRow row in dt.Rows)
                 {
                     Responsables respo = new Responsables();
-                    respo.idResponsable = Convert.ToInt32(row["idResponsable"].ToString());
+                    respo.idReponsable = Convert.ToInt32(row["idReponsable"].ToString());
                     respo.nombre = row["nombre"].ToString();
                     respo.apellidoP = row["apellidoP"].ToString();
                     respo.apellidoM = row["apellidoM"].ToString();
@@ -85,7 +85,7 @@ namespace MonitoreoUniversal.Datos
         }
         public  Boolean editarResponsables(Responsables responsables)
         {
-            Boolean respuesta = false;
+             Boolean respuesta = false;
             SqlConnection connection = null;
             DataTable dt = new DataTable();
 
@@ -97,7 +97,7 @@ namespace MonitoreoUniversal.Datos
                     connection.Open();
                     var parametros = new[]
                     {
-                        ParametroAcceso.CrearParametro("@idResponsable",SqlDbType.VarChar,responsables.idResponsable,ParameterDirection.Input),
+                        ParametroAcceso.CrearParametro("@idReponsable",SqlDbType.VarChar,responsables.idReponsable,ParameterDirection.Input),
                         ParametroAcceso.CrearParametro("@nombre",SqlDbType.VarChar,responsables.nombre,ParameterDirection.Input),
                         ParametroAcceso.CrearParametro("@apellidoP",SqlDbType.VarChar,responsables.apellidoP,ParameterDirection.Input),
                         ParametroAcceso.CrearParametro("@apellidoM",SqlDbType.VarChar,responsables.apellidoM,ParameterDirection.Input),
@@ -132,10 +132,13 @@ namespace MonitoreoUniversal.Datos
                     connection.Open();
                     var parametros = new[]
                     {
-                        ParametroAcceso.CrearParametro("@idResponsable",SqlDbType.Int,responsables.idResponsable,ParameterDirection.Input)
+                        ParametroAcceso.CrearParametro("@idReponsable",SqlDbType.Int,responsables.idReponsable,ParameterDirection.Input)
                     };
 
                     consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Administracion.EliminarResponsablesSP", parametros);
+                    dt.Load(consulta);
+                    connection.Close();
+                    respuesta = true;
                 }
             }
             catch(Exception e)
