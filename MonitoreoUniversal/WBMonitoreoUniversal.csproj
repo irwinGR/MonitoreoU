@@ -141,6 +141,7 @@
     <Content Include="resources\app-assets\js\bootstrapvalidator\language\zh_CN.min.js" />
     <Content Include="resources\app-assets\js\bootstrapvalidator\language\zh_TW.min.js" />
     <Content Include="Service.svc" />
+    <Content Include="ServicioSoap.asmx" />
     <Content Include="vistas\addPerfiles.aspx" />
     <Content Include="vistas\AdminPerfiles.aspx" />
     <Content Include="vistas\AdminPersonalMantenimiento.aspx" />
@@ -806,6 +807,10 @@
   <ItemGroup>
     <Compile Include="Service.svc.cs">
       <DependentUpon>Service.svc</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ServicioSoap.asmx.cs">
+      <DependentUpon>ServicioSoap.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="vistas\addPerfiles.aspx.cs">
