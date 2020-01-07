@@ -115,6 +115,17 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ClienteUniversal.asmx" />
+    <None Include="Connected Services\ServiceReference1\ClienteUniversal.disco" />
+    <None Include="Connected Services\ServiceReference1\configuration91.svcinfo" />
+    <None Include="Connected Services\ServiceReference1\configuration.svcinfo" />
+    <Content Include="Connected Services\ServiceReference1\MonitoreoUniversal.ServiceReference1.HelloWorldResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\ServiceReference1\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="JavaScript\adminPerfiles.js" />
     <Content Include="JavaScript\adminPersonalMantenimiento.js" />
     <Content Include="JavaScript\adminUsuarios.js" />
@@ -803,6 +814,15 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClienteUniversal.asmx.cs">
+      <DependentUpon>ClienteUniversal.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Connected Services\ServiceReference1\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service.svc.cs">
       <DependentUpon>Service.svc</DependentUpon>
       <SubType>Component</SubType>
@@ -898,9 +918,11 @@
     <Content Include="resources\app-assets\vendors\css\fonts\KaTeX_Main-Regular.woff2" />
     <Content Include="resources\app-assets\vendors\css\fonts\KaTeX_Math-Italic.woff2" />
     <Content Include="ApplicationInsights.config" />
+    <None Include="Connected Services\ServiceReference1\ClienteUniversal.wsdl" />
     <None Include="packages.config" />
     <Content Include="resources\app-assets\vendors\js\datatable\json-spanish.json" />
     <Content Include="resources\app-assets\js\bootstrapvalidator\bootstrapValidator.min.css" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -921,7 +943,9 @@
       <Name>MonitoreoUniversal.Entidades</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ServiceReference1\" />
+  </ItemGroup>
   <ItemGroup Condition="$(VisualStudioVersion) == '15.0'">
     <Reference Include="Microsoft.Data.Tools.Schema.Sql, Version=13.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>$(SSDTPath)\Microsoft.Data.Tools.Schema.Sql.dll</HintPath>
