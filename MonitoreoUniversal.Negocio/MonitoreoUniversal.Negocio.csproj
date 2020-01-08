@@ -43,6 +43,9 @@
   <ItemGroup>
     <Compile Include="AccionesNegocio.cs" />
     <Compile Include="CatalogosNegocio.cs" />
+    <Compile Include="CredencialesAccesoNegocio.cs" />
+    <Compile Include="EmpresaNegocio.cs" />
+    <Compile Include="EstadosNeegocio.cs" />
     <Compile Include="EstadosNegocio.cs" />
     <Compile Include="IdiomasNegocio.cs" />
     <Compile Include="MagnitudNegocio.cs" />
@@ -51,6 +54,7 @@
     <Compile Include="PaisesNegocio.cs" />
     <Compile Include="PerfilesNegocio.cs" />
     <Compile Include="PersonalMantenimientoNegocio.cs" />
+    <Compile Include="PruebasNegocio.cs" />
     <Compile Include="ResponsablesNegocio.cs" />
     <Compile Include="SectorNegocio.cs" />
     <Compile Include="SistemaMedicionNegocio.cs" />

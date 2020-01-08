@@ -16,8 +16,10 @@ namespace MonitoreoUniversal
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
     public class Service : System.Web.Services.WebService
     {
+        
         SectorNegocio sectorNegocio = new SectorNegocio();
         PaisesNegocio paisesNegocio = new PaisesNegocio();
+        PruebasNegocio pruebasNegocio = new PruebasNegocio();
         PuestosNegocio puestosNegocio = new PuestosNegocio();
         EstadosNegocio estadosNegocio = new EstadosNegocio();
         IdiomasNegocio idiomasNegocio = new IdiomasNegocio();
@@ -58,7 +60,7 @@ namespace MonitoreoUniversal
         {
             bool result = false;
             try
-            {
+            {   
                 result = sectorNegocio.registrarSector(sector);
             }
             catch (Exception e)
@@ -171,6 +173,39 @@ namespace MonitoreoUniversal
                 result = false;
             }
             return result;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST",UriTemplate ="/GetBitacora",RequestFormat =WebMessageFormat.Json,
+        ResponseFormat =WebMessageFormat.Json,BodyStyle =WebMessageBodyStyle.Wrapped)]
+        public List<Pruebas> getAllBitacora(int idDispostivo)
+        {
+            List<Pruebas> list = new List<Pruebas>();
+            try
+            {
+                list = pruebasNegocio.getAllBitacora(idDispostivo);
+            }
+            catch (Exception e)
+            {
+            }
+            return list;
+        }
+
+        [OperationContract]
+        [WebGet(UriTemplate = "/GetPrueba", ResponseFormat = WebMessageFormat.Json)]
+        public List<Pruebas> getAllPrueba()
+        {
+            List<Pruebas> list = new List<Pruebas>();
+            try
+            {
+                list = pruebasNegocio.getAllPruebas();
+            }
+            catch(Exception e)
+            {
+
+            }
+            return list;
         }
 
         [OperationContract]

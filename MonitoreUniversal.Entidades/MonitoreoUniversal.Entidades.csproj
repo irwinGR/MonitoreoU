@@ -62,6 +62,7 @@
     <Compile Include="Perfiles.cs" />
     <Compile Include="PersonalMantenimiento.cs" />
     <Compile Include="Placas.cs" />
+    <Compile Include="Pruebas.cs" />
     <Compile Include="Responsables.cs" />
     <Compile Include="Sector.cs" />
     <Compile Include="Sensores.cs" />

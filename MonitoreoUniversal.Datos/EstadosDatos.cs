@@ -42,10 +42,7 @@ namespace MonitoreoUniversal.Datos
                     estad.paises.idPais = Convert.ToInt32(row["idPais"].ToString());
 
                     estados.Add(estad);
-
                 }
-
-
             }
             catch (Exception e)
             {
@@ -53,6 +50,95 @@ namespace MonitoreoUniversal.Datos
 
             }
             return estados;
+        }
+        public Boolean registrarEstados(Estados estados)
+        {
+            Boolean respuesta = false;
+            SqlConnection connection = null;
+            DataTable dt = new DataTable();
+            try
+            {
+                using (connection = Conexion.ObtieneConexion("ConexionBD"))
+                {
+                    SqlDataReader consulta;
+                    connection.Open();
+
+                    var parametros = new[]
+                    {
+                        ParametroAcceso.CrearParametro("@descripcion",SqlDbType.VarChar,estados.descripcion,ParameterDirection.Input),
+                        ParametroAcceso.CrearParametro("@idPais",SqlDbType.VarChar,estados.paises.idPais,ParameterDirection.Input)
+                    };
+                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Administracion.AgregarEstadoSP",parametros);
+                    dt.Load(consulta);
+                    connection.Close();
+                    respuesta = true;
+                }
+            }
+            catch(Exception e)
+            {
+                respuesta = false;
+                Console.WriteLine(e);
+            }
+            return respuesta;
+        }
+        public Boolean editarEstados(Estados estados)
+        {
+            Boolean respuesta = false;
+            SqlConnection connection = null;
+            DataTable dt = new DataTable();
+            try
+            {
+                using (connection = Conexion.ObtieneConexion("ConexionBD"))
+                {
+                    SqlDataReader consulta;
+                    connection.Open();
+
+                    var parametros = new[]
+                    {
+                        ParametroAcceso.CrearParametro("@descripcion",SqlDbType.VarChar,estados.descripcion,ParameterDirection.Input),
+                        ParametroAcceso.CrearParametro("@idPais",SqlDbType.VarChar,estados.paises.idPais,ParameterDirection.Input)
+                    };
+                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Administracion.ActualizarEstadoSP", parametros);
+                    dt.Load(consulta);
+                    connection.Close();
+                    respuesta = true;
+                }
+            }
+            catch(Exception e)
+            {
+                respuesta = false;
+                Console.WriteLine(e);
+            }
+            return respuesta;
+        }
+        public Boolean eliminarEstados(Estados estados)
+        {
+            Boolean respuesta = false;
+            SqlConnection connection = null;
+            DataTable dt = new DataTable();
+            try
+            {
+                using (connection = Conexion.ObtieneConexion("ConexionBD"))
+                {
+                    SqlDataReader consulta;
+                    connection.Open();
+
+                    var parametros = new[]
+                    {
+                        ParametroAcceso.CrearParametro("@idEstado",SqlDbType.VarChar,estados.idEstado,ParameterDirection.Input)
+                    };
+                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Administracion.EliminarEstadosSP", parametros);
+                    dt.Load(consulta);
+                    connection.Close();
+                    respuesta = true;
+                }
+            }
+            catch(Exception e)
+            {
+                respuesta = false;
+                Console.WriteLine(e);
+            }
+            return respuesta;
         }
     }
 }

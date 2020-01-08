@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="AccionesDatos.cs" />
     <Compile Include="CatalogosDatos.cs" />
+    <Compile Include="CredencialesAccesoDatos.cs" />
+    <Compile Include="EmpresaDatos.cs" />
     <Compile Include="EstadosDatos.cs" />
     <Compile Include="IdiomasDatos.cs" />
     <Compile Include="MagnitudDatos.cs" />
@@ -51,6 +53,7 @@
     <Compile Include="PaisesDatos.cs" />
     <Compile Include="PerfilDatos.cs" />
     <Compile Include="PersonalMantenimientoDatos.cs" />
+    <Compile Include="PruebasDatos.cs" />
     <Compile Include="ResponsablesDatos.cs" />
     <Compile Include="SectorDatos.cs" />
     <Compile Include="SistemaMedicionDatos.cs" />
