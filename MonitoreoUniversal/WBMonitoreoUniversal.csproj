@@ -119,6 +119,8 @@
     <Content Include="JavaScript\adminPersonalMantenimiento.js" />
     <Content Include="JavaScript\adminResponsables.js" />
     <Content Include="JavaScript\adminUsuarios.js" />
+    <Content Include="JavaScript\index.js" />
+    <Content Include="JavaScript\maps.js" />
     <Content Include="resources\app-assets\js\bootstrapvalidator\bootstrapValidator.min.js" />
     <Content Include="resources\app-assets\js\bootstrapvalidator\language\ar_MA.min.js" />
     <Content Include="resources\app-assets\js\bootstrapvalidator\language\be_NL.min.js" />
@@ -907,6 +909,7 @@
     <None Include="packages.config" />
     <Content Include="resources\app-assets\vendors\js\datatable\json-spanish.json" />
     <Content Include="resources\app-assets\js\bootstrapvalidator\bootstrapValidator.min.css" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
