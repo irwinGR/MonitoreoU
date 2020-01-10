@@ -46,6 +46,7 @@
     <Compile Include="CredencialesAccesoDatos.cs" />
     <Compile Include="EmpresaDatos.cs" />
     <Compile Include="EstadosDatos.cs" />
+    <Compile Include="FallasDispositivosDatos.cs" />
     <Compile Include="IdiomasDatos.cs" />
     <Compile Include="MagnitudDatos.cs" />
     <Compile Include="MediosComunicacionDatos.cs" />
@@ -53,9 +54,12 @@
     <Compile Include="PaisesDatos.cs" />
     <Compile Include="PerfilDatos.cs" />
     <Compile Include="PersonalMantenimientoDatos.cs" />
+    <Compile Include="PlacasDatos.cs" />
     <Compile Include="PruebasDatos.cs" />
     <Compile Include="ResponsablesDatos.cs" />
     <Compile Include="SectorDatos.cs" />
+    <Compile Include="SensoresDatos.cs" />
+    <Compile Include="ServicioDatos.cs" />
     <Compile Include="SistemaMedicionDatos.cs" />
     <Compile Include="TipoComunicacionDatos.cs" />
     <Compile Include="TipoDatoDatos.cs" />

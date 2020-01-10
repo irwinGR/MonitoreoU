@@ -47,6 +47,7 @@
     <Compile Include="EmpresaNegocio.cs" />
     <Compile Include="EstadosNeegocio.cs" />
     <Compile Include="EstadosNegocio.cs" />
+    <Compile Include="FallasDispositivosNegocio.cs" />
     <Compile Include="IdiomasNegocio.cs" />
     <Compile Include="MagnitudNegocio.cs" />
     <Compile Include="MediosComunicacionNegocio.cs" />
@@ -54,9 +55,12 @@
     <Compile Include="PaisesNegocio.cs" />
     <Compile Include="PerfilesNegocio.cs" />
     <Compile Include="PersonalMantenimientoNegocio.cs" />
+    <Compile Include="PlacasNegocio.cs" />
     <Compile Include="PruebasNegocio.cs" />
     <Compile Include="ResponsablesNegocio.cs" />
     <Compile Include="SectorNegocio.cs" />
+    <Compile Include="SensoresNegocio.cs" />
+    <Compile Include="ServicioNegocio.cs" />
     <Compile Include="SistemaMedicionNegocio.cs" />
     <Compile Include="TipoComunicacionNegocio.cs" />
     <Compile Include="TipoDatoNegocio.cs" />
