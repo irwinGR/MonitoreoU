@@ -1,4 +1,6 @@
 ﻿$(function () {
+    $("#sidebarToggle").click();
+
     initEventos();
     cicloActualizacion();
 });
@@ -7,12 +9,13 @@ function cicloActualizacion() {
     initEventos();
     setTimeout(function () {
         cicloActualizacion();
-    }, 15000);
+    }, 60000);
 }
 function initEventos() {
     var html = '';
     var nSensor = 0;
     var coordenadas = [];
+    var Senso = [];
     $.ajax({
         async: false,
         type: 'GET',
@@ -72,6 +75,7 @@ function initEventos() {
 
                 nSensor = i;
                 coordenadas.push(item.coordenadas);
+                Senso.push(item.idDispositivo);
             });
 
             $("#tableros").html(html);
@@ -88,8 +92,7 @@ function initEventos() {
                 lat = cordenada1;
                 lng = cordenada2;
 
-                initMaps(i, lat, lng);
-                console.log(lat, lng);
+                initMaps(Senso[i],i, lat, lng);
 
             }
         }
@@ -97,14 +100,24 @@ function initEventos() {
     });
 }
 
-function initMaps(numero,lat,lng) {
+function initMaps(sensor,numero,lat,lng) {
         // Basic Map
         // ------------------------------
-            new GMaps({
+            map = new GMaps({
                 div: '#basic-map'+numero,
                 lat: lat,
                 lng: -lng,
                 height: 400,
-                zoom: 25
+                zoom: 18
+                
+            });
+
+            map.addMarker({
+                lat: lat,
+                lng: -lng,
+                title: 'Sensor - ' + sensor,
+                infoWindow: {
+                    content: '<p>Sensor - ' + sensor + ' <br> <br> Ubicacion: ITE Soluciones S.A de C.V</p>'
+                }
             });
 }
