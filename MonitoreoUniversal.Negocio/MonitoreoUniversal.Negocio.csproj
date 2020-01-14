@@ -51,7 +51,6 @@
     <Compile Include="CredencialesAccesoNegocio.cs" />
     <Compile Include="DispositivosNegocio.cs" />
     <Compile Include="EmpresaNegocio.cs" />
-    <Compile Include="EstadosNeegocio.cs" />
     <Compile Include="EstadosNegocio.cs" />
     <Compile Include="FactoresMonitoreoNegocio.cs" />
     <Compile Include="FallasDispositivosNegocio.cs" />
