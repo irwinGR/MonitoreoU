@@ -75,7 +75,6 @@ namespace MonitoreoUniversal.Datos
                         ParametroAcceso.CrearParametro("@horaFalla",SqlDbType.VarChar,fallasDispositivos.horaFalla,ParameterDirection.Input),
                         ParametroAcceso.CrearParametro("@area",SqlDbType.VarChar,fallasDispositivos.area,ParameterDirection.Input),
                         ParametroAcceso.CrearParametro("@adjuntoEvidencia",SqlDbType.VarChar,fallasDispositivos.adjuntoEvidencia,ParameterDirection.Input),
-                        ParametroAcceso.CrearParametro("@validarDispositivo",SqlDbType.VarChar,fallasDispositivos.validarDispositivo,ParameterDirection.Input),
                         ParametroAcceso.CrearParametro("@idPlaca",SqlDbType.VarChar,fallasDispositivos.placas.idPlaca,ParameterDirection.Input)
                     };
                     consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Aplicacion.AgregarFallasDispositivosSP", parametros);
@@ -113,7 +112,6 @@ namespace MonitoreoUniversal.Datos
                         ParametroAcceso.CrearParametro("@horaFalla",SqlDbType.VarChar,fallasDispositivos.horaFalla,ParameterDirection.Input),
                         ParametroAcceso.CrearParametro("@area",SqlDbType.VarChar,fallasDispositivos.area,ParameterDirection.Input),
                         ParametroAcceso.CrearParametro("@adjuntoEvidencia",SqlDbType.VarChar,fallasDispositivos.adjuntoEvidencia,ParameterDirection.Input),
-                        ParametroAcceso.CrearParametro("@validarDispositivo",SqlDbType.VarChar,fallasDispositivos.validarDispositivo,ParameterDirection.Input),
                         ParametroAcceso.CrearParametro("@idPlaca",SqlDbType.VarChar,fallasDispositivos.placas.idPlaca,ParameterDirection.Input)
                     };
                     consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Aplicacion.ActualizarFallasDispositivosSP", parametros);

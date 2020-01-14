@@ -42,11 +42,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccionesNegocio.cs" />
+    <Compile Include="AccionesxPerfilNegocio.cs" />
+    <Compile Include="AlertasNegocio.cs" />
+    <Compile Include="AlertaUsuarioNegocio.cs" />
     <Compile Include="CatalogosNegocio.cs" />
+    <Compile Include="CatalogoxPerfilesNegocio.cs" />
+    <Compile Include="CentroMonitoreoNegocio.cs" />
     <Compile Include="CredencialesAccesoNegocio.cs" />
+    <Compile Include="DispositivosNegocio.cs" />
     <Compile Include="EmpresaNegocio.cs" />
     <Compile Include="EstadosNeegocio.cs" />
     <Compile Include="EstadosNegocio.cs" />
+    <Compile Include="FactoresMonitoreoNegocio.cs" />
     <Compile Include="FallasDispositivosNegocio.cs" />
     <Compile Include="IdiomasNegocio.cs" />
     <Compile Include="MagnitudNegocio.cs" />
@@ -62,12 +69,14 @@
     <Compile Include="SensoresNegocio.cs" />
     <Compile Include="ServicioNegocio.cs" />
     <Compile Include="SistemaMedicionNegocio.cs" />
+    <Compile Include="TemplateCorreoNegocio.cs" />
     <Compile Include="TipoComunicacionNegocio.cs" />
     <Compile Include="TipoDatoNegocio.cs" />
     <Compile Include="UnidadLecturaNegocio.cs" />
     <Compile Include="UsuariosNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PuestosNegocio.cs" />
+    <Compile Include="VariablesNegocio.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MonitoreoUniversal.Datos\MonitoreoUniversal.Datos.csproj">

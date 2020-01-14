@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MonitoreoUniversal.Datos</RootNamespace>
-    <AssemblyName>MonitoreoUniversal.Datos</AssemblyName>
+    <AssemblyName>C</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -42,10 +42,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccionesDatos.cs" />
+    <Compile Include="AccionesxPerfilDatos.cs" />
+    <Compile Include="AlertasDatos.cs" />
+    <Compile Include="AlertaUsuarioDatos.cs" />
     <Compile Include="CatalogosDatos.cs" />
+    <Compile Include="CatalogoxPerfilesDatos.cs" />
+    <Compile Include="CentroMonitoreoDatos.cs" />
     <Compile Include="CredencialesAccesoDatos.cs" />
+    <Compile Include="DispositivosDatos.cs" />
     <Compile Include="EmpresaDatos.cs" />
     <Compile Include="EstadosDatos.cs" />
+    <Compile Include="FactoresMonitoreoDatos.cs" />
     <Compile Include="FallasDispositivosDatos.cs" />
     <Compile Include="IdiomasDatos.cs" />
     <Compile Include="MagnitudDatos.cs" />
@@ -61,12 +68,14 @@
     <Compile Include="SensoresDatos.cs" />
     <Compile Include="ServicioDatos.cs" />
     <Compile Include="SistemaMedicionDatos.cs" />
+    <Compile Include="TemplateCorreoDatos.cs" />
     <Compile Include="TipoComunicacionDatos.cs" />
     <Compile Include="TipoDatoDatos.cs" />
     <Compile Include="UnidadLecturaDatos.cs" />
     <Compile Include="UsuariosDatos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PuestoDatos.cs" />
+    <Compile Include="VariablesDatos.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MonitoreoUniversal.Framework\MonitoreoUniversal.Framework.csproj">
