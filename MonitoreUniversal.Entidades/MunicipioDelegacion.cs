@@ -12,5 +12,6 @@ namespace MonitoreUniversal.Entidades
         public string descripcion { set; get; }
         public bool estatus { set; get; }
         public Estados Estados { set; get; }
+        public Paises pais { set; get; }
     }
 }

@@ -15,6 +15,10 @@ namespace MonitoreoUniversal.Negocio
         {
             return estadosDatos.getAllEstados();
         }
+        public List<Estados> getEstadosxPais(int idPais)
+        {
+            return estadosDatos.getEstadosxPais(idPais);
+        }
         public Boolean registrarEstados (Estados estados)
         {
             return estadosDatos.registrarEstados(estados);

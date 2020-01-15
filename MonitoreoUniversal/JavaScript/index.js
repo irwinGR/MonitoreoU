@@ -99,7 +99,6 @@ function initEventos() {
 
     });
 }
-
 function initMaps(sensor,numero,lat,lng) {
         // Basic Map
         // ------------------------------

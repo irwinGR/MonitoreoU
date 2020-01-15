@@ -23,7 +23,7 @@ namespace MonitoreoUniversal.Datos
                 {
                     SqlDataReader consulta;
                     connection.Open();
-                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Administracion.ConsultarPaisSP");
+                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Administracion.ConsultaPaisSP");
 
                     dt.Load(consulta);
                     connection.Close();
@@ -99,10 +99,10 @@ namespace MonitoreoUniversal.Datos
                     var parametros = new[]
                     {
                         ParametroAcceso.CrearParametro("@descripcion", SqlDbType.VarChar, paises.descripcion, ParameterDirection.Input),
-                        ParametroAcceso.CrearParametro("@idPais", SqlDbType.VarChar, paises.idPais,ParameterDirection.Input),
+                        ParametroAcceso.CrearParametro("@idPais", SqlDbType.Int, paises.idPais,ParameterDirection.Input),
                     };
 
-                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Adminitracion.ActualizarPaisSP", parametros);
+                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Administracion.ActualizarPaisSP", parametros);
                     dt.Load(consulta);
                     connection.Close();
                     respuesta = true;
@@ -132,7 +132,7 @@ namespace MonitoreoUniversal.Datos
 
                     var parametros = new[]
                     {
-                        ParametroAcceso.CrearParametro("@idIdioma",SqlDbType.Int, paises.idPais, ParameterDirection.Input)
+                        ParametroAcceso.CrearParametro("@idPais",SqlDbType.Int, paises.idPais, ParameterDirection.Input)
                     };
 
                     consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Administracion.EliminarPaisSP", parametros);

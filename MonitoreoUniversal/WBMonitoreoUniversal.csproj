@@ -115,12 +115,16 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="JavaScript\adminEstado.js" />
+    <Content Include="JavaScript\adminMunicipioDelegaciones.js" />
+    <Content Include="JavaScript\adminPais.js" />
     <Content Include="JavaScript\adminPerfiles.js" />
     <Content Include="JavaScript\adminPersonalMantenimiento.js" />
     <Content Include="JavaScript\adminResponsables.js" />
     <Content Include="JavaScript\adminUsuarios.js" />
     <Content Include="JavaScript\index.js" />
     <Content Include="JavaScript\maps.js" />
+    <Content Include="JavaScript\utilidadesScript.js" />
     <Content Include="resources\app-assets\js\bootstrapvalidator\bootstrapValidator.min.js" />
     <Content Include="resources\app-assets\js\bootstrapvalidator\language\ar_MA.min.js" />
     <Content Include="resources\app-assets\js\bootstrapvalidator\language\be_NL.min.js" />
@@ -144,10 +148,16 @@
     <Content Include="resources\app-assets\js\bootstrapvalidator\language\zh_TW.min.js" />
     <Content Include="Service.svc" />
     <Content Include="ServicioSoap.asmx" />
+    <Content Include="vistas\addEstados.aspx" />
+    <Content Include="vistas\addMunicioDelegaciones.aspx" />
+    <Content Include="vistas\addPais.aspx" />
     <Content Include="vistas\addPerfiles.aspx" />
+    <Content Include="vistas\AdminEstados.aspx" />
+    <Content Include="vistas\AdminPais.aspx" />
     <Content Include="vistas\AdminPerfiles.aspx" />
     <Content Include="vistas\AdminPersonalMantenimiento.aspx" />
     <Content Include="vistas\AdminResponsables.aspx" />
+    <Content Include="vistas\AdminMunicipio.aspx" />
     <Content Include="vistas\index.aspx" />
     <Content Include="resources\app-assets\css\app-assets\img\gallery\dark-bg.html" />
     <Content Include="resources\app-assets\css\app-assets\img\svg\cd-arrow.html" />
@@ -815,12 +825,47 @@
       <DependentUpon>ServicioSoap.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="vistas\addEstados.aspx.cs">
+      <DependentUpon>addEstados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vistas\addEstados.aspx.designer.cs">
+      <DependentUpon>addEstados.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vistas\addMunicioDelegaciones.aspx.cs">
+      <DependentUpon>addMunicioDelegaciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vistas\addMunicioDelegaciones.aspx.designer.cs">
+      <DependentUpon>addMunicioDelegaciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vistas\addPais.aspx.cs">
+      <DependentUpon>addPais.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vistas\addPais.aspx.designer.cs">
+      <DependentUpon>addPais.aspx</DependentUpon>
+    </Compile>
     <Compile Include="vistas\addPerfiles.aspx.cs">
       <DependentUpon>addPerfiles.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="vistas\addPerfiles.aspx.designer.cs">
       <DependentUpon>addPerfiles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vistas\AdminEstados.aspx.cs">
+      <DependentUpon>AdminEstados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vistas\AdminEstados.aspx.designer.cs">
+      <DependentUpon>AdminEstados.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vistas\AdminPais.aspx.cs">
+      <DependentUpon>AdminPais.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vistas\AdminPais.aspx.designer.cs">
+      <DependentUpon>AdminPais.aspx</DependentUpon>
     </Compile>
     <Compile Include="vistas\AdminPerfiles.aspx.cs">
       <DependentUpon>AdminPerfiles.aspx</DependentUpon>
@@ -842,6 +887,13 @@
     </Compile>
     <Compile Include="vistas\AdminResponsables.aspx.designer.cs">
       <DependentUpon>AdminResponsables.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vistas\AdminMunicipio.aspx.cs">
+      <DependentUpon>AdminMunicipio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vistas\AdminMunicipio.aspx.designer.cs">
+      <DependentUpon>AdminMunicipio.aspx</DependentUpon>
     </Compile>
     <Compile Include="vistas\index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>

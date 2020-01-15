@@ -123,7 +123,13 @@
                       <a href="AdminResponsables.aspx" class="menu-item">Responsables</a>
                   </li>
                   <li>
-                      <a href="AdminPersonalMantenimiento.aspx" class="menu-item">Personal Mantenimiento</a>
+                      <a href="AdminPais.aspx" class="menu-item">Paises</a>
+                  </li>   
+                  <li>
+                      <a href="AdminEstados.aspx" class="menu-item">Estados</a>
+                  </li>  
+                  <li>
+                      <a href="AdminMunicipio.aspx" class="menu-item">Municipios/Delegaciones</a>
                   </li>    
                 </ul>
               </li>
@@ -240,6 +246,5 @@
 
   </body>
   <!-- END : Body-->
-
-<!-- Mirrored from pixinvent.com/apex-angular-4-bootstrap-admin-template/html-demo-1/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 22 Oct 2019 16:16:47 GMT -->
+    <script src="../JavaScript/utilidadesScript.js"></script>
 </html>

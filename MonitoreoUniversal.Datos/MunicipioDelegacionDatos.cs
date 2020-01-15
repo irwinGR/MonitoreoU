@@ -29,13 +29,22 @@ namespace MonitoreoUniversal.Datos
                     connection.Close();
                 }
 
-                foreach(DataRow row in dt.Rows)
+                foreach (DataRow row in dt.Rows)
                 {
                     MunicipioDelegacion muni = new MunicipioDelegacion();
 
                     muni.idMunicipioDelegacion = Convert.ToInt32(row["idMunicipioDelegacion"].ToString());
                     muni.descripcion = row["descripcion"].ToString();
-                    muni.estatus = Convert.ToBoolean(row["estatus"].ToString());
+
+                    Paises paises = new Paises();
+                    muni.pais = paises;
+                    muni.pais.idPais = Convert.ToInt32(row["idPais"].ToString());
+                    muni.pais.descripcion = row["nombrePais"].ToString();
+
+                    Estados estados = new Estados();
+                    muni.Estados = estados;
+                    muni.Estados.idEstado = Convert.ToInt32(row["idEstado"].ToString());
+                    muni.Estados.descripcion = row["nombreEstado"].ToString();
 
                     municipioDelegacion.Add(muni);
                 }
@@ -65,8 +74,8 @@ namespace MonitoreoUniversal.Datos
                     var parametros = new[]
                     {
                         ParametroAcceso.CrearParametro("@descripcion",SqlDbType.VarChar,municipioDelegacion.descripcion,ParameterDirection.Input),
-                        ParametroAcceso.CrearParametro("@idEstado",SqlDbType.Int,municipioDelegacion.Estados.idEstado,ParameterDirection.Input)
-
+                        ParametroAcceso.CrearParametro("@idEstado",SqlDbType.Int,municipioDelegacion.Estados.idEstado,ParameterDirection.Input),
+                        ParametroAcceso.CrearParametro("@idPais",SqlDbType.Int,municipioDelegacion.pais.idPais,ParameterDirection.Input)
                     };
 
                     consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Administracion.AgregarMunicipioDelegacionSP", parametros);
@@ -99,7 +108,9 @@ namespace MonitoreoUniversal.Datos
                     var parametros = new[]
                     {
                         ParametroAcceso.CrearParametro("@descripcion",SqlDbType.VarChar, municipioDelegacion.descripcion, ParameterDirection.Input),
-                        ParametroAcceso.CrearParametro("@idMunicipioDelegacion",SqlDbType.Int,municipioDelegacion.idMunicipioDelegacion,ParameterDirection.Input)
+                        ParametroAcceso.CrearParametro("@idMenucipioDelegacion",SqlDbType.Int,municipioDelegacion.idMunicipioDelegacion,ParameterDirection.Input),
+                        ParametroAcceso.CrearParametro("@idEstado",SqlDbType.Int,municipioDelegacion.Estados.idEstado,ParameterDirection.Input),
+                        ParametroAcceso.CrearParametro("@idPais",SqlDbType.Int,municipioDelegacion.pais.idPais,ParameterDirection.Input),
                     };
 
                     consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Administracion.ActualizarMunicipioDelegacionSP", parametros);

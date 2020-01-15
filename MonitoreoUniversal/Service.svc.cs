@@ -47,6 +47,8 @@ namespace MonitoreoUniversal
         UsuariosNegocio usuariosNegocio = new UsuariosNegocio();
         VariablesNegocio variablesNegocio = new VariablesNegocio();
 
+        #region Métodos - Acciones
+
         [OperationContract]
         [WebGet(UriTemplate = "/GetAcciones", ResponseFormat = WebMessageFormat.Json)]
         public List<Acciones> getAllAcciones()
@@ -116,6 +118,9 @@ namespace MonitoreoUniversal
             return result;
         }
 
+        #endregion
+
+        #region Métodos - Catalogos
         [OperationContract]
         [WebGet(UriTemplate = "/GetCatalogos", ResponseFormat = WebMessageFormat.Json)]
         public List<Catalogos> getAllCatalogos()
@@ -185,6 +190,9 @@ namespace MonitoreoUniversal
             return result;
         }
 
+        #endregion
+
+        #region Métodos - Estados
         [OperationContract]
         [WebGet(UriTemplate = "/GetEstados", ResponseFormat = WebMessageFormat.Json)]
         public List<Estados> getAllEstados()
@@ -202,19 +210,80 @@ namespace MonitoreoUniversal
         }
 
         [OperationContract]
-        [WebGet(UriTemplate = "/GetIdiomas", ResponseFormat = WebMessageFormat.Json)]
-        public List<Idiomas> getAllIdiomas()
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/getEstadosxPais", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public List<Estados> getEstadosxPais(int idPais)
         {
-            List<Idiomas> list = new List<Idiomas>();
+            List<Estados> list = new List<Estados>();
             try
             {
-                list = idiomasNegocio.getAllIdiomas();
+                list = estadosNegocio.getEstadosxPais(idPais);
             }
             catch (Exception e)
             {
+                Console.Write(e);
             }
             return list;
         }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/InsertEstados", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean insertEstados(Estados estados)
+        {
+            bool result = false;
+            try
+            {
+                result = estadosNegocio.registrarEstados(estados);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/EditarEstados", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean editarEstados(Estados estados)
+        {
+            bool result = false;
+            try
+            {
+                result = estadosNegocio.editarEstados(estados);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/EliminarEstados", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean eliminarEstados(Estados estados)
+        {
+            bool result = false;
+            try
+            {
+                result = estadosNegocio.eliminarEstados(estados);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        #endregion
+
+        #region Métodos - Idioma
 
         [OperationContract]
         [return: MessageParameter(Name = "result")]
@@ -232,6 +301,21 @@ namespace MonitoreoUniversal
                 result = false;
             }
             return result;
+        }
+
+        [OperationContract]
+        [WebGet(UriTemplate = "/GetIdiomas", ResponseFormat = WebMessageFormat.Json)]
+        public List<Idiomas> getAllIdiomas()
+        {
+            List<Idiomas> list = new List<Idiomas>();
+            try
+            {
+                list = idiomasNegocio.getAllIdiomas();
+            }
+            catch (Exception e)
+            {
+            }
+            return list;
         }
 
         [OperationContract]
@@ -269,6 +353,10 @@ namespace MonitoreoUniversal
             }
             return result;
         }
+
+        #endregion
+
+        #region Métodos - Magnitud
 
         [OperationContract]
         [WebGet(UriTemplate = "/GetMagnitud", ResponseFormat = WebMessageFormat.Json)]
@@ -339,6 +427,10 @@ namespace MonitoreoUniversal
             return result;
         }
 
+        #endregion
+
+        #region Métodos - MediosComunicacion
+
         [OperationContract]
         [WebGet(UriTemplate = "/GetMediosComunicacion", ResponseFormat = WebMessageFormat.Json)]
         public List<MediosComunicacion> getAllMedioComunicacion()
@@ -407,6 +499,10 @@ namespace MonitoreoUniversal
             }
             return result;
         }
+
+        #endregion
+
+        #region Métodos - MunicipioDelegacion
 
         [OperationContract]
         [WebGet(UriTemplate = "/GetMunicipioDelegacion", ResponseFormat = WebMessageFormat.Json)]
@@ -477,6 +573,10 @@ namespace MonitoreoUniversal
             return result;
         }
 
+        #endregion
+
+        #region Métodos - Paises
+
         [OperationContract]
         [WebGet(UriTemplate = "/GetPaises", ResponseFormat = WebMessageFormat.Json)]
         public List<Paises> getAllPaises()
@@ -512,7 +612,7 @@ namespace MonitoreoUniversal
 
         [OperationContract]
         [return: MessageParameter(Name = "result")]
-        [WebInvoke(Method = "POST", UriTemplate = "/EditarPais", RequestFormat = WebMessageFormat.Json,
+        [WebInvoke(Method = "POST", UriTemplate = "/EditarPaises", RequestFormat = WebMessageFormat.Json,
         ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
         public Boolean editarPais(Paises paises)
         {
@@ -530,7 +630,7 @@ namespace MonitoreoUniversal
 
         [OperationContract]
         [return: MessageParameter(Name = "result")]
-        [WebInvoke(Method = "POST", UriTemplate = "/EliminarPais", RequestFormat = WebMessageFormat.Json,
+        [WebInvoke(Method = "POST", UriTemplate = "/EliminarPaises", RequestFormat = WebMessageFormat.Json,
         ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
         public Boolean eliminarPais(Paises paises)
         {
@@ -545,6 +645,10 @@ namespace MonitoreoUniversal
             }
             return result;
         }
+
+        #endregion
+
+        #region Métodos - Perfil
 
         [OperationContract]
         [WebGet(UriTemplate = "/GetPerfil", ResponseFormat = WebMessageFormat.Json)]
@@ -615,6 +719,10 @@ namespace MonitoreoUniversal
             return result;
         }
 
+        #endregion
+
+        #region Métodos - PersonalMantenimiento
+
         [OperationContract]
         [WebGet(UriTemplate = "/GetPersonalMantenimiento", ResponseFormat = WebMessageFormat.Json)]
         public List<PersonalMantenimiento> getAllPersonalMantenimiento()
@@ -683,6 +791,11 @@ namespace MonitoreoUniversal
             }
             return result;
         }
+
+        #endregion
+
+        #region Métodos - Bitacora
+
         [OperationContract]
         [return: MessageParameter(Name = "result")]
         [WebInvoke(Method = "POST", UriTemplate = "/GetBitacora", RequestFormat = WebMessageFormat.Json,
@@ -700,6 +813,10 @@ namespace MonitoreoUniversal
             return list;
         }
 
+        #endregion
+
+        #region Métodos - Prueba
+
         [OperationContract]
         [WebGet(UriTemplate = "/GetPrueba", ResponseFormat = WebMessageFormat.Json)]
         public List<Pruebas> getAllPrueba()
@@ -716,6 +833,10 @@ namespace MonitoreoUniversal
             return list;
         }
 
+        #endregion
+
+        #region Métodos - Puestos
+
         [OperationContract]
         [WebGet(UriTemplate = "/GetPuestos", ResponseFormat = WebMessageFormat.Json)]
         public List<Puestos> getAllPuestos()
@@ -731,6 +852,10 @@ namespace MonitoreoUniversal
             }
             return list;
         }
+
+        #endregion
+
+        #region Métodos - Responsables
 
         [OperationContract]
         [WebGet(UriTemplate = "/GetResponsables", ResponseFormat = WebMessageFormat.Json)]
@@ -801,6 +926,10 @@ namespace MonitoreoUniversal
             return result;
         }
 
+        #endregion
+
+        #region Métodos - Sector
+
         [OperationContract]
         [WebGet(UriTemplate = "/GetSector", ResponseFormat = WebMessageFormat.Json)]
         public List<Sector> getAllSector()
@@ -869,6 +998,10 @@ namespace MonitoreoUniversal
             }
             return result;
         }
+
+        #endregion
+
+        #region Métodos - SistemaMedicion
 
         [OperationContract]
         [WebGet(UriTemplate = "/GetSistemaMedicion", ResponseFormat = WebMessageFormat.Json)]
@@ -939,6 +1072,10 @@ namespace MonitoreoUniversal
             return result;
         }
 
+        #endregion
+
+        #region Métodos - TipoComunicacion
+
         [OperationContract]
         [WebGet(UriTemplate = "/GetTipoComunicacion", ResponseFormat = WebMessageFormat.Json)]
         public List<TipoComunicacion> getAllTipoComunicacion()
@@ -1007,6 +1144,10 @@ namespace MonitoreoUniversal
             }
             return result;
         }
+
+        #endregion
+
+        #region Métodos - TipoDato
 
         [OperationContract]
         [WebGet(UriTemplate = "/GetTipoDato", ResponseFormat = WebMessageFormat.Json)]
@@ -1077,6 +1218,10 @@ namespace MonitoreoUniversal
             return result;
         }
 
+        #endregion
+
+        #region Métodos - UnidadLectura
+
         [OperationContract]
         [WebGet(UriTemplate = "/GetUnidadLectura", ResponseFormat = WebMessageFormat.Json)]
         public List<UnidadLectura> getAllUnidadLectura()
@@ -1145,6 +1290,8 @@ namespace MonitoreoUniversal
             }
             return result;
         }
+
+        #endregion
 
         [OperationContract]
         [WebGet(UriTemplate = "/GetUsuarios", ResponseFormat = WebMessageFormat.Json)]
