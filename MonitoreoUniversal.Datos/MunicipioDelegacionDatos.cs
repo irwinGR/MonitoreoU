@@ -19,7 +19,7 @@ namespace MonitoreoUniversal.Datos
             DataTable dt = new DataTable();
             try
             {
-                using (connection = Conexion.ObtieneConexion("BDConexion"))
+                using (connection = Conexion.ObtieneConexion("ConexionBD"))
                 {
                     SqlDataReader consulta;
                     connection.Open();
