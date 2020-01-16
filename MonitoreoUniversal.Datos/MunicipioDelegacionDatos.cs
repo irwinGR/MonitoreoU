@@ -142,7 +142,7 @@ namespace MonitoreoUniversal.Datos
 
                     var parametros = new[]
                     {
-                        ParametroAcceso.CrearParametro("@idMunicipioDelegacion",SqlDbType.Int,municipioDelegacion.idMunicipioDelegacion,ParameterDirection.Input)
+                        ParametroAcceso.CrearParametro("@idMenucipioDelegacion",SqlDbType.Int,municipioDelegacion.idMunicipioDelegacion,ParameterDirection.Input)
                     };
 
                     consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Administracion.EliminarMenucipioDelegacionSP", parametros);

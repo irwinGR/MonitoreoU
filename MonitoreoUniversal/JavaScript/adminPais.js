@@ -76,6 +76,7 @@ function initEvent() {
 
                 $("#btnGuardar").click(function () {
                     guardarPais();
+                    $('#btnGuardar').unbind("click");
                 });
             });
         });
@@ -98,71 +99,74 @@ function initEvent() {
     $("#btnDelete").click(function () {
         var row = $('#dtPais').DataTable().row('.selected').data();
 
-        swal({
-            title: 'Estas seguro que deseas eliminar el Pais ' + row.descripcion + '?',
-            text: "No podras revertir la acción realizada",
-            type: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#0CC27E',
-            cancelButtonColor: '#FF586B',
-            confirmButtonText: 'Sí, ¡Deseo eliminar!',
-            cancelButtonText: 'No, ¡Cancelar!',
-            confirmButtonClass: 'btn btn-success btn-raised mr-5',
-            cancelButtonClass: 'btn btn-danger btn-raised',
-            buttonsStyling: false
-        }).then(function () {
+        if (row) {
+            swal({
+                title: 'Estas seguro que deseas eliminar el Pais ' + row.descripcion + '?',
+                text: "No podras revertir la acción realizada",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#0CC27E',
+                cancelButtonColor: '#FF586B',
+                confirmButtonText: 'Sí, ¡Deseo eliminar!',
+                cancelButtonText: 'No, ¡Cancelar!',
+                confirmButtonClass: 'btn btn-success btn-raised mr-5',
+                cancelButtonClass: 'btn btn-danger btn-raised',
+                buttonsStyling: false
+            }).then(function () {
 
-            var json = {
-                paises: {
-                    idPais: row.idPais
-                }
-            };
-
-            $.ajax({
-                type: 'POST',
-                url: '../Service.svc/EliminarPaises',
-                dataType: 'json',
-                contentType: 'application/json; charset=utf-8',
-                data: JSON.stringify(json),
-                success: function (data) {
-                    if (data.result) {
-                        swal('¡Éxito!', 'Se ha eliminado el Pais seleccionado.', 'success');
-
-                        $('#divCrear').hide('fast', function () {
-                            $('#divPaises').show('fast', function () {
-                                $('#formPaises')[0].reset();
-                                $('#btnGuardar').prop("disabled", false);
-                                $('#formPaises').bootstrapValidator('destroy');
-
-                                otable.clear().draw();
-                                otable.destroy();
-                                initDataTable();
-
-                                $('#dtPais tbody').on(
-                                    'click',
-                                    'tr',
-                                    function () {
-                                        if ($(this).hasClass('selected')) {
-                                            $(this).removeClass('selected');
-                                        } else {
-                                            $('#dtPais').DataTable().$('tr.selected').removeClass(
-                                                'selected');
-                                            $(this).addClass('selected');
-                                        }
-                                    });
-
-                            });
-                        });
-
-                    } else {
-                        swal("Error!", "Surgio un error al eliminar el Pais", "error");
+                var json = {
+                    paises: {
+                        idPais: row.idPais
                     }
-                }
-            });
-        }, function (dismiss) {
+                };
 
-        })
-    })
+                $.ajax({
+                    type: 'POST',
+                    url: '../Service.svc/EliminarPaises',
+                    dataType: 'json',
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify(json),
+                    success: function (data) {
+                        if (data.result) {
+                            swal('¡Éxito!', 'Se ha eliminado el Pais seleccionado.', 'success');
+
+                            $('#divCrear').hide('fast', function () {
+                                $('#divPaises').show('fast', function () {
+                                    $('#formPaises')[0].reset();
+                                    $('#btnGuardar').prop("disabled", false);
+                                    $('#formPaises').bootstrapValidator('destroy');
+
+                                    otable.clear().draw();
+                                    otable.destroy();
+                                    initDataTable();
+
+                                    $('#dtPais tbody').on(
+                                        'click',
+                                        'tr',
+                                        function () {
+                                            if ($(this).hasClass('selected')) {
+                                                $(this).removeClass('selected');
+                                            } else {
+                                                $('#dtPais').DataTable().$('tr.selected').removeClass(
+                                                    'selected');
+                                                $(this).addClass('selected');
+                                            }
+                                        });
+
+                                });
+                            });
+
+                        } else {
+                            swal("Error!", "Surgio un error al eliminar el Pais", "error");
+                        }
+                    }
+                });
+            }, function (dismiss) {
+            });
+        } else {
+            swal("Advertencia!", "debes seleccionar un registro", "warning");
+        }
+    });
 
 }
 function bootsVal() {
@@ -259,9 +263,14 @@ function editarPais() {
                             }
                         });
                     }
+
+                    $('#btnGuardar').unbind("click");
+
                 });
             });
         });
+    } else {
+        swal("Advertencia!", "debes seleccionar un registro", "warning");
     }
 }
 function guardarPais() {

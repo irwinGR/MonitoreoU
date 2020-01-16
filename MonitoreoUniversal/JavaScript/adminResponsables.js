@@ -77,6 +77,7 @@ function initEvent() {
                 $('#nombreResponsables').html('<b>Registro de responsable </b>');
                 $("#btnGuardar").click(function () {
                     guardarResponsable();
+                    $('#btnGuardar').unbind("click");
                 });
             });
         });
@@ -99,7 +100,9 @@ function initEvent() {
     $("#btnDelete").click(function () {
         var row = $('#dtResponsables').DataTable().row('.selected').data();
 
-        swal({
+        if (row) {
+
+            swal({
             title: 'Estas seguro que deseas eliminar el responsable ' + row.nombre + '?',
             text: "No podras revertir la acción realizada",
             type: 'warning',
@@ -162,8 +165,11 @@ function initEvent() {
             });
         }, function (dismiss) {
 
-        })
-    })
+            });
+        } else {
+            swal("Advertencia!", "debes seleccionar un registro", "warning");
+        }
+    });
 
 }
 function bootsVal() {
@@ -305,9 +311,12 @@ function editarResponsables() {
                             }
                         });
                     }
+                    $('#btnGuardar').unbind("click");
                 });
             });
         });
+    } else {
+        swal("Advertencia!", "debes seleccionar un registro", "warning");
     }
 }
 function guardarResponsable() {

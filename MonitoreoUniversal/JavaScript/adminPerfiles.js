@@ -76,6 +76,7 @@ function initEvent() {
 
                 $("#btnGuardar").click(function () {
                     guardarPerfil();
+                    $('#btnGuardar').unbind("click");
                  });
             });
         });  
@@ -97,72 +98,75 @@ function initEvent() {
 
     $("#btnDelete").click(function () {
         var row = $('#dtPerfil').DataTable().row('.selected').data();
+        if (row) { 
+            swal({
+                title: 'Estas seguro que deseas eliminar el perfil ' + row.descripcion + '?',
+                text: "No podras revertir la acción realizada",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#0CC27E',
+                cancelButtonColor: '#FF586B',
+                confirmButtonText: 'Sí, ¡Deseo eliminar!',
+                cancelButtonText: 'No, ¡Cancelar!',
+                confirmButtonClass: 'btn btn-success btn-raised mr-5',
+                cancelButtonClass: 'btn btn-danger btn-raised',
+                buttonsStyling: false
+            }).then(function () {
 
-        swal({
-            title: 'Estas seguro que deseas eliminar el perfil ' + row.descripcion + '?',
-            text: "No podras revertir la acción realizada",
-            type: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#0CC27E',
-            cancelButtonColor: '#FF586B',
-            confirmButtonText: 'Sí, ¡Deseo eliminar!',
-            cancelButtonText: 'No, ¡Cancelar!',
-            confirmButtonClass: 'btn btn-success btn-raised mr-5',
-            cancelButtonClass: 'btn btn-danger btn-raised',
-            buttonsStyling: false
-        }).then(function () {
-
-            var json = {
-                perfiles: {
-                    idPerfil: row.idPerfil
-                }
-            };
-
-            $.ajax({
-                type: 'POST',
-                url: '../Service.svc/EliminarPerfil',
-                dataType: 'json',
-                contentType: 'application/json; charset=utf-8',
-                data: JSON.stringify(json),
-                success: function (data) {
-                    if (data.result) {
-                        swal('¡Éxito!', 'Se ha eliminado el perfil seleccionado.', 'success');
-
-                        $('#divCrear').hide('fast', function () {
-                            $('#divPerfiles').show('fast', function () {
-                                $('#formPerfiles')[0].reset();
-                                $('#btnGuardar').prop("disabled", false);
-                                $('#formPerfiles').bootstrapValidator('destroy');
-
-                                otable.clear().draw();
-                                otable.destroy();
-                                initDataTable();
-
-                                $('#dtPerfil tbody').on(
-                                    'click',
-                                    'tr',
-                                    function () {
-                                        if ($(this).hasClass('selected')) {
-                                            $(this).removeClass('selected');
-                                        } else {
-                                            $('#dtPerfil').DataTable().$('tr.selected').removeClass(
-                                                'selected');
-                                            $(this).addClass('selected');
-                                        }
-                                    });
-
-                            });
-                        });
-
-                    } else {
-                        swal("Error!", "Surgio un error al eliminar el perfil", "error");
+                var json = {
+                    perfiles: {
+                        idPerfil: row.idPerfil
                     }
-                }
+                };
+
+                $.ajax({
+                    type: 'POST',
+                    url: '../Service.svc/EliminarPerfil',
+                    dataType: 'json',
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify(json),
+                    success: function (data) {
+                        if (data.result) {
+                            swal('¡Éxito!', 'Se ha eliminado el perfil seleccionado.', 'success');
+
+                            $('#divCrear').hide('fast', function () {
+                                $('#divPerfiles').show('fast', function () {
+                                    $('#formPerfiles')[0].reset();
+                                    $('#btnGuardar').prop("disabled", false);
+                                    $('#formPerfiles').bootstrapValidator('destroy');
+
+                                    otable.clear().draw();
+                                    otable.destroy();
+                                    initDataTable();
+
+                                    $('#dtPerfil tbody').on(
+                                        'click',
+                                        'tr',
+                                        function () {
+                                            if ($(this).hasClass('selected')) {
+                                                $(this).removeClass('selected');
+                                            } else {
+                                                $('#dtPerfil').DataTable().$('tr.selected').removeClass(
+                                                    'selected');
+                                                $(this).addClass('selected');
+                                            }
+                                        });
+
+                                });
+                            });
+
+                        } else {
+                            swal("Error!", "Surgio un error al eliminar el perfil", "error");
+                        }
+                    }
+                });
+            }, function (dismiss) {
+
             });
-        }, function (dismiss) {
-            
-        })
-    })
+        } else {
+            swal("Advertencia!", "debes seleccionar un registro", "warning");
+        }
+    });
     
 }
 function bootsVal() {
@@ -183,7 +187,6 @@ function bootsVal() {
         }
     });
 }
-
 function editarPerfil() {
 
     var row = $('#dtPerfil').DataTable().row('.selected').data();
@@ -259,9 +262,13 @@ function editarPerfil() {
                             }
                         });
                     }
+
+                    $('#btnGuardar').unbind("click");
                 });
             });
         });
+    } else {
+        swal("Advertencia!", "debes seleccionar un registro", "warning");
     }
 }
 function guardarPerfil() {

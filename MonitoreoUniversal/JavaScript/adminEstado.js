@@ -77,6 +77,8 @@ function initEvent() {
 
                 $("#btnGuardar").click(function () {
                     guardarEstado();
+                    $('#btnGuardar').unbind("click");
+
                 });
             });
         });
@@ -99,70 +101,76 @@ function initEvent() {
     $("#btnDelete").click(function () {
         var row = $('#dtEstado').DataTable().row('.selected').data();
 
-        swal({
-            title: 'Estas seguro que deseas eliminar el Pais ' + row.descripcion + '?',
-            text: "No podras revertir la acción realizada",
-            type: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#0CC27E',
-            cancelButtonColor: '#FF586B',
-            confirmButtonText: 'Sí, ¡Deseo eliminar!',
-            cancelButtonText: 'No, ¡Cancelar!',
-            confirmButtonClass: 'btn btn-success btn-raised mr-5',
-            cancelButtonClass: 'btn btn-danger btn-raised',
-            buttonsStyling: false
-        }).then(function () {
+        if (row) {
 
-            var json = {
-                estados: {
-                    idEstado: row.idEstado
-                }
-            };
+            swal({
+                title: 'Estas seguro que deseas eliminar el Pais ' + row.descripcion + '?',
+                text: "No podras revertir la acción realizada",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#0CC27E',
+                cancelButtonColor: '#FF586B',
+                confirmButtonText: 'Sí, ¡Deseo eliminar!',
+                cancelButtonText: 'No, ¡Cancelar!',
+                confirmButtonClass: 'btn btn-success btn-raised mr-5',
+                cancelButtonClass: 'btn btn-danger btn-raised',
+                buttonsStyling: false
+            }).then(function () {
 
-            $.ajax({
-                type: 'POST',
-                url: '../Service.svc/EliminarEstados',
-                dataType: 'json',
-                contentType: 'application/json; charset=utf-8',
-                data: JSON.stringify(json),
-                success: function (data) {
-                    if (data.result) {
-                        swal('¡Éxito!', 'Se ha eliminado el Pais seleccionado.', 'success');
-
-                        $('#divCrear').hide('fast', function () {
-                            $('#divEstados').show('fast', function () {
-                                $('#formEstados')[0].reset();
-                                $('#btnGuardar').prop("disabled", false);
-                                $('#formEstados').bootstrapValidator('destroy');
-
-                                otable.clear().draw();
-                                otable.destroy();
-                                initDataTable();
-
-                                $('#dtEstado tbody').on(
-                                    'click',
-                                    'tr',
-                                    function () {
-                                        if ($(this).hasClass('selected')) {
-                                            $(this).removeClass('selected');
-                                        } else {
-                                            $('#dtEstado').DataTable().$('tr.selected').removeClass(
-                                                'selected');
-                                            $(this).addClass('selected');
-                                        }
-                                    });
-
-                            });
-                        });
-
-                    } else {
-                        swal("Error!", "Surgio un error al eliminar el Pais", "error");
+                var json = {
+                    estados: {
+                        idEstado: row.idEstado
                     }
-                }
-            });
-        }, function (dismiss) {
+                };
 
-        })
+                $.ajax({
+                    type: 'POST',
+                    url: '../Service.svc/EliminarEstados',
+                    dataType: 'json',
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify(json),
+                    success: function (data) {
+                        if (data.result) {
+                            swal('¡Éxito!', 'Se ha eliminado el Pais seleccionado.', 'success');
+
+                            $('#divCrear').hide('fast', function () {
+                                $('#divEstados').show('fast', function () {
+                                    $('#formEstados')[0].reset();
+                                    $('#btnGuardar').prop("disabled", false);
+                                    $('#formEstados').bootstrapValidator('destroy');
+
+                                    otable.clear().draw();
+                                    otable.destroy();
+                                    initDataTable();
+
+                                    $('#dtEstado tbody').on(
+                                        'click',
+                                        'tr',
+                                        function () {
+                                            if ($(this).hasClass('selected')) {
+                                                $(this).removeClass('selected');
+                                            } else {
+                                                $('#dtEstado').DataTable().$('tr.selected').removeClass(
+                                                    'selected');
+                                                $(this).addClass('selected');
+                                            }
+                                        });
+
+                                });
+                            });
+
+                        } else {
+                            swal("Error!", "Surgio un error al eliminar el Pais", "error");
+                        }
+                    }
+                });
+            }, function (dismiss) {
+
+            });
+
+        } else {
+            swal("Advertencia!", "debes seleccionar un registro", "warning");
+        }
     });
 
     $.ajax({
@@ -290,9 +298,14 @@ function editarEstado() {
                             }
                         });
                     }
+
+                    $('#btnGuardar').unbind("click");
+
                 });
             });
         });
+    } else {
+        swal("Advertencia!", "debes seleccionar un registro", "warning");
     }
 }
 function guardarEstado() {

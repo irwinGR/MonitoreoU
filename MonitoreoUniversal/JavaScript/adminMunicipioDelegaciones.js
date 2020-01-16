@@ -76,6 +76,8 @@ function initEvent() {
 
                 $("#btnGuardar").click(function () {
                     guardarMunicipiosDelegaciones();
+                    $('#btnGuardar').unbind("click");
+
                 });
             });
         });
@@ -97,7 +99,7 @@ function initEvent() {
 
     $("#btnDelete").click(function () {
         var row = $('#dtMunicipiosDelegaciones').DataTable().row('.selected').data();
-
+        if (row) {
         swal({
             title: 'Estas seguro que deseas eliminar el Municipio/Delegacion ' + row.descripcion + '?',
             text: "No podras revertir la acción realizada",
@@ -161,7 +163,11 @@ function initEvent() {
             });
         }, function (dismiss) {
 
-        });
+            });
+
+        } else {
+            swal("Advertencia!", "debes seleccionar un registro", "warning");
+        }
     });
 
     $.ajax({
@@ -327,9 +333,12 @@ function editarMunicipiosDelegaciones() {
                             }
                         });
                     }
+                    $('#btnGuardar').unbind("click");
                 });
             });
         });
+    } else {
+        swal("Advertencia!", "debes seleccionar un registro", "warning");
     }
 }
 function guardarMunicipiosDelegaciones() {
