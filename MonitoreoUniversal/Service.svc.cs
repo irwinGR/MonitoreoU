@@ -1293,6 +1293,80 @@ namespace MonitoreoUniversal
 
         #endregion
 
+        #region Métodos - Credenciales
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/getAllCredencialesAcceso", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public List<CredencialesAcceso> getAllCredencialesAcceso(string nombreUsuario)
+        {
+            List<CredencialesAcceso> list = new List<CredencialesAcceso>();
+            try
+            {
+                list = credencialesAccesoNegocio.getAllCredencialesAcceso(nombreUsuario);
+            }
+            catch (Exception e)
+            {
+            }
+            return list;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/registrarCredencialesAcceso", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean registrarCredencialesAcceso(CredencialesAcceso credencialesAcceso)
+        {
+            bool result = false;
+            try
+            {
+                result = credencialesAccesoNegocio.registrarCredencialesAcceso(credencialesAcceso);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/editarCredencialesAcceso", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean editarCredencialesAcceso(CredencialesAcceso credencialesAcceso)
+        {
+            bool result = false;
+            try
+            {
+                result = credencialesAccesoNegocio.editarCredencialesAcceso(credencialesAcceso);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/eliminarCredencialesAcceso", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public Boolean eliminarCredencialesAcceso(CredencialesAcceso credencialesAcceso)
+        {
+            bool result = false;
+            try
+            {
+                result = credencialesAccesoNegocio.eliminarCredencialesAcceso(credencialesAcceso);
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        #endregion
+
         [OperationContract]
         [WebGet(UriTemplate = "/GetUsuarios", ResponseFormat = WebMessageFormat.Json)]
         public List<Usuarios> getAllUsuarios()
