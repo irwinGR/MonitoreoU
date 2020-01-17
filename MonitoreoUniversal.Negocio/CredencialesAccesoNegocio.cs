@@ -11,9 +11,9 @@ namespace MonitoreoUniversal.Negocio
     public class CredencialesAccesoNegocio
     {
         CredencialesAccesoDatos credecialesAccesoDatos = new CredencialesAccesoDatos();
-        public List<CredencialesAcceso> getAllCredencialesAcceso()
+        public List<CredencialesAcceso> getAllCredencialesAcceso(string nombreUsuario)
         {
-            return credecialesAccesoDatos.getAllCredencialesAcceso();
+            return credecialesAccesoDatos.getAllCredencialesAcceso(nombreUsuario);
         }
         public Boolean registrarCredencialesAcceso(CredencialesAcceso credencialesAcceso)
         {
