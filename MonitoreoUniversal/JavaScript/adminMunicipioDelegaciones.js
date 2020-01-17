@@ -72,8 +72,8 @@ function initEvent() {
     $("#btnPlus").click(function () {
         $('#divMunicipiosDelegaciones').hide('fast', function () {
             $('#divCrear').show('fast', function () {
-                $('#nombreMunicipiosDelegaciones').html('<b>Registro de Municipio/Delegacion </b>');
-
+                $('#nombreMunicipiosDelegaciones').html('<b>Registro de Municipio/Delegación </b>');
+                x
                 $("#btnGuardar").click(function () {
                     guardarMunicipiosDelegaciones();
                     $('#btnGuardar').unbind("click");
@@ -85,6 +85,7 @@ function initEvent() {
 
     $("#btnCancelar").click(function () {
         $('#divCrear').hide('fast', function () {
+            $('#formMunicipiosDelegaciones').bootstrapValidator('destroy');
             $('#divMunicipiosDelegaciones').show('fast', function () {
                 $('#formMunicipiosDelegaciones')[0].reset();
             });
@@ -101,8 +102,8 @@ function initEvent() {
         var row = $('#dtMunicipiosDelegaciones').DataTable().row('.selected').data();
         if (row) {
         swal({
-            title: 'Estas seguro que deseas eliminar el Municipio/Delegacion ' + row.descripcion + '?',
-            text: "No podras revertir la acción realizada",
+            title: '¿Estás seguro que deseas eliminar el Municipio/Delegación ' + row.descripcion + '?',
+            text: "No podrás revertir la acción realizada",
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#0CC27E',
@@ -128,7 +129,7 @@ function initEvent() {
                 data: JSON.stringify(json),
                 success: function (data) {
                     if (data.result) {
-                        swal('¡Éxito!', 'Se ha eliminado el Municipio/Delegacion seleccionado.', 'success');
+                        swal('¡Éxito!', 'Se ha eliminado el Municipio/Delegación seleccionado.', 'success');
 
                         $('#divCrear').hide('fast', function () {
                             $('#divMunicipiosDelegaciones').show('fast', function () {
@@ -157,7 +158,7 @@ function initEvent() {
                         });
 
                     } else {
-                        swal("Error!", "Surgio un error al eliminar el Municipio/Delegacion", "error");
+                        swal("¡Error!", "Surgió un error al eliminar el Municipio/Delegación", "error");
                     }
                 }
             });
@@ -166,7 +167,7 @@ function initEvent() {
             });
 
         } else {
-            swal("Advertencia!", "debes seleccionar un registro", "warning");
+            swal("¡Advertencia!", "Debes seleccionar un registro", "warning");
         }
     });
 
@@ -209,7 +210,14 @@ function bootsVal() {
                 selector: '#nombre',
                 validators: {
                     notEmpty: {
-                        message: 'El nombre de Municipio/Delegacion es obligatorio.'
+                        message: 'El nombre de Municipio/Delegación es obligatorio.',
+                        callback: function (value, validator) {
+                            if (value === "0") {
+                                return false;
+                            } else {
+                                return true;
+                            }
+                        }
                     }
                 }
             },
@@ -218,7 +226,7 @@ function bootsVal() {
                 group: '.col-md-4',
                 validators: {
                     callback: {
-                        message: 'El estado es obligatorio',
+                        message: 'El Estado es obligatorio',
                         callback: function (value, validator) {
                             if (value === "0") {
                                 return false;
@@ -235,7 +243,7 @@ function bootsVal() {
                 group: '.col-md-4',
                 validators: {
                     callback: {
-                        message: 'El pais es obligatorio',
+                        message: 'El País es obligatorio',
                         callback: function (value, validator) {
                             if (value === "0") {
                                 return false;
@@ -262,7 +270,7 @@ function editarMunicipiosDelegaciones() {
 
         $('#divMunicipiosDelegaciones').hide('fast', function () {
             $('#divCrear').show('fast', function () {
-                $('#nombreMunicipiosDelegaciones').html('<b>Edicion de Municipio/Delegacion:' + row.descripcion + ' </b>');
+                $('#nombreMunicipiosDelegaciones').html('<b>Edición de Municipio/Delegación: ' + row.descripcion + ' </b>');
 
                 $("#btnGuardar").click(function () {
                     bootsVal();
@@ -292,8 +300,8 @@ function editarMunicipiosDelegaciones() {
                             success: function (data) {
                                 if (data.result) {
                                     swal({
-                                        title: 'Exito',
-                                        text: "Se actualizo correctamente el Pais",
+                                        title: '¡Éxito!',
+                                        text: "Se actualizó correctamente el Municipio/Delegación",
                                         type: 'success',
                                         confirmButtonColor: '#0CC27E',
                                         cancelButtonColor: '#FF586B',
@@ -328,7 +336,7 @@ function editarMunicipiosDelegaciones() {
                                         }
                                     }).catch(swal.noop);
                                 } else {
-                                    swal("Error!", "Surgio un error al actualizar el Municipio/Delegacion", "error");
+                                    swal("¡Error!", "Surgió un error al actualizar el Municipio/Delegación", "error");
                                 }
                             }
                         });
@@ -338,7 +346,7 @@ function editarMunicipiosDelegaciones() {
             });
         });
     } else {
-        swal("Advertencia!", "debes seleccionar un registro", "warning");
+        swal("¡Advertencia!", "Debes seleccionar un registro", "warning");
     }
 }
 function guardarMunicipiosDelegaciones() {
@@ -368,8 +376,8 @@ function guardarMunicipiosDelegaciones() {
             success: function (data) {
                 if (data.result) {
                     swal({
-                        title: 'Exito',
-                        text: "Se registro correctamente el Pais",
+                        title: '¡Éxito!',
+                        text: "Se registró correctamente el Municipio/Delegación",
                         type: 'success',
                         confirmButtonColor: '#0CC27E',
                         cancelButtonColor: '#FF586B',
@@ -404,7 +412,7 @@ function guardarMunicipiosDelegaciones() {
                         }
                     }).catch(swal.noop);
                 } else {
-                    swal("Error!", "Surgio un error al guardar el Municipio/Delegacion", "error");
+                    swal("¡Error!", "Surgió un error al guardar el Municipio/Delegación", "error");
                 }
             }
         });

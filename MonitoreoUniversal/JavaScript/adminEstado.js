@@ -73,7 +73,7 @@ function initEvent() {
     $("#btnPlus").click(function () {
         $('#divEstados').hide('fast', function () {
             $('#divCrear').show('fast', function () {
-                $('#nombrePais').html('<b>Registro de pais </b>');
+                $('#nombreEstado').html('<b>Registro de Estado </b>');
 
                 $("#btnGuardar").click(function () {
                     guardarEstado();
@@ -86,8 +86,10 @@ function initEvent() {
 
     $("#btnCancelar").click(function () {
         $('#divCrear').hide('fast', function () {
+            $('#formEstados').bootstrapValidator('destroy');
             $('#divEstados').show('fast', function () {
                 $('#formEstados')[0].reset();
+                
             });
         });
     });
@@ -104,8 +106,8 @@ function initEvent() {
         if (row) {
 
             swal({
-                title: 'Estas seguro que deseas eliminar el Pais ' + row.descripcion + '?',
-                text: "No podras revertir la acción realizada",
+                title: '¿Estás seguro que deseas eliminar el Estado ' + row.descripcion + '?',
+                text: "No podrás revertir la acción realizada",
                 type: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#0CC27E',
@@ -131,7 +133,7 @@ function initEvent() {
                     data: JSON.stringify(json),
                     success: function (data) {
                         if (data.result) {
-                            swal('¡Éxito!', 'Se ha eliminado el Pais seleccionado.', 'success');
+                            swal('¡Éxito!', 'Se ha eliminado el Estado seleccionado.', 'success');
 
                             $('#divCrear').hide('fast', function () {
                                 $('#divEstados').show('fast', function () {
@@ -160,7 +162,7 @@ function initEvent() {
                             });
 
                         } else {
-                            swal("Error!", "Surgio un error al eliminar el Pais", "error");
+                            swal("¡Error!", "Surgió un error al eliminar el Estado", "error");
                         }
                     }
                 });
@@ -169,7 +171,7 @@ function initEvent() {
             });
 
         } else {
-            swal("Advertencia!", "debes seleccionar un registro", "warning");
+            swal("¡Advertencia!", "Debes seleccionar un registro", "warning");
         }
     });
 
@@ -194,7 +196,7 @@ function bootsVal() {
                 selector: '#nombre',
                 validators: {
                     notEmpty: {
-                        message: 'El nombre de proyecto  es obligatorio.'
+                        message: 'El nombre del Estado es obligatorio.'
                     }
                 }
             },
@@ -203,7 +205,7 @@ function bootsVal() {
                 group: '.col-md-4',
                 validators: {
                     callback: {
-                        message: 'El pais es obligatorio',
+                        message: 'El País es obligatorio',
                         callback: function (value, validator) {
                             if (value === "0") {
                                 return false;
@@ -230,7 +232,7 @@ function editarEstado() {
 
         $('#divEstados').hide('fast', function () {
             $('#divCrear').show('fast', function () {
-                $('#nombrePais').html('<b>Edicion de Pais:' + row.descripcion + ' </b>');
+                $('#nombreEstado').html('<b>Edición de Estado: ' + row.descripcion + ' </b>');
 
                 $("#btnGuardar").click(function () {
                     bootsVal();
@@ -257,8 +259,8 @@ function editarEstado() {
                             success: function (data) {
                                 if (data.result) {
                                     swal({
-                                        title: 'Exito',
-                                        text: "Se actualizo correctamente el Pais",
+                                        title: '¡Éxito!',
+                                        text: "Se actualizó correctamente el Estado",
                                         type: 'success',
                                         confirmButtonColor: '#0CC27E',
                                         cancelButtonColor: '#FF586B',
@@ -293,7 +295,7 @@ function editarEstado() {
                                         }
                                     }).catch(swal.noop);
                                 } else {
-                                    swal("Error!", "Surgio un error al actualizar el Pais", "error");
+                                    swal("¡Error!", "Surgió un error al actualizar el Estado", "error");
                                 }
                             }
                         });
@@ -305,7 +307,7 @@ function editarEstado() {
             });
         });
     } else {
-        swal("Advertencia!", "debes seleccionar un registro", "warning");
+        swal("¡Advertencia!", "Debes seleccionar un registro", "warning");
     }
 }
 function guardarEstado() {
@@ -332,8 +334,8 @@ function guardarEstado() {
             success: function (data) {
                 if (data.result) {
                     swal({
-                        title: 'Exito',
-                        text: "Se registro correctamente el Pais",
+                        title: '¡Éxito!',
+                        text: "Se registró correctamente el Estado",
                         type: 'success',
                         confirmButtonColor: '#0CC27E',
                         cancelButtonColor: '#FF586B',
@@ -368,7 +370,7 @@ function guardarEstado() {
                         }
                     }).catch(swal.noop);
                 } else {
-                    swal("Error!", "Surgio un error al guardar el Pais", "error");
+                    swal("¡Error!", "Surgió un error al guardar el Estado", "error");
                 }
             }
         });

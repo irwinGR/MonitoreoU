@@ -14,7 +14,7 @@
             <div class="col-12">
                  <div class="card">
                     <div class="card-header ">
-                        <h1><b><i class="fa ft-compass"></i> Paises</b></h1>
+                        <h1><b><i class="fa ft-compass"></i> Países</b></h1>
 
                         <div class="form-actions">
                             <button id="btnPlus" type="button"
@@ -52,7 +52,7 @@
                                                     placeholder="Nombre" autocomplete="off" /></th>
 
                                             <tr>
-                                                <th style="width: auto">Id Pais</th>
+                                                <th style="width: auto">Id País</th>
                                                 <th style="width: auto">Nombre</th>
                                             </tr>
                                     </thead>
