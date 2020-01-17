@@ -14,7 +14,7 @@
             <div class="col-12">
                  <div class="card">
                     <div class="card-header">
-                        <h1><b><i class="fa fa-user"></i> Municipios/Delegaciones</b></h1>
+                        <h1><b><i class="fa fa-university"></i> Municipios/Delegaciones</b></h1>
 
                         <div class="widget-body-toolbar">
                             <button id="btnPlus" type="button"
@@ -60,10 +60,10 @@
                                                     placeholder="Pais" autocomplete="off" /></th>
 
                                             <tr>
-                                                <th style="width: auto">idMunicipioDelegacion</th>
+                                                <th style="width: auto">idMunicipio/Delegación</th>
                                                 <th style="width: auto">Nombre</th>
                                                 <th style="width: auto">Estado</th>
-                                                <th style="width: auto">Pais</th>
+                                                <th style="width: auto">País</th>
                                            </tr>
                                     </thead>
                                 </table>

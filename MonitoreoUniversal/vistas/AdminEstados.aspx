@@ -61,7 +61,7 @@
                                             <tr>
                                                 <th style="width: auto">Id Estado</th>
                                                 <th style="width: auto">Nombre</th>
-                                                <th style="width: auto">Pais</th>
+                                                <th style="width: auto">País</th>
 
                                             </tr>
                                     </thead>

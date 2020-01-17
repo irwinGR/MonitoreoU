@@ -126,10 +126,10 @@
                       <a href="AdminPais.aspx" class="menu-item">Paises</a>
                   </li>   
                   <li>
-                      <a href="AdminEstados.aspx" class="menu-item">Estados</a>
+                      <a href="AdminEstados.aspx"><i class="fa ft-compass"></i><span data-i18n="" class="menu-item">Estados</span></a>
                   </li>  
                   <li>
-                      <a href="AdminMunicipio.aspx" class="menu-item">Municipios/Delegaciones</a>
+                      <a href="AdminMunicipio.aspx"><i class="fa fa-university"></i><span data-i18n="" class="menu-item">Municipios/Delegaciones</span></a>
                   </li>    
                 </ul>
               </li>

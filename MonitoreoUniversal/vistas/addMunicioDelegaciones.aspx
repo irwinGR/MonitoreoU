@@ -12,14 +12,14 @@
 								<div class="row">
 									<div class="col-md-4">
 										<fieldset class="form-group">
-											<label for="basicInput">* Nombre del municipio o delegacion</label>
+											<label for="basicInput">* Nombre del municipio o delegación</label>
 											<input type="text" class="form-control" id="nombre" name="nombre" required>
 										</fieldset>
 									</div>
                                     <div class="col-md-4">
 										<fieldset class="form-group">
 											<label for="basicInput">* Pais</label>
-											<select class="form-control" id="pais" name="pais"></select>
+											<select class="form-control" id="pais" name="país"></select>
 										</fieldset>
 									</div>
                                     <div class="col-md-4">

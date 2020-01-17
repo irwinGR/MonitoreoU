@@ -72,7 +72,7 @@ function initEvent() {
     $("#btnPlus").click(function () {
         $('#divPaises').hide('fast', function () {
             $('#divCrear').show('fast', function () {
-                $('#nombrePais').html('<b>Registro de pais </b>');
+                $('#nombrePais').html('<b>Registro de País </b>');
 
                 $("#btnGuardar").click(function () {
                     guardarPais();
@@ -84,8 +84,10 @@ function initEvent() {
 
     $("#btnCancelar").click(function () {
         $('#divCrear').hide('fast', function () {
+            $('#formPaises').bootstrapValidator('destroy');
             $('#divPaises').show('fast', function () {
                 $('#formPaises')[0].reset();
+                
             });
         });
     });
@@ -101,8 +103,8 @@ function initEvent() {
 
         if (row) {
             swal({
-                title: 'Estas seguro que deseas eliminar el Pais ' + row.descripcion + '?',
-                text: "No podras revertir la acción realizada",
+                title: '¿Estás seguro que deseas eliminar el País ' + row.descripcion + '?',
+                text: "No podrás revertir la acción realizada",
                 type: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#0CC27E',
@@ -128,7 +130,7 @@ function initEvent() {
                     data: JSON.stringify(json),
                     success: function (data) {
                         if (data.result) {
-                            swal('¡Éxito!', 'Se ha eliminado el Pais seleccionado.', 'success');
+                            swal('¡Éxito!', 'Se ha eliminado el País seleccionado.', 'success');
 
                             $('#divCrear').hide('fast', function () {
                                 $('#divPaises').show('fast', function () {
@@ -157,14 +159,14 @@ function initEvent() {
                             });
 
                         } else {
-                            swal("Error!", "Surgio un error al eliminar el Pais", "error");
+                            swal("¡Error!", "Surgió un error al eliminar el País", "error");
                         }
                     }
                 });
             }, function (dismiss) {
             });
         } else {
-            swal("Advertencia!", "debes seleccionar un registro", "warning");
+            swal("¡Advertencia!", "Debes seleccionar un registro", "warning");
         }
     });
 
@@ -180,7 +182,7 @@ function bootsVal() {
                 selector: '#nombre',
                 validators: {
                     notEmpty: {
-                        message: 'El nombre de proyecto  es obligatorio.'
+                        message: 'El nombre de País es obligatorio.'
                     }
                 }
             }
@@ -198,7 +200,7 @@ function editarPais() {
 
         $('#divPaises').hide('fast', function () {
             $('#divCrear').show('fast', function () {
-                $('#nombrePais').html('<b>Edicion de Pais:' + row.descripcion + ' </b>');
+                $('#nombrePais').html('<b>Edicion de País: ' + row.descripcion + ' </b>');
 
                 $("#btnGuardar").click(function () {
                     bootsVal();
@@ -222,8 +224,8 @@ function editarPais() {
                             success: function (data) {
                                 if (data.result) {
                                     swal({
-                                        title: 'Exito',
-                                        text: "Se actualizo correctamente el Pais",
+                                        title: '¡Éxito!',
+                                        text: "Se actualizó correctamente el País",
                                         type: 'success',
                                         confirmButtonColor: '#0CC27E',
                                         cancelButtonColor: '#FF586B',
@@ -258,7 +260,7 @@ function editarPais() {
                                         }
                                     }).catch(swal.noop);
                                 } else {
-                                    swal("Error!", "Surgio un error al actualizar el Pais", "error");
+                                    swal("¡Error!", "Surgió un error al actualizar el País", "error");
                                 }
                             }
                         });
@@ -270,7 +272,7 @@ function editarPais() {
             });
         });
     } else {
-        swal("Advertencia!", "debes seleccionar un registro", "warning");
+        swal("¡Advertencia!", "Debes seleccionar un registro", "warning");
     }
 }
 function guardarPais() {
@@ -294,8 +296,8 @@ function guardarPais() {
             success: function (data) {
                 if (data.result) {
                     swal({
-                        title: 'Exito',
-                        text: "Se registro correctamente el Pais",
+                        title: '¡Éxito!',
+                        text: "Se registró correctamente el País",
                         type: 'success',
                         confirmButtonColor: '#0CC27E',
                         cancelButtonColor: '#FF586B',
@@ -330,7 +332,7 @@ function guardarPais() {
                         }
                     }).catch(swal.noop);
                 } else {
-                    swal("Error!", "Surgio un error al guardar el Pais", "error");
+                    swal("¡Error!", "Surgió un error al guardar el País", "error");
                 }
             }
         });
