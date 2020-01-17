@@ -57,7 +57,7 @@
                                                 <th style="width: auto">Apellido Paterno</th>
                                                 <th style="width: auto">Apellido Materno</th>
                                                 <th style="width: auto">Correo</th>
-                                                <th style="width: auto">Telefono</th>
+                                                <th style="width: auto">Teléfono</th>
                                             </tr>
                                     </thead>
                                 </table>

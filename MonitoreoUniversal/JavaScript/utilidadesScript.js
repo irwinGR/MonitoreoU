@@ -6,7 +6,7 @@ function llenarCombo(id, data,value,text) {
     $('#' + id).empty();
     $('#' + id).append($('<option>', {
         value: 0,
-        text: "Seleccione una opcion..."
+        text: "Seleccione una opción..."
     }));
 
     $.each(data, function (i, item) {
@@ -20,7 +20,7 @@ function llenarComboxParametro(id, data,value, text) {
     $('#' + id).empty();
     $('#' + id).append($('<option>', {
         value: 0,
-        text: "Seleccione una opcion..."
+        text: "Seleccione una opción..."
     }));
 
     $.each(data.result, function (i, item) {
@@ -37,4 +37,12 @@ function soloNumeros(e) {
     if (key < 48 || key > 57) {
         e.preventDefault();
     }
+}
+
+function soloLetras(evt) {
+    var charCode = (evt.which) ? evt.which : event.keyCode
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return true;
+
+    return false;
 }

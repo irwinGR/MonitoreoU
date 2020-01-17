@@ -103,8 +103,8 @@ function initEvent() {
         if (row) {
 
             swal({
-            title: 'Estas seguro que deseas eliminar el responsable ' + row.nombre + '?',
-            text: "No podras revertir la acción realizada",
+            title: '¿Estás seguro que deseas eliminar el responsable ' + row.nombre + '?',
+            text: "No podrás revertir la acción realizada",
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#0CC27E',
@@ -159,7 +159,7 @@ function initEvent() {
                         });
 
                     } else {
-                        swal("Error!", "Surgio un error al eliminar el responsable", "error");
+                        swal("¡Error!", "Surgio un error al eliminar el responsable", "error");
                     }
                 }
             });
@@ -167,7 +167,7 @@ function initEvent() {
 
             });
         } else {
-            swal("Advertencia!", "debes seleccionar un registro", "warning");
+            swal("¡Advertencia!", "Debes seleccionar un registro", "warning");
         }
     });
 
@@ -176,7 +176,7 @@ function bootsVal() {
     $('#formResponsables').bootstrapValidator({
         live: 'enabled',
         submitButtons: 'button[id="btnGuardar"]',
-        message: 'Valor invalido',
+        message: 'Valor inválido',
         fields: {
             nombre: {
                 group: '.col-md-4',
@@ -219,7 +219,7 @@ function bootsVal() {
                 selector: '#telefono',
                 validators: {
                     notEmpty: {
-                        message: 'El telefono es obligatorio.'
+                        message: 'El teléfono es obligatorio.'
                     }
                 }
             }
@@ -270,8 +270,8 @@ function editarResponsables() {
                             success: function (data) {
                                 if (data.result) {
                                     swal({
-                                        title: 'Exito',
-                                        text: "Se actualizo correctamente el responsable",
+                                        title: '¡Éxito!',
+                                        text: "Se actualizó correctamente el responsable",
                                         type: 'success',
                                         confirmButtonColor: '#0CC27E',
                                         cancelButtonColor: '#FF586B',
@@ -306,7 +306,7 @@ function editarResponsables() {
                                         }
                                     }).catch(swal.noop);
                                 } else {
-                                    swal("Error!", "Surgio un error al actualizar el responsable", "error");
+                                    swal("¡Error!", "Surgio un error al actualizar el responsable", "error");
                                 }
                             }
                         });
@@ -316,7 +316,7 @@ function editarResponsables() {
             });
         });
     } else {
-        swal("Advertencia!", "debes seleccionar un registro", "warning");
+        swal("¡Advertencia!", "Debes seleccionar un registro", "warning");
     }
 }
 function guardarResponsable() {
@@ -344,8 +344,8 @@ function guardarResponsable() {
             success: function (data) {
                 if (data.result) {
                     swal({
-                        title: 'Exito',
-                        text: "Se registro correctamente el responsable",
+                        title: '¡Éxito!',
+                        text: "Se registró correctamente el responsable",
                         type: 'success',
                         confirmButtonColor: '#0CC27E',
                         cancelButtonColor: '#FF586B',
@@ -380,7 +380,7 @@ function guardarResponsable() {
                         }
                     }).catch(swal.noop);
                 } else {
-                    swal("Error!", "Surgio un error al guardar el responsable", "error");
+                    swal("¡Error!", "Surgio un error al guardar el responsable", "error");
                 }
             }
         });

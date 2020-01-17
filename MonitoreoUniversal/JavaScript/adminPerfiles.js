@@ -100,8 +100,8 @@ function initEvent() {
         var row = $('#dtPerfil').DataTable().row('.selected').data();
         if (row) { 
             swal({
-                title: 'Estas seguro que deseas eliminar el perfil ' + row.descripcion + '?',
-                text: "No podras revertir la acción realizada",
+                title: '¿Estás seguro que deseas eliminar el perfil ' + row.descripcion + '?',
+                text: "No podrás revertir la acción realizada",
                 type: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#0CC27E',
@@ -156,7 +156,7 @@ function initEvent() {
                             });
 
                         } else {
-                            swal("Error!", "Surgio un error al eliminar el perfil", "error");
+                            swal("¡Error!", "Surgio un error al eliminar el perfil", "error");
                         }
                     }
                 });
@@ -164,7 +164,7 @@ function initEvent() {
 
             });
         } else {
-            swal("Advertencia!", "debes seleccionar un registro", "warning");
+            swal("¡Advertencia!", "Debes seleccionar un registro", "warning");
         }
     });
     
@@ -173,14 +173,14 @@ function bootsVal() {
     $('#formPerfiles').bootstrapValidator({
         live: 'enabled',
         submitButtons: 'button[id="btnGuardar"]',
-        message: 'Valor invalido',
+        message: 'Valor inválido',
         fields: {
             nombre: {
                 group: '.col-md-4',
                 selector: '#nombre',
                 validators: {
                     notEmpty: {
-                        message: 'El nombre de proyecto  es obligatorio.'
+                        message: 'El nombre del perfil es obligatorio.'
                     }
                 }
             }
@@ -221,8 +221,8 @@ function editarPerfil() {
                             success: function (data) {
                                 if (data.result) {
                                     swal({
-                                        title: 'Exito',
-                                        text: "Se actualizo correctamente el perfil",
+                                        title: '¡Éxito!',
+                                        text: "Se actualizó correctamente el perfil",
                                         type: 'success',
                                         confirmButtonColor: '#0CC27E',
                                         cancelButtonColor: '#FF586B',
@@ -257,7 +257,7 @@ function editarPerfil() {
                                         }
                                     }).catch(swal.noop);
                                 } else {
-                                    swal("Error!", "Surgio un error al actualizar el perfil", "error");
+                                    swal("¡Error!", "Surgio un error al actualizar el perfil", "error");
                                 }
                             }
                         });
@@ -268,7 +268,7 @@ function editarPerfil() {
             });
         });
     } else {
-        swal("Advertencia!", "debes seleccionar un registro", "warning");
+        swal("¡Advertencia!", "Debes seleccionar un registro", "warning");
     }
 }
 function guardarPerfil() {
@@ -295,8 +295,8 @@ function guardarPerfil() {
             success: function (data) {
                 if (data.result) {
                     swal({
-                        title: 'Exito',
-                        text: "Se registro correctamente el perfil",
+                        title: '¡Éxito!',
+                        text: "Se registró correctamente el perfil",
                         type: 'success',
                         confirmButtonColor: '#0CC27E',
                         cancelButtonColor: '#FF586B',
@@ -331,7 +331,7 @@ function guardarPerfil() {
                         }
                     }).catch(swal.noop);
                 } else {
-                    swal("Error!", "Surgio un error al guardar el perfil", "error");
+                    swal("¡Error!", "Surgio un error al guardar el perfil", "error");
                 }
             }
         });

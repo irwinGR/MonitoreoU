@@ -27,7 +27,7 @@
 									<div class="col-md-4">
 										<fieldset class="form-group">
 											<label for="basicInput">* Apellido Materno</label>
-											<input type="text" class="form-control" id="apellidoM" name="apellidoM" required>
+											<input type="text" class="form-control" id="apellidoM" onkeypress = "return soloLetras(evet);" >
 										</fieldset>
 									</div>
 								</div>
@@ -42,8 +42,8 @@
 									</div>
 									<div class="col-md-4">
 										<fieldset class="form-group">
-											<label for="basicInput">* Telefono</label>
-											<input type="text" class="form-control" id="telefono" name="telefono" required>
+											<label for="basicInput">* Teléfono</label>
+											<input type="text" class="form-control" id="telefono" onkeypress ="return soloNumeros(event);">
 										</fieldset>
 									</div>
 								</div>

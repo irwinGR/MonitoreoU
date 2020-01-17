@@ -52,7 +52,7 @@
                                                     placeholder="Nombre" autocomplete="off" /></th>
 
                                             <tr>
-                                                <th style="width: auto">Id Perfil</th>
+                                                <th style="width: auto">idPerfil</th>
                                                 <th style="width: auto">Nombre</th>
                                             </tr>
                                     </thead>
