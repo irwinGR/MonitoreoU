@@ -15,19 +15,19 @@
 									<div class="col-md-4">
 										<fieldset class="form-group">
 											<label for="basicInput">* Nombre(s)</label>
-											<input type="text" class="form-control" id="nombre" name="nombre" required>
+											<input type="text" class="form-control" id="nombre" name="nombre" onkeypress =" return soloLetras(event);">
 										</fieldset>
 									</div>
 									<div class="col-md-4">
 										<fieldset class="form-group">
 											<label for="basicInput">* Apellido Paterno</label>
-											<input type="text" class="form-control" id="apellidoP" name="apellidoP" required>
+											<input type="text" class="form-control" id="apellidoP" name="apellidoP" onkeypress =" return soloLetras(event);">
 										</fieldset>
 									</div>
 									<div class="col-md-4">
 										<fieldset class="form-group">
 											<label for="basicInput">* Apellido Materno</label>
-											<input type="text" class="form-control" id="apellidoM" onkeypress = "return soloLetras(evet);" >
+											<input type="text" class="form-control" id="apellidoM" name="apellidoM" onkeypress = "return soloLetras(event);" >
 										</fieldset>
 									</div>
 								</div>
@@ -37,13 +37,13 @@
 									<div class="col-md-4">
 										<fieldset class="form-group">
 											<label for="basicInput">* Correo</label>
-											<input type="text" class="form-control" id="correo" name="correo" required>
+											<input type="text" class="form-control" id="correo" name="correo" onkeypress = "return soloCorreo(event); ">
 										</fieldset>
 									</div>
 									<div class="col-md-4">
 										<fieldset class="form-group">
 											<label for="basicInput">* Teléfono</label>
-											<input type="text" class="form-control" id="telefono" onkeypress ="return soloNumeros(event);">
+											<input type="text" class="form-control" id="telefono" name=telefono onkeypress ="return soloNumeros(event);">
 										</fieldset>
 									</div>
 								</div>

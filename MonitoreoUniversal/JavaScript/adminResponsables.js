@@ -1,4 +1,4 @@
-﻿var otable;
+﻿ var otable;
 $(function () {
     initDataTable();
     initEvent();

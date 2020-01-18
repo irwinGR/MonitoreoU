@@ -39,10 +39,52 @@ function soloNumeros(e) {
     }
 }
 
-function soloLetras(evt) {
-    var charCode = (evt.which) ? evt.which : event.keyCode
-    if (charCode > 31 && (charCode < 48 || charCode > 57))
-        return true;
+function soloLetras(e) 
+{
+    key=e.keyCode || e.which;
+    teclado = String.fromCharCode(key).toLocaleLowerCase();
+    letras = "abcdefghijklmnñopqrstuvwxyz"; 
+    especiales = "8-37-38-46-164";
 
-    return false;
+    teclado_especial = false;
+
+    for(var i in especiales)
+    {
+        if(key==especiales[i]){
+            teclado_especial=true;break;
+        }
+    }
+
+    if(letras.indexOf(teclado)==-1 && !teclado_especial)
+    {
+        return false;
+    }
+
+    
 }
+function soloCorreo(e)
+{
+    //EXPRESIÓN REGULAR LA CUAL VALIDA SI EL CORREO ES VALIDO O NO
+    let expresionRegular = / ^ \ w + ([\.-]?\ w+) * @\ w + ([\.-]?\ w+) * ( \.\ w {2,3}) + $ /;
+
+    //VALOR DEL CORREO QUE OBTENEMOS DESDE EL INPUT DE CORREO
+    let correo = $("#correo").val();
+
+    //SE VALIDA LA EXPRESIÓN REGULAR
+    if(expresionRegular.test(correo))
+    {
+        //SI ES VERDADERO ES VALIDO
+        console.log("Correo Válido")
+        return (true);
+
+    }
+    else{
+        //SI NO ES VALIDO ENTONCES NO ES INVALIDO Y EL CORREO ES INCORRECTO
+        console.log("Correo Inválido");
+        return (false)
+    }
+    
+}
+
+    
+
