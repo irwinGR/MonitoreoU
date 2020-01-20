@@ -117,22 +117,22 @@
               <li class="has-sub nav-item"><a href="#"><i class="fa fa-file-text-o"></i><span data-i18n="" class="menu-title">Administración</span></a>
                 <ul class="menu-content">
                   <li>
-                      <a href="AdminUsuarios.aspx" class="menu-item">Usuarios</a>
+                      <a href="AdminUsuarios.aspx"><i class="fa fa-users"></i><span data-i12n="" class="menu-item">Usuarios</span></a>
                   </li>
                   <li>
-                      <a href="AdminPerfiles.aspx" class="menu-item">Perfiles</a>
+                      <a href="AdminPerfiles.aspx"><i class="fa fa-th"></i><span data-i12n="" class="menu-item">Perfiles</span></a>
                   </li>
                   <li>
-                      <a href="AdminResponsables.aspx" class="menu-item">Responsables</a>
+                      <a href="AdminResponsables.aspx"><i class="fa ft-user-check"></i><span data-i12n="" class="menu-item">Responsables</span></a>
                   </li>
                   <li>
-                      <a href="AdminPais.aspx"><i class="fa fa-globe"></i><span data-i18n="" class="menu-item">Paises</span></a>
+                      <a href="AdminPais.aspx"><i class="fa fa-globe"></i><span data-i12n="" class="menu-item">Paises</span></a>
                   </li>   
                   <li>
-                      <a href="AdminEstados.aspx"><i class="fa ft-compass"></i><span data-i18n="" class="menu-item">Estados</span></a>
+                      <a href="AdminEstados.aspx"><i class="fa ft-compass"></i><span data-i12n="" class="menu-item">Estados</span></a>
                   </li>  
                   <li>
-                      <a href="AdminMunicipio.aspx"><i class="fa fa-university"></i><span data-i18n="" class="menu-item">Municipios/Delegaciones</span></a>
+                      <a href="AdminMunicipio.aspx"><i class="fa fa-university"></i><span data-i12n="" class="menu-item">Municipios/Delegaciones</span></a>
                   </li>    
                 </ul>
               </li>
