@@ -73,8 +73,7 @@ function initEvent() {
         $('#divMunicipiosDelegaciones').hide('fast', function () {
             $('#divCrear').show('fast', function () {
                 $('#nombreMunicipiosDelegaciones').html('<b>Registro de Municipio/Delegación </b>');
-                x
-                $("#btnGuardar").click(function () {
+                 $("#btnGuardar").click(function () {
                     guardarMunicipiosDelegaciones();
                     $('#btnGuardar').unbind("click");
 
@@ -85,8 +84,8 @@ function initEvent() {
 
     $("#btnCancelar").click(function () {
         $('#divCrear').hide('fast', function () {
-            $('#formMunicipiosDelegaciones').bootstrapValidator('destroy');
-            $('#divMunicipiosDelegaciones').show('fast', function () {
+             $('#divMunicipiosDelegaciones').show('fast', function () {
+                $('#formMunicipiosDelegaciones').bootstrapValidator('destroy');
                 $('#formMunicipiosDelegaciones')[0].reset();
             });
         });
