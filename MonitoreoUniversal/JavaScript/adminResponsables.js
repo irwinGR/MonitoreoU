@@ -86,8 +86,9 @@ function initEvent() {
     $("#btnCancelar").click(function () {
         $('#divCrear').hide('fast', function () {
             $('#divResponsables').show('fast', function () {
+                 $('#formResponsables').bootstrapValidator('destroy');
                 $('#formResponsables')[0].reset();
-                $('#formResponsables').bootstrapValidator('destroy');
+              
             });
         });
     });
@@ -184,7 +185,14 @@ function bootsVal() {
                 selector: '#nombre',
                 validators: {
                     notEmpty: {
-                        message: 'El nombre  es obligatorio.'
+                        message: 'El nombre  es obligatorio.',
+                        callback: function (value, validator) {
+                            if (value === "0") {
+                                return false;
+                            } else {
+                                return true;
+                            }
+                        }
                     }
                 }
             },
@@ -193,7 +201,14 @@ function bootsVal() {
                 selector: '#apellidoP',
                 validators: {
                     notEmpty: {
-                        message: 'El apellido paterno es obligatorio.'
+                        message: 'El apellido paterno es obligatorio.',
+                        callback: function (value, validator) {
+                            if (value === "0") {
+                                return false;
+                            } else {
+                                return true;
+                            }
+                        }
                     }
                 }
             },
@@ -202,7 +217,14 @@ function bootsVal() {
                 selector: '#apellidoM',
                 validators: {
                     notEmpty: {
-                        message: 'El apellido materno es obligatorio.'
+                        message: 'El apellido materno es obligatorio.',
+                        callback: function (value, validator) {
+                            if (value === "0") {
+                                return false;
+                            } else {
+                                return true;
+                            }
+                        }
                     }
                 }
             },
@@ -211,7 +233,14 @@ function bootsVal() {
                 selector: '#correo',
                 validators: {
                     notEmpty: {
-                        message: 'El correo es obligatorio.'
+                        message: 'El correo es obligatorio.',
+                        callback: function (value, validator) {
+                            if (value === "0") {
+                                return false;
+                            } else {
+                                return true;
+                            }
+                        }
                     },
                     emailAddress: {
                         message: 'Correo inválido'
@@ -223,7 +252,14 @@ function bootsVal() {
                 selector: '#telefono',
                 validators: {
                     notEmpty: {
-                        message: 'El teléfono es obligatorio.'
+                        message: 'El teléfono es obligatorio.',
+                        callback: function (value, validator) {
+                            if (value === "0") {
+                                return false;
+                            } else {
+                                return true;
+                            }
+                        }
                     }
                 }
             }

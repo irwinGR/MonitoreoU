@@ -126,7 +126,7 @@
                       <a href="AdminResponsables.aspx" class="menu-item">Responsables</a>
                   </li>
                   <li>
-                      <a href="AdminPais.aspx" class="menu-item">Paises</a>
+                      <a href="AdminPais.aspx"><i class="fa fa-globe"></i><span data-i18n="" class="menu-item">Paises</span></a>
                   </li>   
                   <li>
                       <a href="AdminEstados.aspx"><i class="fa ft-compass"></i><span data-i18n="" class="menu-item">Estados</span></a>
