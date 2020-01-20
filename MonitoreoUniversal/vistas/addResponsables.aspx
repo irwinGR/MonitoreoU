@@ -37,7 +37,7 @@
 									<div class="col-md-4">
 										<fieldset class="form-group">
 											<label for="basicInput">* Correo</label>
-											<input type="text" class="form-control" id="correo" name="correo" onkeypress = "return soloCorreo(event); ">
+											<input type="text" class="form-control" id="correo" name="correo" required >                 
 										</fieldset>
 									</div>
 									<div class="col-md-4">

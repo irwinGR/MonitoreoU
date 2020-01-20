@@ -16,6 +16,7 @@ function llenarCombo(id, data,value,text) {
         }));
     });
 }
+
 function llenarComboxParametro(id, data,value, text) {
     $('#' + id).empty();
     $('#' + id).append($('<option>', {
@@ -39,8 +40,7 @@ function soloNumeros(e) {
     }
 }
 
-function soloLetras(e) 
-{
+function soloLetras(e) {
     key=e.keyCode || e.which;
     teclado = String.fromCharCode(key).toLocaleLowerCase();
     letras = "abcdefghijklmnñopqrstuvwxyz"; 
@@ -62,29 +62,7 @@ function soloLetras(e)
 
     
 }
-function soloCorreo(e)
-{
-    //EXPRESIÓN REGULAR LA CUAL VALIDA SI EL CORREO ES VALIDO O NO
-    let expresionRegular = / ^ \ w + ([\.-]?\ w+) * @\ w + ([\.-]?\ w+) * ( \.\ w {2,3}) + $ /;
 
-    //VALOR DEL CORREO QUE OBTENEMOS DESDE EL INPUT DE CORREO
-    let correo = $("#correo").val();
-
-    //SE VALIDA LA EXPRESIÓN REGULAR
-    if(expresionRegular.test(correo))
-    {
-        //SI ES VERDADERO ES VALIDO
-        console.log("Correo Válido")
-        return (true);
-
-    }
-    else{
-        //SI NO ES VALIDO ENTONCES NO ES INVALIDO Y EL CORREO ES INCORRECTO
-        console.log("Correo Inválido");
-        return (false)
-    }
-    
-}
 
     
 

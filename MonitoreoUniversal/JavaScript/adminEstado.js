@@ -86,10 +86,10 @@ function initEvent() {
 
     $("#btnCancelar").click(function () {
         $('#divCrear').hide('fast', function () {
-            $('#formEstados').bootstrapValidator('destroy');
+            
             $('#divEstados').show('fast', function () {
                 $('#formEstados')[0].reset();
-                
+                $('#formEstados').bootstrapValidator('destroy');
             });
         });
     });

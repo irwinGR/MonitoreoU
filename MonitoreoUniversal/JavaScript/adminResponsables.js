@@ -87,6 +87,7 @@ function initEvent() {
         $('#divCrear').hide('fast', function () {
             $('#divResponsables').show('fast', function () {
                 $('#formResponsables')[0].reset();
+                $('#formResponsables').bootstrapValidator('destroy');
             });
         });
     });
@@ -211,6 +212,9 @@ function bootsVal() {
                 validators: {
                     notEmpty: {
                         message: 'El correo es obligatorio.'
+                    },
+                    emailAddress: {
+                        message: 'Correo inválido'
                     }
                 }
             },
