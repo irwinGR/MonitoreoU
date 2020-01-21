@@ -83,12 +83,12 @@ function initEvent() {
     });
 
     $("#btnCancelar").click(function () {
-        $('#divCrear').hide('fast', function () {
-            $('#divPerfiles').show('fast', function () {
-                $('#formPerfiles').bootstrapValidator('destroy');
-                $('#formPerfiles')[0].reset();
+            $('#divCrear').hide('fast', function () {
+                $('#divPerfiles').show('fast', function () {
+                    $('#formPerfiles').bootstrapValidator('destroy');
+                    $('#formPerfiles')[0].reset();
+                });
             });
-        });
     });
 
     $("#btnEdit").click(function () {

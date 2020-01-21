@@ -62,19 +62,12 @@
                     </div>
                  </div>
             </div>
-
-
         </div>
-
-
         <div id="divCrear" class="row" style="display: none">
             <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <!-- #INCLUDE FILE="addPerfiles.aspx" -->
             </article>
         </div> 
-      
-        
     </section>
-
     <script src="../JavaScript/adminPerfiles.js"></script>
 </asp:Content>

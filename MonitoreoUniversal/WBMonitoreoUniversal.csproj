@@ -146,6 +146,12 @@
     <Content Include="resources\app-assets\js\bootstrapvalidator\language\vi_VN.min.js" />
     <Content Include="resources\app-assets\js\bootstrapvalidator\language\zh_CN.min.js" />
     <Content Include="resources\app-assets\js\bootstrapvalidator\language\zh_TW.min.js" />
+    <Content Include="resources\app-assets\vendors\css\select2.css" />
+    <Content Include="resources\app-assets\vendors\css\select2.min.css" />
+    <Content Include="resources\app-assets\vendors\js\select2.full.js" />
+    <Content Include="resources\app-assets\vendors\js\select2.full.min.js" />
+    <Content Include="resources\app-assets\vendors\js\select2.js" />
+    <Content Include="resources\app-assets\vendors\js\select2.min.js" />
     <Content Include="Service.svc" />
     <Content Include="ServicioSoap.asmx" />
     <Content Include="vistas\addEstados.aspx" />

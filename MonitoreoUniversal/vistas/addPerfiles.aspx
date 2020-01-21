@@ -1,8 +1,7 @@
 ﻿<section class="basic-elements">
-	<div class="row">
+    <div id="divAddPerfiles" class="row">
 		<div class="col-md-12">
 			<div class="card">
-				
 				<div class="card-content">
 					<div class="px-3">
 						<form class="form" id="formPerfiles" 
@@ -18,7 +17,14 @@
 											<label for="basicInput">* Nombre del perfil</label>
 											<input type="text" class="form-control" id="nombre" name="nombre" onkeypress ="return soloLetras(event);">
 										</fieldset>
-									</div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <fieldset class="form-group">
+                                            <label for="basicInput">* Acciones</label>
+                                            <select class="form-control" id="accion" name ="accion"></select>
+                                        </fieldset>
+                                    </div>
+                              </div>
 								</div>
 							</div>
                             <div class="form-actions">
