@@ -43,7 +43,7 @@ function soloNumeros(e) {
 function soloLetras(e) {
     key=e.keyCode || e.which;
     teclado = String.fromCharCode(key).toLocaleLowerCase();
-    letras = "abcdefghijklmnñopqrstuvwxyz"; 
+    letras = " áéíóúñabcdefghijklmnñopqrstuvwxyz"; 
     especiales = "8-37-38-46-164";
 
     teclado_especial = false;

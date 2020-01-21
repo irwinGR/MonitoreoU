@@ -14,7 +14,7 @@
             <div class="col-12">
                  <div class="card">
                     <div class="card-header">
-                        <h1><b><i class="fa fa-user"></i> Usuarios</b></h1>
+                        <h1><b><i class="fa fa-users"></i> Usuarios</b></h1>
 
                         <div class="widget-body-toolbar">
                             <button id="btnPlus" type="button"

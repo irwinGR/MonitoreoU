@@ -14,7 +14,7 @@
             <div class="col-12">
                  <div class="card">
                     <div class="card-header ">
-                        <h1><b><i class="fa fa-server"></i> Perfiles</b></h1>
+                        <h1><b><i class="fa fa-th"></i> Perfiles</b></h1>
 
                         <div class="form-actions">
                             <button id="btnPlus" type="button"

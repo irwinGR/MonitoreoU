@@ -13,7 +13,7 @@
 									<div class="col-md-4">
 										<fieldset class="form-group">
 											<label for="basicInput">* Nombre del País</label>
-											<input type="text" class="form-control" id="nombre" name="nombre" required>
+											<input type="text" class="form-control" id="nombre" name="nombre" onkeypress ="return soloLetras(event);">
 										</fieldset>
 									</div>
 								</div>

@@ -86,10 +86,9 @@ function initEvent() {
 
     $("#btnCancelar").click(function () {
         $('#divCrear').hide('fast', function () {
-            
             $('#divEstados').show('fast', function () {
-                $('#formEstados')[0].reset();
                 $('#formEstados').bootstrapValidator('destroy');
+                $('#formEstados')[0].reset();
             });
         });
     });
