@@ -67,20 +67,20 @@ function initDataTable() {
     });   
 }
 function initEvent() {
-    $("#acciones").select2({
-        placeholder: "Seleccione...",
-        width: "300px"
-    });
+    
 
     $("#btnPlus").click(function () {
         $('#divPerfiles').hide('fast', function () {
             $('#divCrear').show('fast', function () {
                 $('#nombrePerfil').html('<b>Registro de perfil </b>');
-
                 $("#btnGuardar").click(function () {
                     guardarPerfil();
                     $('#btnGuardar').unbind("click");
-                    
+                });
+
+                $("#acciones").select2({
+                    placeholder: "Seleccione una opción...",
+                    width: "300px"
                 });
             });
         });  
@@ -90,10 +90,7 @@ function initEvent() {
         $('#divCrear').hide('fast', function () {
             $('#divPerfiles').show('fast', function () {
                 $('#formPerfiles').bootstrapValidator('destroy');
-                
                 $('#formPerfiles')[0].reset();
-                
-
             });
         });
     });
@@ -102,8 +99,6 @@ function initEvent() {
         editarPerfil();
         $('#formPerfiles').bootstrapValidator('destroy');
         bootsVal();
-      
-
     });
 
     $("#btnDelete").click(function () {
@@ -122,7 +117,6 @@ function initEvent() {
                 cancelButtonClass: 'btn btn-danger btn-raised',
                 buttonsStyling: false
             }).then(function () {
-
                 var json = {
                     perfiles: {
                         idPerfil: row.idPerfil
@@ -138,7 +132,6 @@ function initEvent() {
                     success: function (data) {
                         if (data.result) {
                             swal('¡Éxito!', 'Se ha eliminado el perfil seleccionado.', 'success');
-
                             $('#divCrear').hide('fast', function () {
                                 $('#divPerfiles').show('fast', function () {
                                     $('#formPerfiles')[0].reset();
@@ -161,7 +154,6 @@ function initEvent() {
                                                 $(this).addClass('selected');
                                             }
                                         });
-
                                 });
                             });
 
@@ -176,26 +168,18 @@ function initEvent() {
         } else {
             swal("¡Advertencia!", "Debes seleccionar un registro", "warning");
         }
-       
-           
     });
-    $("#acciones").select2({
-        placeholder: "Seleccione...",
-        width: "300px"
-    });
+
     $.ajax({
+        async: true,
         type: 'GET',
         url: '../Service.svc/GetAcciones',
         dataType: 'json',
         contentType: 'application/json; charset=utf-8',
         success: function (data) {
           
-            llenarCombo("acciones", data, "idAccion", "descripcion");
-           
-
-        }
-        
-           
+            llenarComboSelect("acciones", data, "idAccion", "descripcion");
+        }  
     });
 }
 function bootsVal() {
@@ -347,9 +331,6 @@ function guardarPerfil() {
                             $('#divCrear').hide('fast', function () {
                                 $('#divPerfiles').show('fast', function () {
                                     $('#formPerfiles')[0].reset();
-                                    
-                                 
-
                                     $('#btnGuardar').prop("disabled", false);
                                     $('#formPerfiles').bootstrapValidator('destroy');
 
@@ -370,7 +351,6 @@ function guardarPerfil() {
                                                 $(this).addClass('selected');
                                             }
                                         });
-
                                 });
                             });
                         }

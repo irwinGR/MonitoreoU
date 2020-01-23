@@ -21,7 +21,7 @@
                                     <div class="col-md-4">
                                         
                                             <label for="basicInput">* Acciones</label>
-                                            <select  name = "acciones" id="acciones" size="1"  multiple="multiple" class="required" >
+                                            <select  name = "acciones" id="acciones" size="1"  multiple="multiple" class="select2" >
                                             </select>
                                         
                                     </div>

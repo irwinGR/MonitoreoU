@@ -5,8 +5,8 @@
 function llenarCombo(id, data,value,text) {
     $('#' + id).empty();
     $('#' + id).append($('<option>', {
-       //value: 0,
-       //text: 'a'
+        value: 0,
+        text: "Seleccione una opción..."
     }));
 
     $.each(data, function (i, item) {
@@ -62,7 +62,15 @@ function soloLetras(e) {
 
     
 }
+function llenarComboSelect(id, data, value, text) {
+    $('#' + id).empty();
+    $('#' + id).append($('<option>', {
+    }));
 
-
-    
-
+    $.each(data, function (i, item) {
+        $('#' + id).append($('<option>', {
+            value: item[value],
+            text: item[text]
+        }));
+    });
+}
