@@ -19,17 +19,18 @@
 										</fieldset>
                                     </div>
                                     <div class="col-md-4">
-                                        <fieldset class="form-group">
+                                        
                                             <label for="basicInput">* Acciones</label>
-                                            <select class="form-control" id="accion" name ="accion"></select>
-                                        </fieldset>
+                                            <select  name = "acciones" id="acciones" size="1"  multiple="multiple" class="required" >
+                                            </select>
+                                        
                                     </div>
                               </div>
 								</div>
 							</div>
                             <div class="form-actions">
 								<div class="text-right">
-									<button type="button" class="btn btn-raised btn-primary" id="btnGuardar">Guardar <i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+									<button type="button" class="btn btn-raised btn-primary"  id="btnGuardar" > Guardar <i class="fa fa-floppy-o" aria-hidden="true"></i></button>
 									<button type="button" class="btn btn-raised btn-warning" id="btnCancelar">Cancelar <i class="fa fa-undo" aria-hidden="true"></i></button>
 								</div>
 							</div>

@@ -23,7 +23,7 @@ namespace MonitoreoUniversal.Datos
                 {
                     SqlDataReader consulta;
                     connection.Open();
-                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Seguridad.ConsultaAcionesSP");
+                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Seguridad.ConsultaAccionesSP");
 
                     dt.Load(consulta);
                     connection.Close();

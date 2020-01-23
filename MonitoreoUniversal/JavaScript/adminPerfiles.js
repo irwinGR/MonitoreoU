@@ -67,7 +67,10 @@ function initDataTable() {
     });   
 }
 function initEvent() {
-   
+    $("#acciones").select2({
+        placeholder: "Seleccione...",
+        width: "300px"
+    });
 
     $("#btnPlus").click(function () {
         $('#divPerfiles').hide('fast', function () {
@@ -77,29 +80,35 @@ function initEvent() {
                 $("#btnGuardar").click(function () {
                     guardarPerfil();
                     $('#btnGuardar').unbind("click");
-                 });
+                    
+                });
             });
         });  
     });
 
     $("#btnCancelar").click(function () {
-            $('#divCrear').hide('fast', function () {
-                $('#divPerfiles').show('fast', function () {
-                    $('#formPerfiles').bootstrapValidator('destroy');
-                    $('#formPerfiles')[0].reset();
-                });
+        $('#divCrear').hide('fast', function () {
+            $('#divPerfiles').show('fast', function () {
+                $('#formPerfiles').bootstrapValidator('destroy');
+                
+                $('#formPerfiles')[0].reset();
+                
+
             });
+        });
     });
 
     $("#btnEdit").click(function () {
         editarPerfil();
         $('#formPerfiles').bootstrapValidator('destroy');
         bootsVal();
+      
+
     });
 
     $("#btnDelete").click(function () {
         var row = $('#dtPerfil').DataTable().row('.selected').data();
-        if (row) { 
+        if (row) {
             swal({
                 title: '¿Estás seguro que deseas eliminar el perfil ' + row.descripcion + '?',
                 text: "No podrás revertir la acción realizada",
@@ -167,8 +176,27 @@ function initEvent() {
         } else {
             swal("¡Advertencia!", "Debes seleccionar un registro", "warning");
         }
+       
+           
     });
-    
+    $("#acciones").select2({
+        placeholder: "Seleccione...",
+        width: "300px"
+    });
+    $.ajax({
+        type: 'GET',
+        url: '../Service.svc/GetAcciones',
+        dataType: 'json',
+        contentType: 'application/json; charset=utf-8',
+        success: function (data) {
+          
+            llenarCombo("acciones", data, "idAccion", "descripcion");
+           
+
+        }
+        
+           
+    });
 }
 function bootsVal() {
     $('#formPerfiles').bootstrapValidator({
@@ -182,6 +210,15 @@ function bootsVal() {
                 validators: {
                     notEmpty: {
                         message: 'El nombre del perfil es obligatorio.'
+                    }
+                }
+            },
+            acciones: {
+                selector: '#acciones',
+                group: '.col-md-4',
+                validators: {
+                    notEmpty: {
+                        message: 'Las Acciones son obligatorias.'
                     }
                 }
             }
@@ -283,6 +320,9 @@ function guardarPerfil() {
                 descripcion: $('#nombre').val(),
                 empresa: {
                     idCliente: 1
+                },
+               acciones :{
+                    descripcion: $('#acciones').val()
                 }
             }
         };
@@ -307,8 +347,12 @@ function guardarPerfil() {
                             $('#divCrear').hide('fast', function () {
                                 $('#divPerfiles').show('fast', function () {
                                     $('#formPerfiles')[0].reset();
+                                    
+                                 
+
                                     $('#btnGuardar').prop("disabled", false);
                                     $('#formPerfiles').bootstrapValidator('destroy');
+
 
                                     otable.clear().draw();
                                     otable.destroy();

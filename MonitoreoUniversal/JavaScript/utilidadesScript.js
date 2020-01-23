@@ -5,8 +5,8 @@
 function llenarCombo(id, data,value,text) {
     $('#' + id).empty();
     $('#' + id).append($('<option>', {
-        value: 0,
-        text: "Seleccione una opción..."
+       //value: 0,
+       //text: 'a'
     }));
 
     $.each(data, function (i, item) {

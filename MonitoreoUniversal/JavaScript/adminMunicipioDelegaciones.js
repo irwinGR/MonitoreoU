@@ -84,8 +84,10 @@ function initEvent() {
 
     $("#btnCancelar").click(function () {
         $('#divCrear').hide('fast', function () {
-             $('#divMunicipiosDelegaciones').show('fast', function () {
+            $('#divMunicipiosDelegaciones').show('fast', function () {
                 $('#formMunicipiosDelegaciones').bootstrapValidator('destroy');
+                
+
                 $('#formMunicipiosDelegaciones')[0].reset();
             });
         });
