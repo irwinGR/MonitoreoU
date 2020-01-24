@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
+using System.IO;
 
 namespace MonitoreoUniversal.Datos
 {
@@ -40,7 +41,7 @@ namespace MonitoreoUniversal.Datos
                     CredencialesAcceso credeAcc = new CredencialesAcceso();
                     credeAcc.idCredencial = Convert.ToInt32(row["idCredencial"].ToString());
                     credeAcc.nombreUsuario = row["nombreUsuario"].ToString();
-                    credeAcc.constraseña = Sha256encrypt(row["contraseña"].ToString());
+                    credeAcc.constraseña = Decrypt(row["contraseña"].ToString(),"ITE");
                     credeAcc.numeroIntentos = Convert.ToInt32(row["numeroIntentos"].ToString());
                     credeAcc.envioCorreo = row["envioCorreo"].ToString();
 
@@ -72,7 +73,7 @@ namespace MonitoreoUniversal.Datos
                     var parametros = new[]
                     {
                         ParametroAcceso.CrearParametro("@nombreUsuario",SqlDbType.VarChar,credencialesAcceso.nombreUsuario,ParameterDirection.Input),
-                        ParametroAcceso.CrearParametro("@contraseña",SqlDbType.VarChar,GetSHA256(credencialesAcceso.constraseña),ParameterDirection.Input),
+                        ParametroAcceso.CrearParametro("@contraseña",SqlDbType.VarChar,Encrypt(credencialesAcceso.constraseña,"ITE"),ParameterDirection.Input),
                         ParametroAcceso.CrearParametro("@numeroIntentos",SqlDbType.VarChar,credencialesAcceso.numeroIntentos,ParameterDirection.Input),
                         ParametroAcceso.CrearParametro("@envioCorreo",SqlDbType.VarChar,credencialesAcceso.envioCorreo,ParameterDirection.Input),
                         ParametroAcceso.CrearParametro("@idUsuario",SqlDbType.VarChar,credencialesAcceso.usuarios.idUsuario,ParameterDirection.Input)
@@ -153,26 +154,120 @@ namespace MonitoreoUniversal.Datos
             return respuesta;
         }
 
-        public static string GetSHA256(string str)
+       
+        public static string Encrypt(string plainText, string password)
         {
-            SHA256 sha256 = SHA256Managed.Create();
-            ASCIIEncoding encoding = new ASCIIEncoding();
-            byte[] stream = null;
-            StringBuilder sb = new StringBuilder();
-            stream = sha256.ComputeHash(encoding.GetBytes(str));
-            for (int i = 0; i < stream.Length; i++) sb.AppendFormat("{0:x2}", stream[i]);
-            return sb.ToString();
+            if (plainText == null)
+            {
+                return null;
+            }
+
+            if (password == null)
+            {
+                password = String.Empty;
+            }
+
+            // Get the bytes of the string
+            var bytesToBeEncrypted = Encoding.UTF8.GetBytes(plainText);
+            var passwordBytes = Encoding.UTF8.GetBytes(password);
+
+            // Hash the password with SHA256
+            passwordBytes = SHA256.Create().ComputeHash(passwordBytes);
+
+            var bytesEncrypted = Encrypt(bytesToBeEncrypted, passwordBytes);
+
+            return Convert.ToBase64String(bytesEncrypted);
         }
 
-        public static string Sha256encrypt(string contraseña) {
-            UTF8Encoding encoder = new UTF8Encoding();
+        
+        public static string Decrypt(string encryptedText, string password)
+        {
+            if (encryptedText == null)
+            {
+                return null;
+            }
 
-            SHA256Managed sha256hasher = new SHA256Managed();
+            if (password == null)
+            {
+                password = String.Empty;
+            }
 
-            byte[] hashedDataBytes = sha256hasher.ComputeHash(encoder.GetBytes(contraseña));
+            // Get the bytes of the string
+            var bytesToBeDecrypted = Convert.FromBase64String(encryptedText);
+            var passwordBytes = Encoding.UTF8.GetBytes(password);
 
-            return Convert.ToBase64String(hashedDataBytes);
+            passwordBytes = SHA256.Create().ComputeHash(passwordBytes);
+
+            var bytesDecrypted = Decrypt(bytesToBeDecrypted, passwordBytes);
+
+            return Encoding.UTF8.GetString(bytesDecrypted);
         }
 
+        private static byte[] Encrypt(byte[] bytesToBeEncrypted, byte[] passwordBytes)
+        {
+            byte[] encryptedBytes = null;
+
+            // Set your salt here, change it to meet your flavor:
+            // The salt bytes must be at least 8 bytes.
+            var saltBytes = new byte[] { 1, 2, 3, 4, 5, 6, 7, 8 };
+
+            using (MemoryStream ms = new MemoryStream())
+            {
+                using (RijndaelManaged AES = new RijndaelManaged())
+                {
+                    var key = new Rfc2898DeriveBytes(passwordBytes, saltBytes, 1000);
+
+                    AES.KeySize = 256;
+                    AES.BlockSize = 128;
+                    AES.Key = key.GetBytes(AES.KeySize / 8);
+                    AES.IV = key.GetBytes(AES.BlockSize / 8);
+
+                    AES.Mode = CipherMode.CBC;
+
+                    using (var cs = new CryptoStream(ms, AES.CreateEncryptor(), CryptoStreamMode.Write))
+                    {
+                        cs.Write(bytesToBeEncrypted, 0, bytesToBeEncrypted.Length);
+                        cs.Close();
+                    }
+
+                    encryptedBytes = ms.ToArray();
+                }
+            }
+
+            return encryptedBytes;
+        }
+
+        private static byte[] Decrypt(byte[] bytesToBeDecrypted, byte[] passwordBytes)
+        {
+            byte[] decryptedBytes = null;
+
+            // Set your salt here, change it to meet your flavor:
+            // The salt bytes must be at least 8 bytes.
+            var saltBytes = new byte[] { 1, 2, 3, 4, 5, 6, 7, 8 };
+
+            using (MemoryStream ms = new MemoryStream())
+            {
+                using (RijndaelManaged AES = new RijndaelManaged())
+                {
+                    var key = new Rfc2898DeriveBytes(passwordBytes, saltBytes, 1000);
+
+                    AES.KeySize = 256;
+                    AES.BlockSize = 128;
+                    AES.Key = key.GetBytes(AES.KeySize / 8);
+                    AES.IV = key.GetBytes(AES.BlockSize / 8);
+                    AES.Mode = CipherMode.CBC;
+
+                    using (var cs = new CryptoStream(ms, AES.CreateDecryptor(), CryptoStreamMode.Write))
+                    {
+                        cs.Write(bytesToBeDecrypted, 0, bytesToBeDecrypted.Length);
+                        cs.Close();
+                    }
+
+                    decryptedBytes = ms.ToArray();
+                }
+            }
+
+            return decryptedBytes;
+        }
     }
 }

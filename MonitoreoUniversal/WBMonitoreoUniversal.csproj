@@ -820,6 +820,7 @@
     <Content Include="vistas\AdminUsuarios.aspx" />
     <Content Include="vistas\addPersonalMantenimiento.aspx" />
     <Content Include="vistas\addResponsables.aspx" />
+    <Content Include="vistas\Login.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -907,6 +908,13 @@
     </Compile>
     <Compile Include="vistas\index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vistas\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vistas\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="vistas\Master.Master.cs">
       <DependentUpon>Master.Master</DependentUpon>
