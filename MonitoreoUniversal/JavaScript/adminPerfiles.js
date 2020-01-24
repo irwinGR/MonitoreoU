@@ -218,10 +218,9 @@ function editarPerfil() {
 
         $('#divPerfiles').hide('fast', function () {
             $('#divCrear').show('fast', function () {
-                $('#nombrePerfil').html('<b>Edicion de perfil:' + row.descripcion +' </b>');
-
+                $('#nombrePerfil').html('<b>Edición de perfil:' + row.descripcion +' </b>');
                 $("#btnGuardar").click(function () {
-                    bootsVal();
+                     bootsVal();
                     $('#formPerfiles').data('bootstrapValidator').validate();
                     var n = $('#formPerfiles').data('bootstrapValidator').isValid();
 
@@ -253,8 +252,9 @@ function editarPerfil() {
                                             $('#divCrear').hide('fast', function () {
                                                 $('#divPerfiles').show('fast', function () {
                                                     $('#formPerfiles')[0].reset();
-                                                    $('#btnGuardar').prop("disabled", false);
+                                                    $('#btnGuardar').prop("disabled", false);                                                 
                                                     $('#formPerfiles').bootstrapValidator('destroy');
+                                                   
 
                                                     otable.clear().draw();
                                                     otable.destroy();

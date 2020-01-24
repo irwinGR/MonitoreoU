@@ -193,7 +193,7 @@ namespace MonitoreoUniversal.Datos
                         ParametroAcceso.CrearParametro("@idPerfil", SqlDbType.Int, perfiles.idPerfil , ParameterDirection.Input),
                     };
 
-                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Seguridad.EliminarPerfilesSP", parametros);
+                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Seguridad.EliminarPerfilesAccionesSP", parametros);
                     dt.Load(consulta);
                     connection.Close();
                     respuesta = true;
