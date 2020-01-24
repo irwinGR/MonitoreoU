@@ -41,6 +41,11 @@
 
     <link href="../resources/app-assets/vendors/css/toastr.css" rel="stylesheet" />
     <link href="../resources/app-assets/vendors/css/toastr.min.css" rel="stylesheet" />
+
+    <link href="../resources/app-assets/vendors/css/Chart.css" rel="stylesheet" />
+    <link href="../resources/app-assets/vendors/css/Chart.min.css" rel="stylesheet" />
+    <link href="../resources/app-assets/vendors/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../resources/app-assets/vendors/css/pickadate/pickadate.css">
     <!-- END APEX CSS-->
     <!-- BEGIN Page Level CSS-->
     <!-- END Page Level CSS-->
@@ -93,6 +98,18 @@
     <script src="../JavaScript/utilidadesScript.js"></script>
 
     <script src="../resources/app-assets/js/toastr/toastr.min.js"  type="text/javascript"></script>
+
+    <script src="../resources/app-assets/vendors/js/Chart.js"></script>
+    <script src="../resources/app-assets/vendors/js/chart.min.js"></script>
+
+    <script src="../resources/app-assets/vendors/js/bootstrap-datepicker.js"></script>
+    <script src="../resources/app-assets/vendors/js/bootstrap-datepicker.min.js"></script>
+    <script src="../resources/app-assets/vendors/js/bootstrap-datepicker.es.min.js"></script>
+
+    <script src="../resources/app-assets/vendors/js/pickadate/picker.js" type="text/javascript"></script>
+    <script src="../resources/app-assets/vendors/js/pickadate/picker.date.js" type="text/javascript"></script>
+    <script src="../resources/app-assets/vendors/js/pickadate/picker.time.js" type="text/javascript"></script>
+    <script src="../resources/app-assets/vendors/js/pickadate/legacy.js" type="text/javascript"></script>
 
     <style>
         .app-sidebar {

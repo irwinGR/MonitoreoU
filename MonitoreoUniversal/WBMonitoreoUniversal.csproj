@@ -123,6 +123,7 @@
     <Content Include="JavaScript\adminPersonalMantenimiento.js" />
     <Content Include="JavaScript\adminResponsables.js" />
     <Content Include="JavaScript\adminUsuarios.js" />
+    <Content Include="JavaScript\chartjs.js" />
     <Content Include="JavaScript\index.js" />
     <Content Include="JavaScript\login.js" />
     <Content Include="JavaScript\maps.js" />
@@ -149,9 +150,18 @@
     <Content Include="resources\app-assets\js\bootstrapvalidator\language\zh_CN.min.js" />
     <Content Include="resources\app-assets\js\bootstrapvalidator\language\zh_TW.min.js" />
     <Content Include="resources\app-assets\js\toastr\toastr.min.js" />
+    <Content Include="resources\app-assets\vendors\css\bootstrap-datepicker.min.css" />
+    <Content Include="resources\app-assets\vendors\css\Chart.css" />
+    <Content Include="resources\app-assets\vendors\css\Chart.min.css" />
     <Content Include="resources\app-assets\vendors\css\select2.css" />
     <Content Include="resources\app-assets\vendors\css\select2.min.css" />
     <Content Include="resources\app-assets\vendors\css\toastr.min.css" />
+    <Content Include="resources\app-assets\vendors\js\bootstrap-datepicker.es.min.js" />
+    <Content Include="resources\app-assets\vendors\js\bootstrap-datepicker.js" />
+    <Content Include="resources\app-assets\vendors\js\bootstrap-datepicker.min.js" />
+    <Content Include="resources\app-assets\vendors\js\Chart.bundle.js" />
+    <Content Include="resources\app-assets\vendors\js\Chart.bundle.min.js" />
+    <Content Include="resources\app-assets\vendors\js\Chart.js" />
     <Content Include="resources\app-assets\vendors\js\select2.full.js" />
     <Content Include="resources\app-assets\vendors\js\select2.full.min.js" />
     <Content Include="resources\app-assets\vendors\js\select2.js" />
@@ -168,6 +178,7 @@
     <Content Include="vistas\AdminPersonalMantenimiento.aspx" />
     <Content Include="vistas\AdminResponsables.aspx" />
     <Content Include="vistas\AdminMunicipio.aspx" />
+    <Content Include="vistas\graficas.aspx" />
     <Content Include="vistas\index.aspx" />
     <Content Include="resources\app-assets\css\app-assets\img\gallery\dark-bg.html" />
     <Content Include="resources\app-assets\css\app-assets\img\svg\cd-arrow.html" />
@@ -910,6 +921,13 @@
     </Compile>
     <Compile Include="vistas\AdminMunicipio.aspx.designer.cs">
       <DependentUpon>AdminMunicipio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vistas\graficas.aspx.cs">
+      <DependentUpon>graficas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vistas\graficas.aspx.designer.cs">
+      <DependentUpon>graficas.aspx</DependentUpon>
     </Compile>
     <Compile Include="vistas\index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>

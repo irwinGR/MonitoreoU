@@ -91,7 +91,7 @@
                                                 Bienvenido, Por favor inicia sesion con tu cuenta.
                                              </p>
                                               <form runat="server">
-                                                    <asp:TextBox type="text" class="form-control mb-3" ID="user" runat="server" placeholder="Nombre de usuario" required="required" ></asp:TextBox>
+                                                    <asp:TextBox type="text" class="form-control mb-3" ID="user" runat="server" placeholder="Nombre de usuario" required="required" autocomplete="off"></asp:TextBox>
                                                     <asp:TextBox runat="server" type="password" class="form-control mb-1" ID="password" placeholder="Contraseña" required="required" ></asp:TextBox>
                                                     <div class="d-flex justify-content-between mt-2">
                                                     <div class="forgot-password-option">
