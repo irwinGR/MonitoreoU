@@ -669,12 +669,12 @@ namespace MonitoreoUniversal
         [return: MessageParameter(Name = "result")]
         [WebInvoke(Method = "POST", UriTemplate = "/InsertPerfil", RequestFormat = WebMessageFormat.Json,
         ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
-        public Boolean insertPerfiles(Perfiles perfiles)
+        public Boolean insertPerfiles(Perfiles perfiles, int[] arrayaccion)
         {
             bool result = false;
             try
             {
-                result = perfilesNegocio.registraPerfiles(perfiles);
+                result = perfilesNegocio.registraPerfiles(perfiles, arrayaccion);
             }
             catch (Exception e)
             {
@@ -687,12 +687,12 @@ namespace MonitoreoUniversal
         [return: MessageParameter(Name = "result")]
         [WebInvoke(Method = "POST", UriTemplate = "/EditarPerfil", RequestFormat = WebMessageFormat.Json,
         ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
-        public Boolean editarPerfiles(Perfiles perfiles)
+        public Boolean editarPerfiles(Perfiles perfiles, int[] arrayaccion)
         {
             bool result = false;
             try
             {
-                result = perfilesNegocio.editarPerfiles(perfiles);
+                result = perfilesNegocio.editarPerfiles(perfiles, arrayaccion);
             }
             catch (Exception e)
             {

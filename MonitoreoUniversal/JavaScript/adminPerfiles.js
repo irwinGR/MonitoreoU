@@ -177,7 +177,6 @@ function initEvent() {
         dataType: 'json',
         contentType: 'application/json; charset=utf-8',
         success: function (data) {
-          
             llenarComboSelect("acciones", data, "idAccion", "descripcion");
         }  
     });
@@ -304,11 +303,9 @@ function guardarPerfil() {
                 descripcion: $('#nombre').val(),
                 empresa: {
                     idCliente: 1
-                },
-               acciones :{
-                    descripcion: $('#acciones').val()
                 }
-            }
+            },
+            arrayaccion: $('#acciones').val()
         };
 
         $.ajax({

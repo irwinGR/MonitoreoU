@@ -16,13 +16,13 @@ namespace MonitoreoUniversal.Negocio
         {
             return perfilesDatos.getAllPerfiles();
         }
-        public Boolean registraPerfiles(Perfiles perfiles) {
-            return perfilesDatos.registraPerfiles(perfiles);
+        public Boolean registraPerfiles(Perfiles perfiles, int[] arrayaccion) {
+            return perfilesDatos.registraPerfiles(perfiles, arrayaccion);
         }
 
-        public Boolean editarPerfiles(Perfiles perfiles)
+        public Boolean editarPerfiles(Perfiles perfiles, int[] arrayaccion)
         {
-            return perfilesDatos.editarPerfiles(perfiles);
+            return perfilesDatos.editarPerfiles(perfiles, arrayaccion);
         }
 
         public Boolean eliminarPerfiles(Perfiles perfiles)

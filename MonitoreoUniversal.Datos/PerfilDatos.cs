@@ -54,12 +54,35 @@ namespace MonitoreoUniversal.Datos
             return perfiles;
         }
 
-        public Boolean registraPerfiles(Perfiles perfiles)
+        public Boolean registraPerfiles(Perfiles perfiles, int[] arrayaccion)
         {
             Boolean respuesta = false;
             SqlConnection connection = null;
             DataTable dt = new DataTable();
 
+            int accion0 = 0;
+            int accion1 = 0;
+            int accion2 = 0;
+            int accion3 = 0;
+
+            for (int j = 0; j < arrayaccion.Length; j++) {
+                if (j == 0)
+                {
+                    accion0 = arrayaccion[0];
+                }
+                if (j == 1)
+                {
+                    accion1 = arrayaccion[1];
+                }
+                if (j == 2)
+                {
+                    accion2 = arrayaccion[2];
+                }
+                if (j == 3)
+                {
+                    accion3 = arrayaccion[3];
+                }
+            }
             try
             {
                 using (connection = Conexion.ObtieneConexion("ConexionBD"))
@@ -70,9 +93,13 @@ namespace MonitoreoUniversal.Datos
                     var parametros = new[] {
                         ParametroAcceso.CrearParametro("@descripcion", SqlDbType.VarChar, perfiles.descripcion , ParameterDirection.Input),
                         ParametroAcceso.CrearParametro("@idEmpresa", SqlDbType.Int, perfiles.empresa.idCliente , ParameterDirection.Input),
+                        ParametroAcceso.CrearParametro("@Accion0", SqlDbType.Int, accion0, ParameterDirection.Input),
+                        ParametroAcceso.CrearParametro("@Accion1", SqlDbType.Int, accion1, ParameterDirection.Input),
+                        ParametroAcceso.CrearParametro("@Accion2", SqlDbType.Int, accion2, ParameterDirection.Input),
+                        ParametroAcceso.CrearParametro("@Accion3", SqlDbType.Int, accion3, ParameterDirection.Input)
                     };
 
-                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Seguridad.AgregarPerfilesSP", parametros);
+                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Seguridad.AgregarPerfilesAccionesSP", parametros);
                     dt.Load(consulta);
                     connection.Close();
                     respuesta = true;
@@ -87,11 +114,36 @@ namespace MonitoreoUniversal.Datos
             return respuesta;
         }
 
-        public Boolean editarPerfiles(Perfiles perfiles)
+        public Boolean editarPerfiles(Perfiles perfiles, int[] arrayaccion)
         {
             Boolean respuesta = false;
             SqlConnection connection = null;
             DataTable dt = new DataTable();
+
+            int accion0 = 0;
+            int accion1 = 0;
+            int accion2 = 0;
+            int accion3 = 0;
+
+            for (int j = 0; j < arrayaccion.Length; j++)
+            {
+                if (j == 0)
+                {
+                    accion0 = arrayaccion[0];
+                }
+                if (j == 1)
+                {
+                    accion1 = arrayaccion[1];
+                }
+                if (j == 2)
+                {
+                    accion2 = arrayaccion[2];
+                }
+                if (j == 3)
+                {
+                    accion3 = arrayaccion[3];
+                }
+            }
 
             try
             {
@@ -103,9 +155,13 @@ namespace MonitoreoUniversal.Datos
                     var parametros = new[] {
                         ParametroAcceso.CrearParametro("@descripcion", SqlDbType.VarChar, perfiles.descripcion , ParameterDirection.Input),
                         ParametroAcceso.CrearParametro("@idPerfil", SqlDbType.Int, perfiles.idPerfil , ParameterDirection.Input),
+                        ParametroAcceso.CrearParametro("@Accion0", SqlDbType.Int, accion0, ParameterDirection.Input),
+                        ParametroAcceso.CrearParametro("@Accion1", SqlDbType.Int, accion1, ParameterDirection.Input),
+                        ParametroAcceso.CrearParametro("@Accion2", SqlDbType.Int, accion2, ParameterDirection.Input),
+                        ParametroAcceso.CrearParametro("@Accion3", SqlDbType.Int, accion3, ParameterDirection.Input)
                     };
 
-                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Seguridad.ActualizarPerfilesSP", parametros);
+                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Seguridad.ActualizarPerfilesAccionesSP", parametros);
                     dt.Load(consulta);
                     connection.Close();
                     respuesta = true;

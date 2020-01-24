@@ -178,7 +178,7 @@ function initEvent() {
         dataType: 'json',
         contentType: 'application/json; charset=utf-8',
         success: function (data) {
-            llenarCombo("pais", data,"idPais","descripcion");
+            llenarCombo("pais", data, "idPais", "descripcion");
         }
     });
 
