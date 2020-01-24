@@ -11,7 +11,15 @@ namespace MonitoreoUniversal
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            try
+            {
+                string idUsuario = Session["idUsuario"].ToString();
+                
+            }
+            catch (Exception ex)
+            {
+                Response.Redirect("Login.aspx");
+            }
         }
     }
 }

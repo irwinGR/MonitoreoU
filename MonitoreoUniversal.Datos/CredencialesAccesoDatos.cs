@@ -39,15 +39,16 @@ namespace MonitoreoUniversal.Datos
                 foreach(DataRow row in dt.Rows)
                 {
                     CredencialesAcceso credeAcc = new CredencialesAcceso();
-                    credeAcc.idCredencial = Convert.ToInt32(row["idCredencial"].ToString());
                     credeAcc.nombreUsuario = row["nombreUsuario"].ToString();
                     credeAcc.constraseña = Decrypt(row["contraseña"].ToString(),"ITE");
-                    credeAcc.numeroIntentos = Convert.ToInt32(row["numeroIntentos"].ToString());
-                    credeAcc.envioCorreo = row["envioCorreo"].ToString();
 
                     Usuarios usuarios = new Usuarios();
                     credeAcc.usuarios = usuarios;
                     credeAcc.usuarios.idUsuario = Convert.ToInt32(row["idUsuario"].ToString());
+                    credeAcc.usuarios.nombre = row["nombre"].ToString();
+                    credeAcc.usuarios.apellidoP = row["apellidoP"].ToString();
+                    credeAcc.usuarios.apellidoM = row["apellidoM"].ToString();
+                    credeAcc.usuarios.correo = row["correo"].ToString();
 
                     credencialesAcceso.Add(credeAcc);
                 }

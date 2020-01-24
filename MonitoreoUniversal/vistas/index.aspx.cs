@@ -11,7 +11,28 @@ namespace MonitoreoUniversal
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.IsPostBack)
+            {
+                try
+                {
+                    string auth = HttpContext.Current.Session["Autenticacion"].ToString();
+                    if (auth.Equals("false"))
+                    {
+                        Session.Clear();
+                        Response.Redirect("Login.aspx");
+                    }
+                    else
+                    {
+                    }
+                }
+                catch (Exception exp)
+                {
+                    Session.Clear();
+                    Response.Redirect("Login.aspx");
+                }
 
+                return;
+            }
         }
     }
 }

@@ -44,7 +44,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
+    <Optimize>false</Optimize>
     <OutputPath>bin\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -116,6 +116,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="JavaScript\adminEstado.js" />
+    <Content Include="JavaScript\adminIndex.js" />
     <Content Include="JavaScript\adminMunicipioDelegaciones.js" />
     <Content Include="JavaScript\adminPais.js" />
     <Content Include="JavaScript\adminPerfiles.js" />
@@ -123,6 +124,7 @@
     <Content Include="JavaScript\adminResponsables.js" />
     <Content Include="JavaScript\adminUsuarios.js" />
     <Content Include="JavaScript\index.js" />
+    <Content Include="JavaScript\login.js" />
     <Content Include="JavaScript\maps.js" />
     <Content Include="JavaScript\utilidadesScript.js" />
     <Content Include="resources\app-assets\js\bootstrapvalidator\bootstrapValidator.min.js" />
@@ -146,8 +148,10 @@
     <Content Include="resources\app-assets\js\bootstrapvalidator\language\vi_VN.min.js" />
     <Content Include="resources\app-assets\js\bootstrapvalidator\language\zh_CN.min.js" />
     <Content Include="resources\app-assets\js\bootstrapvalidator\language\zh_TW.min.js" />
+    <Content Include="resources\app-assets\js\toastr\toastr.min.js" />
     <Content Include="resources\app-assets\vendors\css\select2.css" />
     <Content Include="resources\app-assets\vendors\css\select2.min.css" />
+    <Content Include="resources\app-assets\vendors\css\toastr.min.css" />
     <Content Include="resources\app-assets\vendors\js\select2.full.js" />
     <Content Include="resources\app-assets\vendors\js\select2.full.min.js" />
     <Content Include="resources\app-assets\vendors\js\select2.js" />
@@ -824,6 +828,11 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Service.svc.cs">
       <DependentUpon>Service.svc</DependentUpon>
       <SubType>Component</SubType>
@@ -976,6 +985,10 @@
     <Content Include="resources\app-assets\vendors\js\datatable\json-spanish.json" />
     <Content Include="resources\app-assets\js\bootstrapvalidator\bootstrapValidator.min.css" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
