@@ -19,14 +19,12 @@
 										</fieldset>
                                     </div>
                                     <div class="col-md-4">
-                                        
+                                        <fieldset class="form-group">
                                             <label for="basicInput">* Acciones</label>
                                             <select  name = "acciones" id="acciones" size="1"  multiple="multiple" class="select2" >
-                                                
                                             </select>
-                                        
+                                        </fieldset>
                                     </div>
-                              </div>
 								</div>
 							</div>
                             <div class="form-actions">

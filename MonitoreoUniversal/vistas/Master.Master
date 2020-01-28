@@ -115,6 +115,10 @@
         .app-sidebar {
             width: auto;
         }
+        .select2-selection__choice {
+            background-color: #5897fB !important;
+            color: white;
+        }
     </style>
 
   </head>

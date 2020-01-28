@@ -5,6 +5,11 @@
         .content-wrapper {
             padding: 0px 15px;
         }
+        .select2-selection__choice {
+            background-color: #5897fB !important;
+            color: white;
+        }
+
     </style>
 
     <section id="configuration">
