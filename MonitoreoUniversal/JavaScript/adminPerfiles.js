@@ -74,13 +74,15 @@ function initEvent() {
             $('#divCrear').show('fast', function () {
                 $('#nombrePerfil').html('<b>Registro de perfil </b>');
                 $("#btnGuardar").click(function () {
+                    
                     guardarPerfil();
                     $('#btnGuardar').unbind("click");
+                    
                 });
-
                 $("#acciones").select2({
                     placeholder: "Seleccione una opción...",
-                    width: "300px"
+                    width: "300px",
+
                 });
             });
         });  
@@ -95,8 +97,15 @@ function initEvent() {
         });
     });
 
-    $("#btnEdit").click(function () {
+    $("#btnEdit").click(function ()
+    {
+
         editarPerfil();
+        $("#acciones").select2({
+            placeholder: "Seleccione una opción...",
+             width: "300px",
+        });
+
         $('#formPerfiles').bootstrapValidator('destroy');
         bootsVal();
     });
@@ -169,7 +178,6 @@ function initEvent() {
             swal("¡Advertencia!", "Debes seleccionar un registro", "warning");
         }
     });
-
     $.ajax({
         async: true,
         type: 'GET',
@@ -178,8 +186,9 @@ function initEvent() {
         contentType: 'application/json; charset=utf-8',
         success: function (data) {
             llenarComboSelect("acciones", data, "idAccion", "descripcion");
-        }  
+        }
     });
+    
 }
 function bootsVal() {
     $('#formPerfiles').bootstrapValidator({
@@ -215,12 +224,13 @@ function editarPerfil() {
     if (row) {
 
         $("#nombre").val(row.descripcion);
-
         $('#divPerfiles').hide('fast', function () {
             $('#divCrear').show('fast', function () {
-                $('#nombrePerfil').html('<b>Edición de perfil:' + row.descripcion +' </b>');
+                $('#nombrePerfil').html('<b>Edición de perfil:' + row.descripcion + ' </b>');
                 $("#btnGuardar").click(function () {
-                     bootsVal();
+                    
+                    bootsVal();
+                    
                     $('#formPerfiles').data('bootstrapValidator').validate();
                     var n = $('#formPerfiles').data('bootstrapValidator').isValid();
 
@@ -228,8 +238,9 @@ function editarPerfil() {
                         var json = {
                             perfiles: {
                                 descripcion: $('#nombre').val(),
-                                idPerfil: row.idPerfil
-                            }
+                                idPerfil: row.idPerfil,
+                            },
+                            arrayaccion: $('#acciones').val()
                         };
 
                         $.ajax({
@@ -252,9 +263,8 @@ function editarPerfil() {
                                             $('#divCrear').hide('fast', function () {
                                                 $('#divPerfiles').show('fast', function () {
                                                     $('#formPerfiles')[0].reset();
-                                                    $('#btnGuardar').prop("disabled", false);                                                 
+                                                    $('#btnGuardar').prop("disabled", false);
                                                     $('#formPerfiles').bootstrapValidator('destroy');
-                                                   
 
                                                     otable.clear().draw();
                                                     otable.destroy();
