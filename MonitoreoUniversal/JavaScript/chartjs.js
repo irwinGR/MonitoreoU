@@ -4,7 +4,7 @@ $(function () {
 function initEventos() {
     $("#graficasN").change(function () {
         var html = '';
-
+        y
         $("#graficasDinamicas").empty();
 
         for (var i = 0; i < $("#graficasN").val(); i++) {
@@ -171,6 +171,9 @@ function graficaBarra(id, datas, labels) {
 function eventoBoton(numero) {
     
     $("#btnGuardar" + numero).click(function () {
+
+
+
         var labels = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
         var datas = [numeroAleatorio(50,200), numeroAleatorio(50,200), numeroAleatorio(50,200), numeroAleatorio(50,200), numeroAleatorio(50,200), numeroAleatorio(50,200), numeroAleatorio(50,200), numeroAleatorio(50,200), numeroAleatorio(50,200), numeroAleatorio(50,200), numeroAleatorio(50,200), numeroAleatorio(50,200)];
         var json = {};
