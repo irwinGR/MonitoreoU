@@ -82,6 +82,7 @@ function initEvent() {
                 $("#acciones").select2({
                     placeholder: "Seleccione una opción...",
                     width: "300px",
+                  
 
                 });
             });
