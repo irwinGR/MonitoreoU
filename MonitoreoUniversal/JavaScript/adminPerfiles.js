@@ -12,7 +12,7 @@ function initDataTable() {
         dataType: 'json',
         contentType: 'application/json; charset=utf-8',
         success: function (data) {
-             otable = $('#dtPerfil').DataTable({
+            otable = $('#dtPerfil').DataTable({
                 orderCellsTop: false,
                 fixedHeader: true,
                 lengthMenu: [[5, 10, 15, 30, 50, 100], [5, 10, 15, 30, 50, 100]],
@@ -28,8 +28,9 @@ function initDataTable() {
                 data: data,
                 columns: [
                     { data: "idPerfil" },
-                    { data: "descripcion" },
-                   
+                    { data: "descripcion" },                   
+                    { data: "acciones" },
+                        
 
                 ]
             });
@@ -57,6 +58,12 @@ function initDataTable() {
                 editarPerfil();
                 $('#formPerfiles').bootstrapValidator('destroy');
                 bootsVal();
+
+                editarPerfil();
+                $("#acciones").select2({
+                    placeholder: "Seleccione una opción...",
+                    width: "300px",
+                });
             });
 
             // Evento creado para realizar la búsqueda cuando se presione la tecla ENTER

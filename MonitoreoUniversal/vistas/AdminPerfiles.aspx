@@ -55,11 +55,18 @@
                                                 <input
                                                     type="text" class="form-control"
                                                     placeholder="Nombre" autocomplete="off" /></th>
-
+                                               <th class="hasinput" style = "width: 20%">
+                                                   <input
+                                                       type="text" class="from-control"
+                                                       placeholder=" Acciones" autocomplete="off" /></th>
+                                              
+                                      
                                             <tr>
                                                 <th style="width: auto">idPerfil</th>
                                                 <th style="width: auto">Nombre</th>
-                                            </tr>
+                                                <th style="width: auto">Acciones</th>
+                                           </tr>
+                                      
                                     </thead>
                                 </table>
                             </div>

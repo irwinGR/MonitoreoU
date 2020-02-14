@@ -28,8 +28,8 @@ function initDataTable() {
                 data: data,
                 columns: [
                     { data: "idMunicipioDelegacion" },
-                    { data: "descripcion" },
-                    { data: "Estados.descripcion" },
+                    { data: "descripcion" }, /*Nombre*/
+                    { data: "Estados.descripcion" },/*name propiedad del metodo-descripcion*/
                     { data: "pais.descripcion" }
                 ]
             });

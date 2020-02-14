@@ -7,6 +7,8 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+
 
 namespace MonitoreoUniversal.Datos
 {
@@ -24,22 +26,28 @@ namespace MonitoreoUniversal.Datos
                     connection.Open();
                     consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Seguridad.ConsultaPerfilesSP");
 
+                    TextWriter text = null;
+
+                    text = new StreamWriter(Perfiles.path, true);
+
+                    text.WriteLine(DateTime.Now.ToString() + "Lectura de consulta");
+                    text.WriteLine(DateTime.Now.ToString() + dt.ToString());
+
                     dt.Load(consulta);
                     connection.Close();
+                    text.Close();
                 }
-
+                
                 foreach (DataRow row in dt.Rows)
                 {
                     Perfiles perfi = new Perfiles();
-
+                    
                     perfi.idPerfil = Convert.ToInt32(row["idPerfil"].ToString());
                     perfi.descripcion = row["descripcion"].ToString();
+                    perfi.acciones = row["Acciones"].ToString();
                     perfi.estatus = Convert.ToBoolean(row["estatus"].ToString());
-
-                    Empresa empresa = new Empresa();
-                    perfi.empresa = empresa;
-                    perfi.empresa.idCliente = Convert.ToInt32(row["idEmpresa"].ToString());
-
+                   
+               
                     perfiles.Add(perfi);
 
                 }
@@ -96,7 +104,8 @@ namespace MonitoreoUniversal.Datos
                         ParametroAcceso.CrearParametro("@Accion0", SqlDbType.Int, accion0, ParameterDirection.Input),
                         ParametroAcceso.CrearParametro("@Accion1", SqlDbType.Int, accion1, ParameterDirection.Input),
                         ParametroAcceso.CrearParametro("@Accion2", SqlDbType.Int, accion2, ParameterDirection.Input),
-                        ParametroAcceso.CrearParametro("@Accion3", SqlDbType.Int, accion3, ParameterDirection.Input)
+                        ParametroAcceso.CrearParametro("@Accion3", SqlDbType.Int, accion3, ParameterDirection.Input),
+                      
                     };
 
                     consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Seguridad.AgregarPerfilesAccionesSP", parametros);
@@ -158,7 +167,8 @@ namespace MonitoreoUniversal.Datos
                         ParametroAcceso.CrearParametro("@Accion0", SqlDbType.Int, accion0, ParameterDirection.Input),
                         ParametroAcceso.CrearParametro("@Accion1", SqlDbType.Int, accion1, ParameterDirection.Input),
                         ParametroAcceso.CrearParametro("@Accion2", SqlDbType.Int, accion2, ParameterDirection.Input),
-                        ParametroAcceso.CrearParametro("@Accion3", SqlDbType.Int, accion3, ParameterDirection.Input)
+                        ParametroAcceso.CrearParametro("@Accion3", SqlDbType.Int, accion3, ParameterDirection.Input),
+                      
                     };
 
                     consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Seguridad.ActualizarPerfilesAccionesSP", parametros);
