@@ -19,7 +19,7 @@
                                     <div class="col-md-4">
 										<fieldset class="form-group">
 											<label for="basicInput">* Pais</label>
-											<select class="form-control" id="pais" name="país"></select>
+											<select class="form-control" id="pais" name="pais"></select>
 										</fieldset>
 									</div>
                                     <div class="col-md-4">

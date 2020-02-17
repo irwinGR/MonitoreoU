@@ -262,24 +262,26 @@ function graficaLineal(id, datas, labels, numero, columna) {
 
         var arrYaxis1 = JSON.parse($("#btnGuardar" + numero).attr("dataYaxis"));
         var arrYaxis2 = [axis];
+        arrYaxis = arrYaxis2;
         arrYaxis = arrYaxis1.concat(arrYaxis2);
+
         $("#btnGuardar" + numero).attr("dataYaxis", JSON.stringify(arrYaxis));
     }
 
     labelsD = [];
 
-    if ($("#rangos" + numero).val() == 1 || $("#rangos" + numero).val() == "1") {
-        for (var i = 1; i <= 31; i++) {
-            labelsD.push(i);
-        }
-    } else {
-        labelsD = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-    }
+    //if ($("#rangos" + numero).val() == 1 || $("#rangos" + numero).val() == "1") {
+    //    for (var i = 1; i <= 31; i++) {
+    //        labelsD.push(i);
+    //    }
+    //} else {
+    //    labelsD = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+    //}
 
     var config = {
         type: 'scatter',
         data: {
-            labels: labelsD,
+            //labels: labelsD,
             datasets: arr
         },
         options: {
@@ -296,7 +298,7 @@ function graficaLineal(id, datas, labels, numero, columna) {
                     display: true,
                     scaleLabel: {
                         display: true,
-                        labelString: 'Mes'
+                        labelString: $("#rangos"+numero+" option:selected").text()
                     }
                 }],
                 yAxes: arrYaxis
@@ -310,6 +312,8 @@ function graficaLineal(id, datas, labels, numero, columna) {
 
     var ctx = document.getElementById(id).getContext("2d");
     ourChart = new Chart(ctx, config);
+
+
 }
 function graficaBarra(id, datas, labels, numero) {
     $("#" + id).remove();
@@ -452,6 +456,9 @@ function eventoBoton(numero) {
 
             }
         }
+
+        $("#btnGuardar" + numero).attr("dataJson", "no");
+        $("#btnGuardar" + numero).attr("dataYaxis", "no");
     });
 }
 function iniciarDatePicker(numero) {

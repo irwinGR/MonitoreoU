@@ -266,7 +266,10 @@ function editarMunicipiosDelegaciones() {
     if (row) {
 
         $("#nombre").val(row.descripcion);
-        $("#estado").val(row.Estados.idEstado);
+        $("#pais").val(row.pais.idPais).change();
+        setTimeout(function () {
+            $("#estado").val(row.Estados.idEstado);
+        }, 1000);
 
 
         $('#divMunicipiosDelegaciones').hide('fast', function () {

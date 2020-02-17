@@ -58,7 +58,9 @@
              setTimeout(function () {
                      location.href = "index.aspx";
                 },1000)
-            }
+          }
+
+
        </script>
 
 
@@ -91,8 +93,15 @@
                                                 Bienvenido, Por favor inicia sesion con tu cuenta.
                                              </p>
                                               <form runat="server">
-                                                    <asp:TextBox type="text" class="form-control mb-3" ID="user" runat="server" placeholder="Nombre de usuario" required="required" autocomplete="off"></asp:TextBox>
-                                                    <asp:TextBox runat="server" type="password" class="form-control mb-1" ID="password" placeholder="Contraseña" required="required" ></asp:TextBox>
+                                                    <asp:TextBox type="text" CssClass="form-control mb-3" ID="user" runat="server" placeholder="Nombre de usuario" required="required" autocomplete="off"></asp:TextBox>
+                                                    <div class="input-group">
+                                                        <asp:TextBox runat="server" type="password" CssClass="form-control mb-1" ID="password" placeholder="Contraseña" required="required" ></asp:TextBox>
+                                                        <div class="input-group-append" style="height: 37px;">
+                                                            <button id="show_password" class="btn btn-info" type="button">
+                                                                <span class="fa fa-eye-slash icon"></span>
+                                                            </button>
+                                                        </div>  
+                                                    </div>
                                                     <div class="d-flex justify-content-between mt-2">
                                                     <div class="forgot-password-option">
                                                         <a href="forgot-password-page.html" class="text-decoration-none text-info">Olvidaste tu contraseña?</a>
@@ -126,8 +135,20 @@
             <!-- END : End Main Content-->
          </div>
       </div>
-      
+      <script>
+        $('#show_password').hover(function show() {
+            //Cambiar el atributo a texto
+            $('#password').attr('type', 'text');
+            $('.icon').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
+        },
+        function () {
+            //Cambiar el atributo a contraseña
+            $('#password').attr('type', 'password');
+            $('.icon').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
+            });
+      </script>
    </body>
    <!-- END : Body-->
    <!-- Mirrored from pixinvent.com/apex-angular-4-bootstrap-admin-template/html-demo-1/login-page.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 22 Oct 2019 16:19:36 GMT -->
+    
 </html>

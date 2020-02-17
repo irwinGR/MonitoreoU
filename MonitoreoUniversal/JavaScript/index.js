@@ -1,6 +1,8 @@
 ﻿
 $(function () {
     $("#sidebarToggle").click();
+    $(".selectSectors").show();
+    $("#EmpresasSelector").attr("class", "row col-lg-7");
 
     $.ajax({
         async: false,
