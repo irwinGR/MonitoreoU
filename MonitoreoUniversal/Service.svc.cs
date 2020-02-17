@@ -46,6 +46,7 @@ namespace MonitoreoUniversal
         UnidadLecturaNegocio unidadLecturaNegocio = new UnidadLecturaNegocio();
         UsuariosNegocio usuariosNegocio = new UsuariosNegocio();
         VariablesNegocio variablesNegocio = new VariablesNegocio();
+        GraficasNegocio graficasNegocio = new GraficasNegocio();
 
         #region Métodos - Acciones
 
@@ -815,16 +816,56 @@ namespace MonitoreoUniversal
 
         #endregion
 
-        #region Métodos - Prueba
+        #region Métodos - DashBoard
 
         [OperationContract]
-        [WebGet(UriTemplate = "/GetPrueba", ResponseFormat = WebMessageFormat.Json)]
-        public List<Pruebas> getAllPrueba()
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/GetDispositivos", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public List<Dispositivos> getDispositivos(int idCliente, int idSector)
         {
-            List<Pruebas> list = new List<Pruebas>();
+            List<Dispositivos> list = new List<Dispositivos>();
             try
             {
-                list = pruebasNegocio.getAllPruebas();
+                list = pruebasNegocio.getDispositivos(idCliente, idSector);
+            }
+            catch (Exception e)
+            {
+
+            }
+            return list;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/GetVariablesxDispositivos", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public List<Variables> getVariablesxDispositivos(int idDispositivo)
+        {
+            List<Variables> list = new List<Variables>();
+            try
+            {
+                list = pruebasNegocio.getVariablesxDispositivos(idDispositivo);
+            }
+            catch (Exception e)
+            {
+
+            }
+            return list;
+        }
+
+        #endregion
+
+        #region Métodos - Empresas
+
+        [OperationContract]
+        [WebGet(UriTemplate = "/GetEmpresas", ResponseFormat = WebMessageFormat.Json)]
+        public List<Empresa> getAllEmpresas()
+        {
+            List<Empresa> list = new List<Empresa>();
+            try
+            {
+                list = empresaNegocio.getAllEmpresa();
             }
             catch (Exception e)
             {
@@ -997,6 +1038,23 @@ namespace MonitoreoUniversal
                 result = false;
             }
             return result;
+        }
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/SectoresxEmpresa", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public List<Sector> sectoresxEmpresa(int idEmpresa)
+        {
+            List<Sector> list = new List<Sector>();
+            try
+            {
+                list = sectorNegocio.sectoresxEmpresa(idEmpresa);
+            }
+            catch (Exception e)
+            {
+            }
+            return list;
         }
 
         #endregion
@@ -1363,6 +1421,27 @@ namespace MonitoreoUniversal
                 result = false;
             }
             return result;
+        }
+
+        #endregion
+
+        #region Métodos - Graficas
+
+        [OperationContract]
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/getDatosGrafica", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public List<Graficas> getDatosGrafica(int idDispositivos, int idVariable, int opcion, string fechaIni, string fechaFin)
+        {
+            List<Graficas> list = new List<Graficas>();
+            try
+            {
+                list = graficasNegocio.getDatosGrafica(idDispositivos, idVariable, opcion, fechaIni, fechaFin);
+            }
+            catch (Exception e)
+            {
+            }
+            return list;
         }
 
         #endregion

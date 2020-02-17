@@ -29,19 +29,30 @@ namespace MonitoreoUniversal
             {
                 string[] cadenaDelimitada;
                 cadenaDelimitada = cadenas.Split('*');
-                string[] ParametrosEnCadena;
-                ParametrosEnCadena = cadenaDelimitada[0].Split('|');
-                int idDispositivo = Convert.ToInt32(ParametrosEnCadena[0]);
-                string coordenadas = ParametrosEnCadena[1];
-                string humedad = ParametrosEnCadena[2];
-                string conductvidadElectrica = ParametrosEnCadena[3];
+                int idDispositivo = 0;
+                string coordenadas = "";
+                int idVariable = 0;
+                string valor = "";
 
-                try {
-                    respuesta = pruebasNegocio.agregarPruebas(idDispositivo, coordenadas, humedad, conductvidadElectrica);
+                for (int i = 0; i < cadenaDelimitada.Length;i++) {
+
+                    string[] ParametrosEnCadena;
+                    ParametrosEnCadena = cadenaDelimitada[i].Split('|');
+                    idDispositivo = Convert.ToInt32(ParametrosEnCadena[0]);
+                    coordenadas = ParametrosEnCadena[1];
+                    idVariable = Convert.ToInt32(ParametrosEnCadena[2]);
+                    valor = ParametrosEnCadena[3];
+
+                    try
+                    {
+                        respuesta = pruebasNegocio.agregarPruebas(idDispositivo, coordenadas, idVariable, valor);
+                    }
+                    catch (Exception e)
+                    {
+                        respuesta = false;
+                    }
                 }
-                catch (Exception e) {
-                    respuesta = false;
-                }
+               
             }
             return respuesta;
         }

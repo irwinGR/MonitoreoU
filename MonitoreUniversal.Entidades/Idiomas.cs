@@ -8,7 +8,7 @@ namespace MonitoreUniversal.Entidades
 {
     public class Idiomas
     {
-        public int idIdioma { set; get; }
+        public string idIdioma { set; get; }
         public string descripcion { set; get; }
         public bool estatus { set; get; }
 

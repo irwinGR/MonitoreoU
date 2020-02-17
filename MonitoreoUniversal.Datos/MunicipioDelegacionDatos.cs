@@ -33,17 +33,17 @@ namespace MonitoreoUniversal.Datos
                 {
                     MunicipioDelegacion muni = new MunicipioDelegacion();
 
-                    muni.idMunicipioDelegacion = Convert.ToInt32(row["idMunicipioDelegacion"].ToString());
+                    muni.idMunicipioDelegacion = row["idMunicipioDelegacion"].ToString();
                     muni.descripcion = row["descripcion"].ToString();
 
                     Paises paises = new Paises();
                     muni.pais = paises;
-                    muni.pais.idPais = Convert.ToInt32(row["idPais"].ToString());
+                    muni.pais.idPais = row["idPais"].ToString();
                     muni.pais.descripcion = row["nombrePais"].ToString();
 
                     Estados estados = new Estados();
                     muni.Estados = estados;
-                    muni.Estados.idEstado = Convert.ToInt32(row["idEstado"].ToString());
+                    muni.Estados.idEstado = row["idEstado"].ToString();
                     muni.Estados.descripcion = row["nombreEstado"].ToString();
 
                     municipioDelegacion.Add(muni);

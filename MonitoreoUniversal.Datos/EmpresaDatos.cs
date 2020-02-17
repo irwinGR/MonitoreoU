@@ -23,7 +23,10 @@ namespace MonitoreoUniversal.Datos
                 {
                     SqlDataReader consulta;
                     connection.Open();
-                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Administracion.ConsultaEmpresaSP");
+                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "[Administracion].[ConsultaEmpresaSP]");
+
+                    dt.Load(consulta);
+                    connection.Close();
                 }
                 foreach (DataRow row in dt.Rows)
                 {
@@ -44,27 +47,23 @@ namespace MonitoreoUniversal.Datos
 
                     MunicipioDelegacion municipioDelegacion = new MunicipioDelegacion();
                     empre.municipioDelegacion = municipioDelegacion;
-                    empre.municipioDelegacion.idMunicipioDelegacion = Convert.ToInt32(row["idMunicipioDelegacion"].ToString());
+                    empre.municipioDelegacion.idMunicipioDelegacion = row["idMunicipioDelegacion"].ToString();
 
                     Estados estados = new Estados();
                     empre.estados = estados;
-                    empre.estados.idEstado = Convert.ToInt32(row["idEstado"].ToString());
+                    empre.estados.idEstado = row["idEstado"].ToString();
 
                     Paises paises = new Paises();
                     empre.paises = paises;
-                    empre.paises.idPais = Convert.ToInt32(row["idPais"].ToString());
+                    empre.paises.idPais = row["idPais"].ToString();
 
                     Idiomas idiomas = new Idiomas();
                     empre.idiomas = idiomas;
-                    empre.idiomas.idIdioma = Convert.ToInt32(row["idIdioma"].ToString());
-
-                    Sector sector = new Sector();
-                    empre.sector = sector;
-                    empre.sector.idSector = Convert.ToInt32(row["idSector"].ToString());
+                    empre.idiomas.idIdioma = row["idIdioma"].ToString();
 
                     Servicio servicio = new Servicio();
                     empre.servicio = servicio;
-                    empre.servicio.idServicio = Convert.ToInt32(row["idServicio"].ToString());
+                    empre.servicio.idServicio = row["idServicio"].ToString();
 
                     empresa.Add(empre);
                 }

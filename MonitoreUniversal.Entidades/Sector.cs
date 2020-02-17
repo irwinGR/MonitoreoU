@@ -8,7 +8,7 @@ namespace MonitoreUniversal.Entidades
 {
     public class Sector
     {
-        public int idSector { set; get; }
+        public string idSector { set; get; }
         public string descripcion { set; get; }
         public bool estatus { set; get; }
 

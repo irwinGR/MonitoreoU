@@ -8,7 +8,7 @@ namespace MonitoreUniversal.Entidades
 {
     public class Servicio
     {
-        public int idServicio { set; get; }
+        public string idServicio { set; get; }
         public string nombre { set; get; }
         public Estados estados { set; get; }
         public Paises paises { set; get; }

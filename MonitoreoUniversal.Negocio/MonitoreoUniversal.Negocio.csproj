@@ -54,6 +54,7 @@
     <Compile Include="EstadosNegocio.cs" />
     <Compile Include="FactoresMonitoreoNegocio.cs" />
     <Compile Include="FallasDispositivosNegocio.cs" />
+    <Compile Include="GraficasNegocio.cs" />
     <Compile Include="IdiomasNegocio.cs" />
     <Compile Include="MagnitudNegocio.cs" />
     <Compile Include="MediosComunicacionNegocio.cs" />

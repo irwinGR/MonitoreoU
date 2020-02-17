@@ -31,7 +31,7 @@ namespace MonitoreoUniversal.Datos
                 foreach(DataRow row in dt.Rows)
                 {
                     Servicio serv = new Servicio();
-                    serv.idServicio = Convert.ToInt32(row["idServicio"].ToString());
+                    serv.idServicio = row["idServicio"].ToString();
                     serv.nombre = row["nombre"].ToString();
                     serv.descripcion = row["descripcion"].ToString();
                     serv.objetivo = row["objetivo"].ToString();
@@ -44,19 +44,19 @@ namespace MonitoreoUniversal.Datos
 
                     MunicipioDelegacion municipioDelegacion = new MunicipioDelegacion();
                     serv.municipioDelegacion = municipioDelegacion;
-                    serv.municipioDelegacion.idMunicipioDelegacion = Convert.ToInt32(row["idMunicipioDelegacion"].ToString());
+                    serv.municipioDelegacion.idMunicipioDelegacion = row["idMunicipioDelegacion"].ToString();
 
                     Estados estados = new Estados();
                     serv.estados = estados;
-                    serv.estados.idEstado = Convert.ToInt32(row["idEstado"].ToString());
+                    serv.estados.idEstado = row["idEstado"].ToString();
 
                     Paises paises = new Paises();
                     serv.paises = paises;
-                    serv.paises.idPais = Convert.ToInt32(row["idPais"].ToString());
+                    serv.paises.idPais = row["idPais"].ToString();
 
                     Sector sector = new Sector();
                     serv.sector = sector;
-                    serv.sector.idSector = Convert.ToInt32(row["idSector"].ToString());
+                    serv.sector.idSector = row["idSector"].ToString();
 
                     Dispositivos dispositivo = new Dispositivos();
                     serv.dispositivo = dispositivo;

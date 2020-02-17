@@ -33,13 +33,13 @@ namespace MonitoreoUniversal.Datos
                 {
                     Estados estad = new Estados();
 
-                    estad.idEstado = Convert.ToInt32(row["idEstado"].ToString());
+                    estad.idEstado = row["idEstado"].ToString();
                     estad.descripcion = row["descripcion"].ToString();
                     estad.estatus = Convert.ToBoolean(row["estatus"].ToString());
 
                     Paises paises = new Paises();
                     estad.paises = paises;
-                    estad.paises.idPais = Convert.ToInt32(row["idPais"].ToString());
+                    estad.paises.idPais = row["idPais"].ToString();
                     estad.paises.descripcion = row["pais"].ToString();
 
                     estados.Add(estad);
@@ -79,7 +79,7 @@ namespace MonitoreoUniversal.Datos
                 {
                     Estados estad = new Estados();
 
-                    estad.idEstado = Convert.ToInt32(row["idEstado"].ToString());
+                    estad.idEstado =  row["idEstado"].ToString();
                     estad.descripcion = row["descripcion"].ToString();                   
                 
                     estados.Add(estad);

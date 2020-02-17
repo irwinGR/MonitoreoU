@@ -12,5 +12,6 @@ namespace MonitoreUniversal.Entidades
         public int numeroSerie { set; get; }
         public string descripcion { set; get; }
         public CentroMonitoreo centroMonitoreo { set; get; }
+        public string coordenadas { set; get; }
     }
 }

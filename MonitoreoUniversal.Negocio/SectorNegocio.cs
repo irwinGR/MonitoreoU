@@ -15,6 +15,12 @@ namespace MonitoreoUniversal.Negocio
         {
             return sectorDatos.getAllSector();
         }
+
+        public List<Sector> sectoresxEmpresa(int idEmpresa)
+        {
+            return sectorDatos.sectoresxEmpresa(idEmpresa);
+        }
+
         public Boolean registrarSector(Sector sector)
         {
             return sectorDatos.registrarSector(sector);

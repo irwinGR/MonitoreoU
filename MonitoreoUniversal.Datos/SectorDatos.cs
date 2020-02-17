@@ -31,7 +31,7 @@ namespace MonitoreoUniversal.Datos
                 foreach (DataRow row in dt.Rows)
                 {
                     Sector sect = new Sector();
-                    sect.idSector = Convert.ToInt32(row["idSector"].ToString());
+                    sect.idSector =  row["idSector"].ToString();
                     sect.descripcion = row["descripcion"].ToString();
                     sect.estatus = Convert.ToBoolean(row["estatus"].ToString());
 
@@ -44,6 +44,46 @@ namespace MonitoreoUniversal.Datos
             }
             return sector;
         }
+
+        public List<Sector> sectoresxEmpresa(int idEmpresa)
+        {
+            List<Sector> sector = new List<Sector>();
+            SqlConnection connection = null;
+            DataTable dt = new DataTable();
+            try
+            {
+                using (connection = Conexion.ObtieneConexion("ConexionBD"))
+                {
+                    SqlDataReader consulta;
+                    connection.Open();
+
+                    var parametros = new[]
+                    {
+                        ParametroAcceso.CrearParametro("@idCliente",SqlDbType.Int,idEmpresa,ParameterDirection.Input)
+                    };
+
+                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "dbo.ConsultaSectoresxEmpresaSP", parametros);
+
+                    dt.Load(consulta);
+                    connection.Close();
+                }
+                foreach (DataRow row in dt.Rows)
+                {
+                    Sector sect = new Sector();
+                    sect.idSector = row["idSector"].ToString();
+                    sect.descripcion = row["descripcion"].ToString();
+                    sect.estatus = Convert.ToBoolean(row["estatus"].ToString());
+
+                    sector.Add(sect);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            return sector;
+        }
+
         public Boolean registrarSector(Sector sector)
         {
             Boolean respuesta = false;

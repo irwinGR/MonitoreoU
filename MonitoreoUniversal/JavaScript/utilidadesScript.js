@@ -17,6 +17,21 @@ function llenarCombo(id, data,value,text) {
     });
 }
 
+function llenarCombo2(id, data, value, text) {
+    $('#' + id).empty();
+    //$('#' + id).append($('<option>', {
+    //    value: 0,
+    //    text: "Seleccione una opción..."
+    //}));
+
+    $.each(data, function (i, item) {
+        $('#' + id).append($('<option>', {
+            value: item[value],
+            text: item[text]
+        }));
+    });
+}
+
 function llenarComboxParametro(id, data,value, text) {
     $('#' + id).empty();
     $('#' + id).append($('<option>', {
@@ -31,7 +46,6 @@ function llenarComboxParametro(id, data,value, text) {
         }));
     });
 }
-
 
 function soloNumeros(e) {
     var key = window.event ? e.which : e.keyCode;

@@ -53,6 +53,7 @@
     <Compile Include="Empresa.cs" />
     <Compile Include="Estados.cs" />
     <Compile Include="FallasDispositivos.cs" />
+    <Compile Include="Graficas.cs" />
     <Compile Include="Idiomas.cs" />
     <Compile Include="FactoresMonitoreo.cs" />
     <Compile Include="Magnitud.cs" />

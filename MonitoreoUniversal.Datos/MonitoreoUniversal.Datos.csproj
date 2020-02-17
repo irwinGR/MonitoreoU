@@ -54,6 +54,7 @@
     <Compile Include="EstadosDatos.cs" />
     <Compile Include="FactoresMonitoreoDatos.cs" />
     <Compile Include="FallasDispositivosDatos.cs" />
+    <Compile Include="GraficasDatos.cs" />
     <Compile Include="IdiomasDatos.cs" />
     <Compile Include="MagnitudDatos.cs" />
     <Compile Include="MediosComunicacionDatos.cs" />

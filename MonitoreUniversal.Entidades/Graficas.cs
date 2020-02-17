@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace MonitoreUniversal.Entidades
 {
-    public class Paises
+    public class Graficas
     {
-        public string idPais { set; get; }
-        public string descripcion { set; get; }
-        public bool estatus { set; get; }       
+        public int idBitacora { set; get; }
+        public string label { set; get; }
+        public string valor { set; get; }
     }
 }

@@ -33,7 +33,7 @@ namespace MonitoreoUniversal.Datos
                 {
                     Idiomas idiom = new Idiomas();
 
-                    idiom.idIdioma = Convert.ToInt32(row["idIdioma"].ToString());
+                    idiom.idIdioma = row["idIdioma"].ToString();
                     idiom.descripcion = row["descripcion"].ToString();
                     idiom.estatus = Convert.ToBoolean(row["estatus"].ToString());
 

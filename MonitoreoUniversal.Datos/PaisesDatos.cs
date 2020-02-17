@@ -33,7 +33,7 @@ namespace MonitoreoUniversal.Datos
                 {
                     Paises pais = new Paises();
 
-                    pais.idPais = Convert.ToInt32(row["idPais"].ToString());
+                    pais.idPais = row["idPais"].ToString();
                     pais.descripcion = row["descripcion"].ToString();
                     pais.estatus = Convert.ToBoolean(row["estatus"].ToString());
 
