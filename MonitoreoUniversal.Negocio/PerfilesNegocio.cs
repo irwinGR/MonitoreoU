@@ -12,9 +12,9 @@ namespace MonitoreoUniversal.Negocio
     {
         PerfilDatos perfilesDatos = new PerfilDatos();
 
-        public List<Perfiles> getAllPerfiles()
+        public List<Perfiles> getAllPerfiles(int idEmpresa)
         {
-            return perfilesDatos.getAllPerfiles();
+            return perfilesDatos.getAllPerfiles(idEmpresa);
         }
         public Boolean registraPerfiles(Perfiles perfiles, int[] arrayaccion) {
             return perfilesDatos.registraPerfiles(perfiles, arrayaccion);

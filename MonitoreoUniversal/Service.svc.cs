@@ -650,15 +650,17 @@ namespace MonitoreoUniversal
         #endregion
 
         #region Métodos - Perfil
-
+        
         [OperationContract]
-        [WebGet(UriTemplate = "/GetPerfil", ResponseFormat = WebMessageFormat.Json)]
-        public List<Perfiles> getAllPerfiles()
+        [return: MessageParameter(Name = "result")]
+        [WebInvoke(Method = "POST", UriTemplate = "/GetPerfil", RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public List<Perfiles> getAllPerfiles(int idEmpresa)
         {
             List<Perfiles> list = new List<Perfiles>();
             try
             {
-                list = perfilesNegocio.getAllPerfiles();
+                list = perfilesNegocio.getAllPerfiles(idEmpresa);
             }
             catch (Exception e)
             {

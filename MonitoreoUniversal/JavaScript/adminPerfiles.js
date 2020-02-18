@@ -6,10 +6,14 @@ $(function () {
 });
 
 function initDataTable() {
+    var json = {
+        idEmpresa: $("#empresas").val()
+    }
     $.ajax({
-        type: 'GET',
+        type: 'POST',
         url: '../Service.svc/GetPerfil',
         dataType: 'json',
+        data: JSON.stringify(json),
         contentType: 'application/json; charset=utf-8',
         success: function (data) {
             otable = $('#dtPerfil').DataTable({
@@ -25,10 +29,10 @@ function initDataTable() {
                     "<'row'<'col-sm-12'tr>>" +
                     "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
 
-                data: data,
+                data: data.result,
                 columns: [
                     { data: "idPerfil" },
-                    { data: "descripcion" },                   
+                    { data: "descripcion" },
                     { data: "acciones" },
                         
 
@@ -320,7 +324,8 @@ function guardarPerfil() {
             perfiles: {
                 descripcion: $('#nombre').val(),
                 empresa: {
-                    idCliente: 1
+                    idCliente: $("#empresas").val()
+
                 }
             },
             arrayaccion: $('#acciones').val()

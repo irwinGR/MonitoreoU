@@ -14,7 +14,7 @@ namespace MonitoreoUniversal.Datos
 {
     public class PerfilDatos
     {
-        public List<Perfiles> getAllPerfiles() {
+        public List<Perfiles> getAllPerfiles(int idEmpresa) {
             List<Perfiles> perfiles = new List<Perfiles>();
             SqlConnection connection = null;
             DataTable dt = new DataTable();
@@ -24,7 +24,12 @@ namespace MonitoreoUniversal.Datos
                 {
                     SqlDataReader consulta;
                     connection.Open();
-                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Seguridad.ConsultaPerfilesSP");
+
+                    var parametros = new[] {
+                        ParametroAcceso.CrearParametro("@idEmpresa", SqlDbType.VarChar, idEmpresa , ParameterDirection.Input),
+                    };
+
+                    consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Seguridad.ConsultaPerfilesSP",parametros);
 
                     TextWriter text = null;
 
@@ -44,7 +49,7 @@ namespace MonitoreoUniversal.Datos
                     
                     perfi.idPerfil = Convert.ToInt32(row["idPerfil"].ToString());
                     perfi.descripcion = row["descripcion"].ToString();
-                    perfi.acciones = row["Acciones"].ToString();
+                  perfi.acciones = row["Acciones"].ToString();
                     perfi.estatus = Convert.ToBoolean(row["estatus"].ToString());
                    
                
