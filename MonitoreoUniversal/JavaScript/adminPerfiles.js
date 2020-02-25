@@ -236,6 +236,10 @@ function editarPerfil() {
     if (row) {
 
         $("#nombre").val(row.descripcion);
+        var array = row.idAcciones.split(",");
+        $('#acciones').val(array);
+        $('#acciones').trigger('change');
+
         $('#divPerfiles').hide('fast', function () {
             $('#divCrear').show('fast', function () {
                 $('#nombrePerfil').html('<b>Edición de perfil:' + row.descripcion + ' </b>');

@@ -14,5 +14,6 @@ namespace MonitoreUniversal.Entidades
         public bool estatus { set; get; }
         public Empresa empresa { set; get; }
         public string acciones { set; get; }
+        public string idAcciones { set; get; }
     }
 }

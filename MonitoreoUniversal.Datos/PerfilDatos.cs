@@ -31,16 +31,16 @@ namespace MonitoreoUniversal.Datos
 
                     consulta = Ejecuta.ProcedimientoAlmacenado(connection, "Seguridad.ConsultaPerfilesSP",parametros);
 
-                    TextWriter text = null;
+                    //TextWriter text = null;
 
-                    text = new StreamWriter(Perfiles.path, true);
+                    //text = new StreamWriter(Perfiles.path, true);
 
-                    text.WriteLine(DateTime.Now.ToString() + "Lectura de consulta");
-                    text.WriteLine(DateTime.Now.ToString() + dt.ToString());
+                    //text.WriteLine(DateTime.Now.ToString() + "Lectura de consulta");
+                    //text.WriteLine(DateTime.Now.ToString() + dt.ToString());
 
                     dt.Load(consulta);
                     connection.Close();
-                    text.Close();
+                    //text.Close();
                 }
                 
                 foreach (DataRow row in dt.Rows)
@@ -49,10 +49,10 @@ namespace MonitoreoUniversal.Datos
                     
                     perfi.idPerfil = Convert.ToInt32(row["idPerfil"].ToString());
                     perfi.descripcion = row["descripcion"].ToString();
-                  perfi.acciones = row["Acciones"].ToString();
+                    perfi.acciones = row["Acciones"].ToString();
                     perfi.estatus = Convert.ToBoolean(row["estatus"].ToString());
-                   
-               
+                    perfi.idAcciones = row["idAcciones"].ToString();
+
                     perfiles.Add(perfi);
 
                 }
